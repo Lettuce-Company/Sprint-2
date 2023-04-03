@@ -12,7 +12,7 @@ body {
     padding: 0px;
 }
 
-.container { 
+.containerContato { 
     width: 650px;
     height: 450px;
     background-color:#b6ce94;
@@ -26,37 +26,10 @@ body {
     justify-content: space-around;
 }
 
-.containerCalculadora { 
-    width: 1000px;
-    height: auto;
-    background-color:#b6ce94;
-    border-radius: 50px;
-    margin: auto;
-    margin-top: 3%;                                       
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    justify-content: space-around;
-    font-size: 10px;
-}
-
-h1 {
+.containerContato h1 {
     text-align: center;
     color: #494949;
     font-size: 40px;
-}
-
-select {
-    width: 600px;
-    height: 35px;
-    font-size: 30px;
-    border-style: none;
-    border-radius: 10px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    color: #494949;
 }
 
 input {
@@ -64,11 +37,10 @@ input {
     height: 35px;
     font-size: 30px;
     border-style: none;
-    border-radius: 10px;
+    border-radius: 50px;
     text-align: center;
     display: flex;
     align-items: center;
-    color: #494949;
 }
 
 .mensagem {
@@ -76,7 +48,7 @@ input {
     height: 60px;
 }
 
-button {
+.containerContato button {
     width: 200px;
     height: 40px;
     background-color: #8cd147;
@@ -101,33 +73,13 @@ button {
     justify-content: space-around;
 }
 
-.resultado {
-    padding: 25px;
+.home button {
+    width: 70px;
+    height: 70px;
+    margin-left: 1%;
+    background-color: #8cd147;
     color: white;
-}
-
-.resultado {
-    
-        font-size: 30px;                                       
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        justify-content: center;
-        justify-content: space-around;
-    
-}
-
-.FAO {
-    width: 350px;
-    height: 30px;
-    background-color:#b6ce94;
-    font-size: 25px;
-    border-radius: 50px;
-    margin: auto;
-    margin-top: 1%;                                       
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    justify-content: space-around;
+    font-size: 30px;
+    border-style: none;
+    border-radius: 100%;
 }

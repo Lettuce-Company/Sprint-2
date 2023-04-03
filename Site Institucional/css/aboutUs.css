@@ -1,0 +1,102 @@
+.content{
+    display: flex;
+    flex-direction: column;
+}
+.container .divTitulo {
+    font-size: 36px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.divTitulo{
+    display: flex;
+    margin-top: 20px;
+    width: 20%;
+    height: 20%;
+    border: 3px solid #8cd147;
+    border-radius: 100px;
+    background-color: #8cd147;
+    align-content: center;
+    /* color: #000; */
+}
+.divTitulo h1{
+    font-size: 25px;
+    align-self: center;
+}
+.divAbout{
+    padding: 10px 10px 10px 10px;
+    font-size: 20px;
+    text-align: justify;
+}
+/* .social {
+    background-color: #afc196;
+    display: flex;
+    width: 360px;
+    height: 500px;
+}
+
+.social .container{
+    justify-content: space-around;
+}
+
+
+.social .cardImg h4{
+    margin: 0px;
+    color: #0e2b0e;
+}
+
+.social p {
+    padding: 10px 10px 10px 10px;
+    text-align: center;
+    font-size: 20px;
+    width: 220px;
+    text-align: justify;
+} */
+
+.social .container .card img{
+    width: 100px;
+    height: 100px;
+}
+
+.social .cardImg{
+    width: 100%;
+    height: 50%;
+    text-align: center;
+}
+
+/* eu vou me matar eu não faço a mínima ideia de como colocar texto em cima da img */
+
+.cardImg{
+    background-image: url(../img/box1.PNG);
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+.social .container{
+    justify-content: space-around;
+}
+.social{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: 200px;
+    padding: 30px;
+    background-color: #afc196;
+    border: #afc196 1px solid;
+    border-radius: 15px;
+}
+
+.card h4{
+    color: #0e2b0e;
+} 
+.card p{
+    width: 300px;
+    text-align: justify;
+} 
