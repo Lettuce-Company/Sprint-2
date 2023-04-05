@@ -1,0 +1,59 @@
+body{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: white;
+}
+.boxbar{
+    width: 100%;
+    display: flex;
+    background-color: rgb(232, 255, 234);
+    justify-content: center;
+    justify-content: space-around;
+    border-bottom: solid rgb(112, 202, 85) 2px;
+    }
+
+.tela_login{
+    width: 650px;
+    height: 450px;
+    background-color:#b6ce94;
+    border-radius: 50px;
+    margin: auto;
+    margin-top: 1%;                                       
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-evenly;
+}
+
+h1 {
+    text-align: center;
+    color: #494949;
+    font-size: 40px;
+}
+
+input {
+    width: 600px;
+    height: 35px;
+    font-size: 30px;
+    border-style: none;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+button {
+    width: 200px;
+    height: 40px;
+    background-color: #8cd147;
+    color: white;
+    font-size: 30px;
+    border-style: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+button a {
+    text-decoration: none;
+    color: white;
+}

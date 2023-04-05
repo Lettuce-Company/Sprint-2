@@ -12,24 +12,37 @@ body {
     padding: 0px;
 }
 
-.containerContato { 
+.cntCalculadora { 
     width: 650px;
-    height: 450px;
+    height: auto;
     background-color:#b6ce94;
     border-radius: 50px;
     margin: auto;
-    margin-top: 5%;                                       
+    margin-top: 1%;                                       
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    font-size: 10px;
 }
 
-.containerContato h1 {
+.cntCalculadora h1 {
     text-align: center;
     color: #494949;
     font-size: 40px;
+}
+
+select {
+    width: 600px;
+    height: 35px;
+    font-size: 30px;
+    border-style: none;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    color: #494949;
 }
 
 input {
@@ -37,10 +50,11 @@ input {
     height: 35px;
     font-size: 30px;
     border-style: none;
-    border-radius: 50px;
+    border-radius: 10px;
     text-align: center;
     display: flex;
     align-items: center;
+    color: #494949;
 }
 
 .mensagem {
@@ -48,14 +62,15 @@ input {
     height: 60px;
 }
 
-.containerContato button {
+.cntCalculadora button {
     width: 200px;
-    height: 40px;
+    height: fit-content;
     background-color: #8cd147;
     color: white;
     font-size: 30px;
     border-style: none;
     border-radius: 50px;
+    cursor: pointer;
 }
 
 .suporte h6 {
@@ -73,13 +88,38 @@ input {
     justify-content: space-around;
 }
 
-.home button {
-    width: 70px;
-    height: 70px;
-    margin-left: 1%;
-    background-color: #8cd147;
+.resultado {
+    padding: 25px;
     color: white;
-    font-size: 30px;
-    border-style: none;
-    border-radius: 100%;
+}
+
+.resultado {
+    
+        font-size: 30px;                                       
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        justify-content: space-around;
+    
+}
+
+.FAO {
+    width: 350px;
+    height: 30px;
+    background-color:#b6ce94;
+    font-size: 25px;
+    border-radius: 50px;
+    margin: auto;
+    margin-top: 1%;                                       
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-around;
+}
+
+#exibir {
+    width: fit-content;
+    height: fit-content;
 }

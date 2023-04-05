@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato</title>
-    <link rel="stylesheet" href="../css/CSS Contato.css">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/CSS Login.css">
     <link rel="stylesheet" href="../css/CSS Home.css">
 </head>
 <body>
-
+    
     <div class="boxbar">
 
         <img class="logo" src="../img/LOGO.png" alt="logo lettuce company">
@@ -24,31 +24,20 @@
             <li><a href="Sobre Nós.html">Sobre Nós</a></li>
             <li> | </li>
             <li><a href="Home.html">Sobre o Projeto</a></li>
+           
+            
         </ul>
     </div>
-    
-    <div class="containerContato">
 
-        <div><h1>Entre em contato conosco!</h1></div>
+    <div class="tela_login">
 
-        <div><input id="input_nome" placeholder="Insira seu nome"></div>
+        <h1>Login</h1>
+        
         <div><input id="input_email" placeholder="Insira seu e-mail"></div>
-        <div><input class="mensagem" id="input_mensagem" placeholder="Sua mensagem"></div>
-
-        <div><button onclick="enviar()">Enviar</button></div>
-
+        <div><input type="password" id="input_nome" placeholder="Insira sua senha"></div>
+        
+        <button onclick="logar()"><a href="Home.html">Login</a></button>
     </div>
-
-    <div class="suporte">
-        <div><h6>suporte@lettucecompany.com</h6></div>
-    </div>
-
+    
 </body>
 </html>
-<script>
-
-    function enviar(){
-        alert(`Olá ${input_nome.value}, mensagem enviada com sucesso!.`)
-    }
-
-</script>
