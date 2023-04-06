@@ -62,10 +62,13 @@ input {
     height: 40px;
     background-color: #8cd147;
     color: white;
-    font-size: 30px;
     border-style: none;
     border-radius: 50px;
     cursor: pointer;
+}
+
+button a {
+    font-size: 30px;
 }
 
 .suporte h6 {
