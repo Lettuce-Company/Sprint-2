@@ -2,6 +2,7 @@ body{
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-color: white;
 }
+
 .boxbar{
     width: 100%;
     display: flex;
@@ -24,10 +25,12 @@ body{
     align-items: center;
     justify-content: center;
     justify-content: space-evenly;
+    text-align: center;
 }
 
 h1 {
     display: flex;
+    justify-content: center;
     text-align: center;
     color: #494949;
     font-size: 40px;
