@@ -3,35 +3,37 @@
 }
 
 
-body{
+body {
     margin: 0%;
 }
 
 
 
-.boxbar{
+.boxbar {
     width: 100%;
+    height: 85px;
     display: flex;
     background-color: rgb(255, 255, 255);
     justify-content: center;
+    align-items: center;
     justify-content: space-around;
     border-bottom: solid rgb(112, 202, 85) 2px;
 }
 
-.logo{
+.logo {
     width: 100px;
     height: 100px;
- }
+}
 
- 
+
 .navbar {
     width: 400px;
     display: flex;
     color: #482c1d;
     font-size: large;
-     font-weight: 600;
+    font-weight: 600;
     list-style: none;
-    justify-content: space-between ;
+    justify-content: space-between;
     white-space: nowrap;
     align-self: center;
     list-style: none;
@@ -42,23 +44,25 @@ body{
     color: rgb(60, 71, 60);
 }
 
-h2{
-    font-size:xx-large;
+h2 {
+    font-size: xx-large;
     font-weight: 600;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-     'Lucida Sans Unicode',  Verdana, sans-serif;
+        'Lucida Sans Unicode', Verdana, sans-serif;
     color: rgb(60, 71, 60);
 }
 
 .banner {
     background-size: cover;
-    background-image: url(../img/WALLPAPER\ 1.png);
+
+    background-image: url(../img/BANNER\ ALFACE.png);
+
     width: 100%;
     height: 480px;
 }
 
 
-.banner .container{
+.banner .container {
     height: 100%;
     display: flex;
     flex-direction: row;
@@ -67,14 +71,19 @@ h2{
     justify-content: space-evenly;
 }
 
+<<<<<<< HEAD
+.msgBanner {
+=======
 .msgBanner{
+>>>>>>> 37924d9ec0d98a370fafa53864949eb79b27a22e
     display: flex;
     flex-direction: column;
     justify-content: start;
     margin: 0%;
 }
-.banner .container p{
-    text-align: justify;
+
+.banner .container p {
+    text-align: left;
     color: rgb(255, 255, 255);
     font-size: 30px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -85,7 +94,9 @@ h2{
 p .Sistema {
     color: rgb(141, 242, 53);
     font-weight: 800;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;  
+    font-size: 50px;
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .remotoTitulo {
@@ -97,10 +108,16 @@ p .Sistema {
     border-radius: 100px;
     background-color: #8cd147;
     justify-content: center;
+<<<<<<< HEAD
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 400;
+    letter-spacing: 1px;
+=======
     align-items: center;
+>>>>>>> 37924d9ec0d98a370fafa53864949eb79b27a22e
 }
 
-.remoto{
+.remoto {
     color: rgb(255, 255, 255);
     font-size: 30px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -109,6 +126,9 @@ p .Sistema {
     align-items: center;
 }
 
+<<<<<<< HEAD
+.footer {
+=======
 .simulador {
     background-color: #8cd147;
     border-radius: 15px;
@@ -129,18 +149,27 @@ p .Sistema {
 
 
 .footer{
+>>>>>>> 37924d9ec0d98a370fafa53864949eb79b27a22e
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     background-color: #8cd147;
     width: 100%;
-    height: 85px;
+    height: 96px;
+    align-self: flex-end;
 }
 
+<<<<<<< HEAD
+.msg_footer {
+    color: #482c1d;
+    font-size: smaller;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+=======
 .msg_footer, a{
  color: white;
  font-size: 15px;
  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
  text-decoration: none;   
+>>>>>>> 37924d9ec0d98a370fafa53864949eb79b27a22e
 }
