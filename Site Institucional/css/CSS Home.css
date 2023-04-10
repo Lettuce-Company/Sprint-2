@@ -71,11 +71,7 @@ h2 {
     justify-content: space-evenly;
 }
 
-<<<<<<< HEAD
 .msgBanner {
-=======
-.msgBanner{
->>>>>>> 37924d9ec0d98a370fafa53864949eb79b27a22e
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -108,13 +104,10 @@ p .Sistema {
     border-radius: 100px;
     background-color: #8cd147;
     justify-content: center;
-<<<<<<< HEAD
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: 400;
     letter-spacing: 1px;
-=======
     align-items: center;
->>>>>>> 37924d9ec0d98a370fafa53864949eb79b27a22e
 }
 
 .remoto {
@@ -126,10 +119,7 @@ p .Sistema {
     align-items: center;
 }
 
-<<<<<<< HEAD
-.footer {
-=======
-.simulador {
+.footer .simulador {
     background-color: #8cd147;
     border-radius: 15px;
     text-align: center;
@@ -149,7 +139,6 @@ p .Sistema {
 
 
 .footer{
->>>>>>> 37924d9ec0d98a370fafa53864949eb79b27a22e
     display: flex;
     align-items: center;
     justify-content: center;
@@ -160,16 +149,14 @@ p .Sistema {
     align-self: flex-end;
 }
 
-<<<<<<< HEAD
 .msg_footer {
     color: #482c1d;
     font-size: smaller;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-=======
+}
 .msg_footer, a{
- color: white;
+ /* color: white; */
  font-size: 15px;
  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
  text-decoration: none;   
->>>>>>> 37924d9ec0d98a370fafa53864949eb79b27a22e
 }
