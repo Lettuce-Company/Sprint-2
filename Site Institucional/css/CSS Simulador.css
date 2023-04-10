@@ -6,7 +6,7 @@ html{width:100%;
 	height:100%;
 }
 body{
-	background-color: white;
+	background-color: #deffc7;
 	width:100%;
 	height:100%;
 }
@@ -72,21 +72,6 @@ input {
     cursor: pointer;
 }
 
-.suporte h6 {
-    width: 250px;
-    height: 50px;
-    background-color:#b6ce94;
-    font-size: 15px;
-    border-radius: 50px;
-    margin: auto;
-    margin-top: 1%;                                       
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    justify-content: space-around;
-}
-
 .resultado {
     
     font-size: 30px;                                       
@@ -106,7 +91,8 @@ input {
     font-size: 25px;
     border-radius: 50px;
     margin: auto;
-    margin-top: 1%;                                       
+    margin-top: 1%; 
+    margin-bottom: 1%;                                      
     display: flex;
     flex-direction: column;
     align-items: center;

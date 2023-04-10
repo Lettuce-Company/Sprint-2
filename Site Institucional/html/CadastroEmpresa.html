@@ -20,9 +20,9 @@
                 <li>|</li>
                 <li><a href="Login.html">Login</a></li>
                 <li>|</li>
-                <li><a href="Sobre Nós.html">Sobre nós</a></li>
+                <li><a href="SobreNos.html">Sobre nós</a></li>
                 <li>|</li>
-                <li><a href=""></a>Sobre o Projeto</li>
+                <li><a href="SobreProjeto.html">Sobre o Projeto</a></li>
             </ul>
         </div>
     </div>
@@ -43,8 +43,8 @@
                     <span>Telefone:</span>
                     <input id="telefone" class="input" placeholder="Insira seu telefone">
                     <span>CNPJ:</span>
-                    <input id="CNPJ"  placeholder="00.000.000/0001-00">
-                    <button>Cadastrar</button>
+                    <input id="CNPJ" class="input" placeholder="00.000.000/0001-00">
+                    <button onclick="cadastrar()"><a href="Login.html">Cadastrar</a></button>
                 </div>
             </div>
         </div>
@@ -52,14 +52,20 @@
 
     <!-- Fim do Formulário -->
     <div class="footer">
-        <div class="containter">
-        <span class="msg_footer">
+        <p class="msg_footer">
             LettuceCompany©
-        </span>
-        <a href="contato.html" id="a_contato">CONTATO</a>
+        </p>
+        <a href="Contato.html">CONTATO</a>
     </div>
 </div>
 
 </body>
 
 </html>
+<script>
+
+    function cadastrar(){
+        alert("Conta registrada com sucesso!")
+    }
+
+</script>
