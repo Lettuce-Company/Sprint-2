@@ -5,6 +5,7 @@
 
 body {
     margin: 0%;
+    height: 600px;
 }
 
 
@@ -52,13 +53,20 @@ h2 {
     color: rgb(60, 71, 60);
 }
 
+
+.box_banner{
+    display: flex;
+    margin: 0;
+    margin-bottom: 0;
+width: 100%;
+height: 100%;
+}
+
 .banner {
     background-size: cover;
-
     background-image: url(../img/BANNER\ ALFACE.png);
-
     width: 100%;
-    height: 480px;
+    /* height: 100%;  */
 }
 
 
@@ -142,11 +150,14 @@ p .Sistema {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    /* flex-direction: column; */
     background-color: #8cd147;
     width: 100%;
     height: 96px;
     align-self: flex-end;
+    bottom: 0;
+    position: fixed;
+
 }
 
 .msg_footer {
