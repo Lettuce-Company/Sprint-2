@@ -41,7 +41,7 @@ body {
 
 .navbar a {
     text-decoration: none;
-    color: rgb(60, 71, 60);
+    color: #482c1d;;
 }
 
 h2 {
@@ -160,3 +160,54 @@ p .Sistema {
  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
  text-decoration: none;   
 }
+
+.footer a {
+    text-decoration: none;
+    color: white;
+}
+
+.botoes {
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.simulador a{
+    display: flex;
+    width: 150px;
+    height: 50px;
+    padding: 1%;
+    border: 3px solid #8cd147;
+    border-radius: 100px;
+    background-color: #8cd147;
+    justify-content: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 150%;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: white;
+    align-items: center;
+    margin-bottom: 10%;
+}
+
+.cadastro a {
+        display: flex;
+        width: 160px;
+        height: 70px;
+        padding: 1%;
+        border: 3px solid #8cd147;
+        border-radius: 100px;
+        background-color: #8cd147;
+        justify-content: center;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-weight: 400;
+        font-size: 150%;
+        letter-spacing: 1px;
+        text-decoration: none;
+        color: white;
+        text-align: center;
+        align-items: center;
+    }
