@@ -7,8 +7,10 @@ html{width:100%;
 }
 body{
 	background-color: white;
-	width:100%;
-	height:100%;
+    background-image: url(../img/BANNER\ ALFACE.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 662px;
 }
 
 body {
@@ -69,6 +71,8 @@ input {
 
 button a {
     font-size: 30px;
+    text-decoration: none;
+    color: white;
 }
 
 .suporte h6 {
@@ -78,7 +82,8 @@ button a {
     font-size: 15px;
     border-radius: 50px;
     margin: auto;
-    margin-top: 1%;                               
+    margin-top: 1%;  
+    margin-bottom: 1%;                             
     display: flex;
     flex-direction: column;
     align-items: center;
