@@ -15,7 +15,7 @@ body {
     height: 85px;
     display: flex;
     background-color: rgb(255, 255, 255);
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     justify-content: space-around;
     border-bottom: solid rgb(112, 202, 85) 2px;
@@ -43,8 +43,13 @@ body {
 .navbar a {
     text-decoration: none;
     color: #482c1d;
-    ;
 }
+
+
+.navbar a:hover {
+    font-weight: 900;
+  }
+
 
 h2 {
     font-size: xx-large;

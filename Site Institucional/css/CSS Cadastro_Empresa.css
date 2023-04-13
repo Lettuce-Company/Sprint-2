@@ -8,9 +8,11 @@ body {
 }
 
 img{
-    width: 95px;
+    width: 60px;
+    height: 60px;
     margin-bottom: 5px;
 }
+
 
 .container{
     display: flex;
@@ -21,12 +23,7 @@ img{
 .header{
     width: 100%;
     background-color: white;
-    border-style: solid;
-    border-top-width: 0px;
-    border-left-width: 0px;
-    border-left-width: 0px;
-    border-bottom-width: 3px;
-    border-color: #8cd147;
+    border-bottom: solid rgb(112, 202, 85) 2px;
 }
 
 .header .container{
@@ -114,8 +111,10 @@ img{
     width: 200px;
     height: 45px;
     font-size: 30px;
+    font-weight: 500;
     display: flex;
     margin-top: 15px;
+    margin-bottom: 40px;
     border-style: none;
     background-color: #8cd147;
     color: white;
