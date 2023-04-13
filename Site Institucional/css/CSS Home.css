@@ -114,11 +114,7 @@ p .Sistema {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 400;
     letter-spacing: 1px;
-<<<<<<< HEAD
-    align-items: center;
-=======
     text-shadow: 2px 2px #607959;
->>>>>>> 4058b42659eece3ee685c823493bd21ce8805bc9
 }
 
 .remoto {
