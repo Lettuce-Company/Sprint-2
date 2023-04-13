@@ -48,7 +48,13 @@
                     <input id="input_telefone" class="input" placeholder="Insira seu telefone">
                     <span>CNPJ:</span>
                     <input id="input_cnpj" class="input" placeholder="00.000.000/0001-00">
-                    <button onclick="cadastrar()"><a href="Login.html">Cadastrar</a></button>
+
+                    <div id="div_mensagem" class="reprovado">
+
+                    </div>
+
+                    <button onclick="cadastrar()">Cadastrar</button>
+                    
                 </div>
             </div>
         </div>
@@ -80,31 +86,40 @@
         cnpj = input_cnpj.value
 
         if (empresa.length < 1) {
-            alert(`Por favor informe o nome da sua empresa`)
+
+            div_mensagem.innerHTML = `Por favor informe o nome da sua empresa`
+
 
         } else if (responsavel.length < 1) {
-            alert(`Por favor informe o responsavel da sua empresa`)
+            div_mensagem.innerHTML = `Por favor informe o responsavel da sua empresa`
+            
 
         } if (email.endsWith('.com')) {
 
         } else {
-            alert(`seu E-mail não é valido, por favor insira novamente`)
+            div_mensagem.innerHTML = `seu E-mail não é valido, por favor insira novamente`
+            
 
         } if(senha.length <= 5){
-            alert(`Sua senha é curta e insegura demais, por favor informe`)
+            div_mensagem.innerHTML = `Sua senha é curta e insegura demais, por favor informe uma outra mais forte`
+            
 
         }else if (telefone.length<11){
-            alert(`seu telefone não é valido, por favor insira novamente`)
-
+            div_mensagem.innerHTML = `seu telefone não é valido, por favor insira novamente`
+            
         }else if(cnpj.length<14){
-            alert(`seu CNPJ não é valido, por favor insira novamente`)
+            div_mensagem.innerHTML = `seu CNPJ não é valido, por favor insira novamente`
+          
+        }else {
+              window.location.href = "login.html";
         }
+        
 
         
     }
 
-    function redirecionar () {
-        window.location.href = "contato.html";
-    }
+   
+        
+    
 </script>
 
