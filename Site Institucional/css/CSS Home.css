@@ -5,7 +5,7 @@
 
 body {
     margin: 0%;
-    height: 600px;
+    height: 570px;
 }
 
 
@@ -75,7 +75,6 @@ height: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
     justify-content: space-evenly;
 }
 
@@ -139,7 +138,6 @@ p .Sistema {
     align-self: flex-end;
     bottom: 0;
     position: fixed;
-
 }
 
 .msg_footer {
@@ -173,7 +171,7 @@ p .Sistema {
     justify-content: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 550;
-    font-size: 150%;
+    font-size: 30px;
     letter-spacing: 1px;
     text-decoration: none;
     color: white;
