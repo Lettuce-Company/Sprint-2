@@ -1,10 +1,10 @@
 body{
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-color: white;
-    background-image: url(../img/BANNER\ ALFACE.png);
+    background-image: url(../img/Banner.png);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 662px;
+    height: 910px;
 }
 
 .boxbar{

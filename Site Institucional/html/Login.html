@@ -5,13 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link rel="stylesheet" href="../css/CSS Login.css" />
-    <link rel="stylesheet" href="../css/CSS Home.css" />
-    <link rel="shortcut icon" href="../img/LOGO.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/Login.css" />
+    <link rel="stylesheet" href="../css/Home.css" />
+    <link rel="shortcut icon" href="../img/Logo-Borda.png" type="image/x-icon">
   </head>
   <body>
     <div class="boxbar">
-      <img class="logo" src="../img/LOGO.png" alt="logo lettuce company" />
+      <img class="logo" src="../img/Logo.png" alt="logo lettuce company" />
 
       <h2>Lettuce Company</h2>
 
@@ -20,9 +20,9 @@
         <li>|</li>
         <li><a href="Login.html">Login</a></li>
         <li>|</li>
-        <li><a href="SobreNos.html">Sobre Nós</a></li>
+        <li><a href="Sobre-Nos.html">Sobre Nós</a></li>
         <li>|</li>
-        <li><a href="SobreProjeto.html">Sobre o Projeto</a></li>
+        <li><a href="Sobre-Projeto.html">Sobre o Projeto</a></li>
       </ul>
     </div>
 
@@ -30,13 +30,16 @@
       <div class="container">
         <h1>Login</h1>
 
-        <div class="boxLogin"><input id="input_email" placeholder="Insira seu e-mail" />
+        <div class="boxLogin">
+          <input id="input_email" placeholder="Insira seu e-mail" />
+
           <input
             type="password"
-            id="input_nome"
+            id="input_senha"
             placeholder="Insira sua senha"
           />
-          <button onclick="logar()"><a href="Home.html">Entrar</a></button>
+
+          <button onclick="logar()"><a href="Dashboard.html">Entrar</a></button>
         </div>  
       </div>
     </div>
@@ -52,8 +55,23 @@
 </html>
 <script>
 
-  function logar(){
-    alert("Bem vindo de volta!")
-  }
-
 </script>
+function logar(){
+  var email = input_email.value
+  var senha = input_senha.value
+
+  // email vazio 
+
+  if(email == ""){
+    alert(`por favor, insira o seu email`);
+    return;
+  }
+  // senha vazia
+  if(senha ==""){
+    alert(`por favor, insira a sua senha`);
+    return;
+  }
+}
+function logar (){
+  
+}
