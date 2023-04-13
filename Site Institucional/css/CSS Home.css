@@ -114,7 +114,11 @@ p .Sistema {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 400;
     letter-spacing: 1px;
+<<<<<<< HEAD
+    align-items: center;
+=======
     text-shadow: 2px 2px #607959;
+>>>>>>> 4058b42659eece3ee685c823493bd21ce8805bc9
 }
 
 .remoto {
@@ -127,7 +131,26 @@ p .Sistema {
     text-shadow: 2px 2px #607959;
 }
 
-.footer {
+.footer .simulador {
+    background-color: #8cd147;
+    border-radius: 15px;
+    text-align: center;
+    align-content: center;
+    width: 200px;
+    margin-top: 15%;
+}
+
+.banner .container .simulador a{
+    color: rgb(255, 255, 255);
+    font-size: 40px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    align-self: center;
+    text-decoration: none;
+}
+
+
+.footer{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -144,6 +167,12 @@ p .Sistema {
     color: #482c1d;
     font-size: smaller;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.msg_footer, a{
+ /* color: white; */
+ font-size: 15px;
+ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+ text-decoration: none;   
 }
 
 .footer a {
