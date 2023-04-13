@@ -99,32 +99,37 @@ p .Sistema {
     color: rgb(141, 242, 53);
     font-weight: 800;
     font-size: 50px;
-
+    text-shadow: 3px 3px #000000;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .remotoTitulo {
     display: flex;
-    width: fit-content;
+    width: 120px;
     height: fit-content;
     padding: 1%;
     border: 3px solid #8cd147;
     border-radius: 100px;
     background-color: #8cd147;
     justify-content: center;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: 400;
     letter-spacing: 1px;
+<<<<<<< HEAD
     align-items: center;
+=======
+    text-shadow: 2px 2px #607959;
+>>>>>>> 4058b42659eece3ee685c823493bd21ce8805bc9
 }
 
 .remoto {
     color: rgb(255, 255, 255);
     font-size: 30px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     width: 300px;
     justify-content: start;
     align-items: center;
+    text-shadow: 2px 2px #607959;
 }
 
 .footer .simulador {
@@ -183,11 +188,12 @@ p .Sistema {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 }
 
 .simulador a{
     display: flex;
-    width: 150px;
+    width: 180px;
     height: 50px;
     padding: 1%;
     border: 3px solid #8cd147;
@@ -195,30 +201,46 @@ p .Sistema {
     background-color: #8cd147;
     justify-content: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: 400;
+    font-weight: 550;
     font-size: 150%;
     letter-spacing: 1px;
     text-decoration: none;
     color: white;
+    text-shadow: 2px 2px #607959;
     align-items: center;
-    margin-bottom: 10%;
+    margin-bottom: 25%;
 }
 
 .cadastro a {
         display: flex;
-        width: 160px;
+        width: 180px;
         height: 70px;
         padding: 1%;
         border: 3px solid #8cd147;
-        border-radius: 100px;
+        border-radius: 70px;
         background-color: #8cd147;
         justify-content: center;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        font-weight: 400;
+        font-weight: 550;
         font-size: 150%;
         letter-spacing: 1px;
         text-decoration: none;
         color: white;
+        text-shadow: 2px 2px #607959;
         text-align: center;
         align-items: center;
     }
+
+    .cadastro a:hover {
+        background-color: #ffffff;
+        color: rgb(82, 190, 66);
+        transition-duration: 0.4s;
+        text-shadow: 2px 2px #ffffff;
+      }
+
+      .simulador a:hover {
+        background-color: #ffffff;
+        color: rgb(82, 190, 66);
+        transition-duration: 0.4s;
+        text-shadow: 2px 2px #ffffff;
+      }
