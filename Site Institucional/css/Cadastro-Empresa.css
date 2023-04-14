@@ -76,8 +76,8 @@ img{
 .caixa_formulario{
     color:#494949;
     font-size: 18px;
-    width: 470px;
-    height: 680px;
+    width: 500px;
+    height: 730px;
     border-radius: 15px;
     background-color:#b6ce94;
     display: flex;
@@ -90,6 +90,7 @@ img{
    display: flex;
    flex-direction: column;
    font-size: 25px;
+   align-items: center;
 }
 
 .formulario input{
