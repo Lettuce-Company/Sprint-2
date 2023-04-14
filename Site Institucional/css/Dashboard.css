@@ -19,6 +19,7 @@ body {
 display: flex;
 flex-wrap: wrap;
 }
+
 .sidebar{
 width: 20%;
 height: 100%;
@@ -26,24 +27,67 @@ height: 100%;
 
 
 .navSidebar{
+    width: 100px;
+    display: flex;
+    flex-direction: ;
+    justify-content: center;
 
 }
 
+.navSidebar-container{
+    display: flex;
+    justify-self: center;
+    background-color: white;
+    border-style: solid;
+}
+
+
 #msg_bemvindo{
 display: flex;
-background-color: #8cd147;
+background-color: white ;
 border-style: solid;
 border-width: 1px;
+justify-content: center;
+margin-top: 15px;
 }
 
 #msg_bemvindo span{
     text-align: center;
-    width: 50px;
+    width: 100px;
 }
 
 #msg_veiculo{
-
+    display: flex;
+background-color: #8cd147;
+border-style: solid;
+border-width: 1px;
+justify-content: center;
 }
+
+
+#msg_veiculo span{
+    text-align: center;
+    width: 100px;
+}
+
+.navSidebar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+.navSidebar a{
+    text-decoration: none;
+    color: black;
+    border-style: ;
+}
+
+.navSidebar li{
+    list-style: none;
+}
+
+/* Fim da barra lateral */
 
 .bannerSensor {
     display: flex;
