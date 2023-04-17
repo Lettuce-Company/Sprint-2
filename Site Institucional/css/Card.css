@@ -516,7 +516,7 @@ body {
   flex-wrap: wrap;
   display: flex;
   text-align: center;
-  height: 180px;
+  height: fit-content;
   justify-content: right;
   border-radius: 30px;
   background-color: rgb(23, 69, 9);

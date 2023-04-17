@@ -1,5 +1,5 @@
 body {
-    background-color: #b6ce94;
+    background-color: #74845e;
     height: 700px
 }
 .sensor {
@@ -12,82 +12,8 @@ body {
     color: white;
     border-color: white;
     padding: 5%;
+    
 }
-
-/* ínico da Barra Lateral */
-.main{
-display: flex;
-flex-wrap: wrap;
-}
-
-.sidebar{
-width: 20%;
-height: 100%;
-}
-
-
-.navSidebar{
-    width: 100px;
-    display: flex;
-    flex-direction: ;
-    justify-content: center;
-
-}
-
-.navSidebar-container{
-    display: flex;
-    justify-self: center;
-    background-color: white;
-    border-style: solid;
-}
-
-
-#msg_bemvindo{
-display: flex;
-background-color: white ;
-border-style: solid;
-border-width: 1px;
-justify-content: center;
-margin-top: 15px;
-}
-
-#msg_bemvindo span{
-    text-align: center;
-    width: 100px;
-}
-
-#msg_veiculo{
-    display: flex;
-background-color: #8cd147;
-border-style: solid;
-border-width: 1px;
-justify-content: center;
-}
-
-
-#msg_veiculo span{
-    text-align: center;
-    width: 100px;
-}
-
-.navSidebar{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-}
-
-.navSidebar a{
-    text-decoration: none;
-    color: black;
-    border-style: ;
-}
-
-.navSidebar li{
-    list-style: none;
-}
-
-/* Fim da barra lateral */
 
 .bannerSensor {
     display: flex;
@@ -101,4 +27,94 @@ h1 {
     font-size: 30px;
     display: flex;
     justify-content: space-evenly;
+}
+
+.header-left a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .header-left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    height: 100vh;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-right: 3px solid rgb(23, 69, 9);
+    background-color: #212124;
+    /* border: 3px solid pink; */
+  }
+
+  .header-left h1 {
+    color: black;
+  }
+
+  .dash-header {
+    background-color: #b6ce94;
+    ;
+  }
+
+  .hello {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .hello h3 {
+    color: black;
+    font-weight: 300;
+    font-size: 1.2rem;
+  }
+  
+  .hello h3 span {
+    font-weight: 800;
+  }
+
+  .btn-nav {
+    width: 40%;
+    color: white;
+    background-color: rgb(23, 69, 9);
+    border-radius: 5px;
+    text-align: center;
+    padding: 2% 5%;
+  }
+  
+  .btn-nav-white {
+    width: 40%;
+    background-color: #b6ce94;
+    ;
+    border: 3px solid rgb(23, 69, 9);
+    border-radius: 5px;
+    text-align: center;
+    padding: 2% 5%;
+  }
+  
+  .btn-nav-white h3 {
+    color: rgb(23, 69, 9);
+    padding: 0;
+    margin: 0;
+  }
+  
+  .btn-nav h3,
+  .btn-logout h3 {
+    margin: 0;
+    padding: 0;
+  }
+
+.btn-logout {
+  margin: 0;
+  padding: 0;
+  width: 20%;
+  background-color: rgb(23, 69, 9);
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px 15px;
+  margin-bottom: 100px;
+  cursor: pointer;
 }
