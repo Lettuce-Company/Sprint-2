@@ -28,35 +28,27 @@
     </div>
     <section class="main">
         <div class="header-left dash-header">
-
-            <h1>Dashboard</h1>
-
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            <div class="sidebar-logo">
+                <img src="../img/Logo-Borda.png" alt="Alface lettuce company">
+                </div>
+                    <h3>Dashboard</h3>
+                    <span class="sidebar-active" class="fa-solid fa-user">Bem vindo, Usuário</span>
+                <a href="Home.html"><i class="fa-solid fa-user" class></i>Home</a>
+                <a href="Sobre-Nos.html"><i class="fa-solid fa-hand-holding-hand"></i>Sobre nós</a>
+                <a href="Sobre-Projeto.html"><i class="fa-solid fa-seedling"></i>Sobre o projeto</a>
+                <a href="contato.html"><i class="fa-solid fa-comments"></i>Contato</a>
+                <a href="Simulador.html"> <i class="fa-solid fa-calculator"></i>Simulador Financeiro</a>
+                <a href="Login.html"><i class="fa-solid fa-right-to-bracket"></i>Logout</a>
+                <br />
+                <select name="pesquisa_caminhao" id="select_caminhão" onchange="location = this.value;"><i class="fa-solid fa-truck-fast"></i>
+                    <option value="">Pesquisar Caminhão</option>
+                  <option value="Card-1.html">CBW-600</option>
+                    <option value="Card-2.html">GDU-2589</option>
+                </select>
             </div>
 
-            <div class="btn-nav">
-                <a href="Dashboard.html">
-                    <h3>Home</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="Card-1.html">
-                    <h3>Caminhão 1</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="Card-2.html">
-                    <h3>Caminhão 2</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <a href="Home.html">
-                    <h3>Sair</h3>
-                </a>
+           
+                
             </div>
 
         </div>
@@ -372,5 +364,5 @@
 
         </script>
 </body>
-
+<script src="https://kit.fontawesome.com/4c5e041356.js" crossorigin="anonymous"></script>
 </html>

@@ -243,22 +243,6 @@ input {
   color: white;
 }
 
-.header-left {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  height: 100vh;
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  border-right: 3px solid rgb(23, 69, 9);
-  background-color: #212124;
-  /* border: 3px solid pink; */
-}
-
 .dash-right {
   display: flex;
   width: 80%;
@@ -455,8 +439,22 @@ body {
 
 /* pagina graficos */
 
+.header-left {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  height: 100vh;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  border-right: 3px solid rgb(23, 69, 9);
+  background-color: #212124;
+  /* border: 3px solid pink; */
+}
+
 .dash-header {
-  background-color: #b6ce94;
+  background-color: #228B22;
   ;
 }
 
