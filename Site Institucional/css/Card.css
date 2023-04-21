@@ -3,6 +3,7 @@
 body {
   margin: 0;
   padding: 0;
+  height: 100%;
   font-family: 'Barlow', "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: black;
 }
@@ -10,7 +11,7 @@ body {
 .funcionario{
   display: none;
   }
-  
+
 .container {
   width: 80%;
   margin: auto;
