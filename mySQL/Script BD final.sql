@@ -13,7 +13,7 @@ create table Funcionario(
 -- idFuncionario int auto_increment,
 nome varchar(30) not null,
 sobrenome varchar(40) not null,
-cpf char(11) primary key unique,
+cpf char(11) unique,
 cargo varchar(30) not null,
 email varchar(45) unique not null,  constraint ckhEmailfunc check(Email like '%@%'),
 senha char(14) not null,
@@ -64,4 +64,10 @@ references Sensor(idSensor),
  constraint pksenlei primary key (idLeitura, fkSensor));
 
  
+ select * from empresa join funcionario on fkempresa and cpf  = cnpj; -- select empresa e funcionario
  
+ select * from caminhao join sensor on fkcaminhao = idsensor
+ join leitura on fksensor and idLeitura = idsensor; -- select caminhao sensor e leitura	
+ 
+
+select concat(nome,sobrenome)as nome_completo from funcionario; -- concat do nome completo
