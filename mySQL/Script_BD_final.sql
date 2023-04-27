@@ -65,6 +65,14 @@ fkSensor INT, constraint fkSensor foreign key (fkSensor)
 references Sensor(idSensor),
  constraint pksenlei primary key (idLeitura, fkSensor));
 select * from leitura;
+select max(umidade) as 'umidade mais alta' from leitura; -- select temperatura mais alta
+select min(umidade) as 'umidade mais baixa' from leitura; -- select temperatura mais baixa 
+select max(temperatura) as 'temp mais alta', min(temperatura) as 'temp mais baixa' from leitura;
+select round (avg(temperatura), 2) as `media de temperatura` from leitura; -- select média (avg) arendando (round) com 2 casas após a virgula round(dado, casas apos vitgula)
+SELECT * FROM leitura WHERE temperatura > (SELECT AVG(temperatura) FROM leitura); -- select onde a temperatura está acima da média
+select upper(empresa.nomeEmpr) from empresa; -- selecionar tudo em maiusculo
+select UCASE(empresa.nomeEmpr) from empresa; -- selecionar tudo em maiusculo, n sei a diferença entre eles
+select lower(empresa.nomeEmpr) from empresa; -- selecionar tudo em minusculo
 select leitura.temperatura, leitura.dtHora, sensor.tipo from leitura join sensor on fkSensor = idSensor where tipo = 'LM35';
 select leitura.umidade, leitura.dtHora, sensor.tipo from leitura join sensor on fkSensor = idSensor where tipo = 'DHT11';
  select leitura.temperatura, leitura.umidade, leitura.dtHora as 'dia e hora da leitura', caminhao.placa as 'veiculo'
