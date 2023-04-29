@@ -9,7 +9,7 @@ telefone char(14)) auto_increment = 100;
 
 
 create table Funcionario(
-idFuncionario int auto_increment,
+idFuncionario int primary key auto_increment,
 nome varchar(30) not null,
 sobrenome varchar(40) not null,
 adm boolean,
@@ -21,6 +21,7 @@ senha char(14) not null,
 fkEmpresa char(14), constraint frkEmpresa foreign key(fkEmpresa) 
 references Empresa(cnpj),
 constraint pkFuncEmp primary key (idFuncionario, fkEmpresa), -- fk dependente
+
 fkChefe char(11), constraint FrkChefe foreign key (fkChefe)
 references Funcionario(idFuncionario) -- fk self related
 
@@ -28,6 +29,7 @@ references Funcionario(idFuncionario) -- fk self related
 
 select * from Funcionario;
 select * from empresa;
+
 create table Caminhao(
 -- idCaminhao int primary key auto_increment,
 placa char(7) primary key unique not null,
@@ -35,7 +37,9 @@ fkEmpresa char(14), constraint fkEmpTrans foreign key(fkEmpresa) references Empr
 ) auto_increment = 10;
 insert into Caminhao values
 ('GDU2589', '12345678965478');
+
 select * from caminhao;
+
 create table Carga(
 idCarga int auto_increment,
 produto varchar(45),
@@ -45,6 +49,18 @@ constraint fkCaminhao foreign key(fkCaminhao)
 references Caminhao(placa),
 constraint pkCargaCam primary key (idCarga, fkCaminhao) -- fk dependente de caminhao
 );
+
+create table viagem( 
+idViagem int auto_increment,
+fkCarga int,
+ constraint fkCarga foreign key (fkCarga) 
+references Carga(idCarga),
+ constraint pkCargViagem primary key (idViagem, fkCarga, fkCaminhao),
+fkCaminhao int,  constraint fkCaminhao foreign key (fkCaminhao) 
+references Caminhao(placa),
+origem varchar(45),
+destino varchar(45),
+duracao varchar(45) );
 
 create table Sensor(
 idSensor int primary key not null auto_increment,
