@@ -7,7 +7,7 @@ html{width:100%;
 }
 body{
 	background-color: white;
-    background-image: url(../assets/imgs/Banner.png);
+    background-image: url(../assets/banner.png);
     background-repeat: no-repeat;
     background-size: cover;
     height: 662px;
@@ -48,7 +48,7 @@ input {
     height: 35px;
     font-size: 30px;
     border-style: none;
-    border-radius: 0px;
+    border-radius: 30px;
     text-align: center;
     display: flex;
     align-items: center;

@@ -1,48 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador</title>
-    <link rel="stylesheet" href="css/Simulador.css">
+    <link rel="stylesheet" href="css/simulador.css">
     <link rel="stylesheet" href="css/index.css">
-    <link rel="shortcut icon" href="assets/imgs/Logo-Borda.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/logo_borda.png" type="image/x-icon">
 </head>
+
 <body>
- 
+
     <div class="boxbar">
 
-        <img class="logo" src="assets/imgs/Logo.png" alt="logo lettuce company">
+        <img class="logo" src="assets/logo.png" alt="logo lettuce company">
 
         <h2>Lettuce Company</h2>
 
         <ul class="navbar">
-            <li><a href="index.html">Home</a></li> 
+            <li><a href="index.html">Home</a></li>
             <li> | </li>
             <li><a href="login.html">Login</a></li>
             <li> | </li>
-            <li><a href="Sobre-Nos.html">Sobre Nós</a></li>
+            <li><a href="sobre_nos.html">Sobre Nós</a></li>
             <li> | </li>
-            <li><a href="Sobre-Projeto.html">Sobre o Projeto</a></li>
+            <li><a href="sobre_projeto.html">Sobre o Projeto</a></li>
         </ul>
     </div>
 
     <div class="cntCalculadora">
 
-        <div><h1>Calculadora Financeira</h1></div><br><br>
+        <div>
+            <h1>Calculadora Financeira</h1>
+        </div><br><br>
 
-        <input type="number" id="input_preco" placeholder="Preço por quilo"><br><br>
-        <input type="number" id="input_QtdTransporte" placeholder="Quantidade por mês (kg)"><br><br>
+        <input type="number" id="input_preco" placeholder="Preço da verdura (kg)"><br><br>
+        <input type="number" id="input_QtdTransporte"
+            placeholder="Quantidade de verdura tranportada mensalmente (kg)"><br><br>
 
         <button onclick="calcular()">Calcular Perda</button><br>
 
         <div class="resultado" id="div_exibir"></div>
-        
-    </div> 
-    
+
+    </div>
+
     <div class="FAO">
-        <div><h6>FAO* Food Agriculture Organization</h6></div>
+        <div>
+            <h6>FAO* Food Agriculture Organization</h6>
+        </div>
     </div>
 
     <div class="footer">
@@ -54,16 +61,17 @@
 
 
 </body>
+
 </html>
 <script>
 
-    function calcular(){
+    function calcular() {
         var preco = Number(input_preco.value)
         var QtdTransporte = Number(input_QtdTransporte.value)
         var perdaPorcentagem = 0.46
-       
+
         // var perda2semanas = QtdTransporte * 0.46
-        var perdaMensal =  QtdTransporte * perdaPorcentagem;
+        var perdaMensal = QtdTransporte * perdaPorcentagem;
         var perdaAnual = perdaMensal * 12;
         var perdaM = perdaMensal.toFixed(2);
         var perdaA = perdaAnual.toFixed(2);

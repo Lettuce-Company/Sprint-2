@@ -1,7 +1,7 @@
 body {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background-color: white;
-    background-image: url(../assets/imgs/Banner.png);
+    background-image: url(../assets/banner.png);
     background-repeat: no-repeat;
     background-size: cover;
     height: 650px;

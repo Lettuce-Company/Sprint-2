@@ -47,7 +47,7 @@ select {
 input {
     width: 600px;
     height: 35px;
-    font-size: 30px;
+    font-size: 24px;
     border-style: none;
     border-radius: 10px;
     text-align: center;
