@@ -37,11 +37,11 @@
         <input id="inpt_email" placeholder="Insira seu e-mail" />
 
         <input type="password" id="inpt_senha" placeholder="Insira sua senha" />
+        
+        <button onclick="logar()">Entrar</a></button>
         <div id="div_mensagem" class="reprovado">
-
-          <button onclick="logar()">Entrar</a></button>
           <div id="div_aguardar" class="loading-div">
-            <img src="https://loja.maxineo.com.br/wp-content/uploads/2017/10/loading.gif" id="loading-gif">
+            <!-- <img src="./assets/circle-loading.gif" id="loading-gif"> -->
           </div>
         </div>
       </div>
@@ -58,19 +58,21 @@
 </html>
 <script>
   function logar() {
+    div_aguardar.innerHTML = `<img src="./assets/circle-loading.gif" id="loading-gif">`;
     aguardar();
 
     var emailVar = inpt_email.value;
     var senhaVar = inpt_senha.value;
 
     if (emailVar == "" || senhaVar == "") {
-      cardErro.style.display = "block"
+      // cardErro.style.display = "block"
       div_mensagem.innerHTML = "(Mensagem de erro para todos os campos em branco)";
       finalizarAguardar();
       return false;
     }
     else {
       setInterval(sumirMensagem, 5000)
+      return false;
     }
 
     console.log("FORM LOGIN: ", emailVar);
@@ -123,6 +125,6 @@
   }
 
   function sumirMensagem() {
-    div_mensagem.innerHTML = "none"
+    div_mensagem.innerHTML = "Email ou senha incorretos!"
   }
 </script>
