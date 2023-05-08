@@ -34,7 +34,6 @@ body {
     justify-content: space-between;
     white-space: nowrap;
     align-self: center;
-    list-style: none;
 }
 
 .navbar a {
