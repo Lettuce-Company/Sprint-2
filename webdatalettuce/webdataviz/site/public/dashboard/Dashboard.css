@@ -115,6 +115,7 @@ h1 {
   border: none;
   font-size: 20px;
   margin-left: 10px;
+  appearance: none;
 }
 
 .header-left i {
@@ -273,7 +274,7 @@ h1 {
   color: rgb(118, 118, 118);
 }
 
-button {
+.button {
   width: 200px;
   height: 45px;
   background-color: #8cd147;

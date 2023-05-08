@@ -102,13 +102,10 @@ body {
   margin-top: 15px;
 }
 
-button {
-  cursor: pointer;
-}
 
 /* FORMULARIO */
 
-.alerta_erro{
+.alerta_erro {
   display: flex;
   justify-content: flex-end;
 }
@@ -125,7 +122,7 @@ button {
   margin-right: 10%;
 }
 
-.card_erro #mensagem_erro{
+.card_erro #mensagem_erro {
   font-weight: 500;
   font-size: 20px;
 }
@@ -348,7 +345,7 @@ body {
   padding: 20px;
 }
 
-.publicacao > *:not(:last-child) {
+.publicacao>*:not(:last-child) {
   padding: 0 0 10px 0;
 }
 
@@ -367,7 +364,7 @@ body {
   justify-content: flex-end;
 }
 
-.div-buttons > * {
+.div-buttons>* {
   margin-left: 30px;
 }
 
@@ -418,6 +415,19 @@ body {
   margin-top: 30px;
 }
 
+.regua-macro-gerenciamentoFunc {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.regua-btn{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 30px;
+}
+
 .temp {
   background-color: white;
   border-radius: 30px;
@@ -448,32 +458,47 @@ body {
   padding-top: 15px;
 }
 
-.Atencao{
-  background-color:#fff;
+.critico_mtQuente, .critico_mtFrio{
+  color: darkred;
+  }
+  .emergencia_Quente, .emergencia_frio{
+  color: darkorange;
+  }    
+  .atencao_quente, .atencao_frio{
+  color: #CCCC00;
+  }
+  
+  .ideal_0, .ideal_3{
+  color: #9ccc65;
+  }
+
+.Atencao {
+  background-color: #fff;
   border-color: #CCCC00;
   font-size: 20px;
 }
 
-.Atencao h2{
+.Atencao h2 {
   color: darkorange;
 }
-.Emergencia{
+
+.Emergencia {
   background-color: #fff;
   border-color: darkorange;
   font-size: 20px;
 }
 
-.Emergencia h2{
+.Emergencia h2 {
   color: yellow;
 }
 
-.Critico{
+.Critico {
   background-color: #fff;
   border-color: darkred;
   font-size: 20px;
 }
 
-.Critico h2{
+.Critico h2 {
   color: green;
 }
 
@@ -508,7 +533,7 @@ body {
   color: black;
 }
 
-.card-carga{
+.card-carga {
   margin: 2%;
   display: flex;
   justify-content: space-evenly;
@@ -536,7 +561,7 @@ body {
   margin: 20px;
 }
 
-.cards-carga h4{
+.cards-carga h4 {
   font-size: 20px;
 }
 
@@ -554,6 +579,141 @@ body {
   text-align: left;
   font-weight: lighter;
   margin: 20px;
+}
+
+
+.cards-gerenciamentoFunc {
+  display: flex;
+  flex-direction: row;
+  margin-left: 8vh;
+  width: 100%;
+}
+
+.card-gerenciamentoFunc {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  border-radius: 30px;
+  background-color: #fff;
+  font-size: 20px;
+  position: relative;
+  width: 50vw;
+  padding: 10px;
+
+}
+
+custom
+
+.card-gerenciamentoFunc h1 {
+  display: flex;
+  justify-content: center;
+
+}
+
+.card-gerenciamentoFunc select {
+  box-shadow: 0 10px 25px rgba(0,0,0,0);
+  font-size: 1.0rem;
+  padding: 1em 5em 1em 1.5em;
+  /* background: #4d5061; */
+  background-color: #228B22;
+  color: white;
+  width: 100%;
+  border: 0;
+  border-radius: 20px;
+  outline-style: none;
+}
+
+.custom-select{
+  position:relative;
+
+}
+
+.custom-arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  /* background-color: #3b3c47; */
+  background-color: #8cd147;
+  height: 100%;
+  width: 3em;
+  pointer-events: none;
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+
+.custom-arrow::before,
+.custom-arrow::after {
+  --size: 0.65em;
+  
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+
+
+
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.custom-arrow::before{
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid rgba(255,255,255, .5);
+
+  top: 35%;
+}
+
+.custom-arrow::after{
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid rgba(255,255,255, .5);
+
+  top: 65%;
+}
+
+
+#div-btn-editar{
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-right: 80px;
+}
+
+
+.btn-editar{
+  display: flex;
+  background-color: #228B22;
+  color: white;
+  font-size: 30px;
+  border-style: none;
+  border-radius: 30px;
+  cursor: pointer;
+  align-items: center;
+  width: 220px;
+  justify-content: center;
+}
+
+#div-gerenciamentoFunc {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-right: 80px;
+
+}
+
+#div-gerenciamentoFunc button {
+  display: flex;
+  background-color: #8cd147;
+  color: white;
+  font-size: 30px;
+  border-style: none;
+  border-radius: 30px;
+  cursor: pointer;
+  align-items: center;
+
 }
 
 .temperatura,
@@ -635,7 +795,6 @@ canvas {
 }
 
 .dados {
-    background-color: white;
-    border-radius: 30px;
-  }
-  
+  background-color: white;
+  border-radius: 30px;
+}

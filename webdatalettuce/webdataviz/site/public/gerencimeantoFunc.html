@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/logo_borda.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Índices</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
+    <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="card.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://kit.fontawesome.com/4c5e041356.js" crossorigin="anonymous"></script>
+
+    <!-- <script src="../js/main.js"></script> -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="janela">
+
+
+        <div class="header-left dash-header">
+            <div class="sidebar-logo">
+                <img src="../assets/logo_borda.png" alt="Alface lettuce company">
+            </div>
+            <h3>Dashboard</h3>
+            <span class="sidebar-active" class="fa-solid fa-user">Bem vindo, Usuário</span>
+            <a href="Dashboard.html"><i class="fa-solid fa-user" class></i>Home</a>
+            <a href="gerencimeantoFunc.html" class="funcionario"><i class="fa-solid fa-id-card"></i>Gerenciar
+                Funcionários</i></a>
+            <a href="" class="funcionario"><i class="fa-solid fa-truck-arrow-right"></i>Cadastrar Caminhão</i></a>
+            <a href="cadastro_carga.html" class="funcionario"><i class="fa-solid fa-truck-ramp-box"></i>Cadastrar
+                Carga</a>
+            <a href="../login.html" class="funcionario"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+            <br />
+            <select name="pesquisa_caminhao" id="select_caminhão" onchange="location = this.value;"><i
+                    class="fa-solid fa-truck-fast"></i>
+                <option value="">Pesquisar Caminhão</option>
+                <option value="Dashboard.html">Macro</option>
+                <option value="Card_1.html">CBW-600</option>
+                <option value="Card_2.html">GDU-2589</option>
+            </select>
+        </div>
+
+        <div class="dash">
+            <div class="regua-macro-gerenciamentoFunc">
+                <div class="regua">
+                    <div class="cards-gerenciamentoFunc">
+                        <div class="card-gerenciamentoFunc">
+                            <div>
+                                <h2>Funcionários Cadastrados</h2>
+                                <h1>34</h1>
+                            </div>
+                            <div>
+                                <h2>Funcionários Ativos</h2>
+                                <h1>13</h1>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div id="div-gerenciamentoFunc">
+                    <button class="button-gerenciamentoFunc">Cadastrar Funcionários</button>
+                </div>
+                <!-- Select de Funcionário -->
+            </div>
+            <div class="regua-macro-gerenciamentoFunc">
+                <div class="regua-btn">
+                    <div class="cards-gerenciamentoFunc" style="margin-right: 60px;">
+                        <div class="card-gerenciamentoFunc">
+                            <div>
+                                <h2>Nome do Funcionário</h2>
+                                <div class="custom-select">
+                                <select name="nomeFunc" id="select_func">
+                                    <option value="">Selecionar Funcionario</option>
+                                    <option value="">Carlos II</option>
+                                    <option value="">Hendrik</option>
+                                    <option value="">Erin</option>
+                                </select>
+                                <span class="custom-arrow"></span>
+                               </div>
+                            </div>
+                            <div>
+                                <h2>Cargo</h2>
+                                <h3>Gerente</h3>
+                            </div>
+                            <div>
+                                <h2>Status</h2>
+                                <h3>ativo</h3>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    </div>
+                    <div id="div-btn-editar">
+                        <button class="btn-editar">Editar</button>
+                    </div>
+                </div>
+            </div>
+                
+                  
+                    
+                
+
+
+            
+        </div>
+        </div>
