@@ -54,6 +54,7 @@ input {
     text-align: center;
     display: flex;
     align-items: center;
+    outline: none;
 }
 
 button {
