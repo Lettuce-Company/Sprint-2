@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <div id="div-gerenciamentoFunc">
-                    <button class="button-gerenciamentoFunc">Cadastrar Funcionários</button>
+                    <button class="button-gerenciamentoFunc" onclick="mudar_pagina()">Cadastrar Funcionários</button>
                 </div>
                 <!-- Select de Funcionário -->
             </div>
@@ -81,7 +81,7 @@
                                 <h2>Nome do Funcionário</h2>
                                 <div class="custom-select">
                                 <select name="nomeFunc" id="select_func">
-                                    <option value="">Selecionar Funcionario</option>
+                                    <option value="">Selecionar Funcionário</option>
                                     <option value="">Carlos II</option>
                                     <option value="">Hendrik</option>
                                     <option value="">Erin</option>
@@ -102,16 +102,20 @@
                     </div>
                     </div>
                     <div id="div-btn-editar">
-                        <button class="btn-editar">Editar</button>
+                        <button class="btn-editar" type="button">Editar</button>
                     </div>
                 </div>
             </div>
                 
-                  
-                    
+    
                 
 
 
             
         </div>
         </div>
+        <script>
+            function mudar_pagina(){
+                    window.location = "cadastroFunc.html"
+            }
+        </script>

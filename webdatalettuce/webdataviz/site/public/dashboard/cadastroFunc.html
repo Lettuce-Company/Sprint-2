@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Dashboard</title>
+    <script src="../js/funcoes.js"></script>
+    <link rel="stylesheet" href="../assets/circle-loading.gif">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
+    <!-- <script src="http://www.chartjs.org/samples/latest/utils.js"></script> -->
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="card.css">
+    <script src="https://kit.fontawesome.com/4c5e041356.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="../assets/logo_borda.png" type="image/x-icon">
+    <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
+</head>
+
+<body class="carga">
+
+    <section class="main">
+        <div class="header-left dash-header">
+            <div class="sidebar-logo">
+                <img src="../assets/logo_borda.png" alt="Alface lettuce company">
+            </div>
+            <h3>Dashboard</h3>
+            <span class="sidebar-active" class="fa-solid fa-user">Bem vindo, Usuário</span>
+            <a href="dashboard.html"><i class="fa-solid fa-user" class></i>Home</a>
+            <a href="" class="funcionario"><i class="fa-solid fa-id-card"></i>Cadastrar Funcionário</i></a>
+            <a href="" class="funcionario"><i class="fa-solid fa-truck-arrow-right"></i>Cadastrar Caminhão</i></a>
+            <a href="" class="funcionario"><i class="fa-solid fa-truck-ramp-box"></i>Cadastrar Carga</a>
+            <a href="../index.html" class="funcionario"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+            <br />
+            <select name="pesquisa_caminhao" id="select_caminhão" onchange="location = this.value;"><i
+                    class="fa-solid fa-truck-fast"></i>
+                <option value="">Pesquisar Caminhão</option>
+                <option value="">Macro</option>
+                <option value="Card_1.html">CBW-600</option>
+                <option value="Card_2.html">GDU-2589</option>
+            </select>
+        </div>
+
+        <div class="dash">
+
+            <div class="tela_login-cadastroFunc">
+                <div class="container">
+                    <h1>Cadastrar Funcionário</h1>
+
+                    <div class="boxLogin">
+                        <span>Nome:</span>
+                        <input id="input_nome" placeholder="Insira o nome do funcionário">
+                        <span>Sobrenome:</span>
+                        <input id="input_sobrenome" placeholder="Insira o sobrenome do funcionário">
+                        <span>CPF:</span>
+                        <input id="input_cpf" placeholder="123.456.789.-00">
+                        <span>Cargo:</span>
+                        <input id="input_cargo" placeholder="Insira o cargo do funcionário">
+                        <span>Número de Telefone:</span>
+                        <input id="input_telefone" placeholder="Insira o número de telefone">
+                        <span>E-mail:</span>
+                        <input id="input_email" placeholder="Insira o e-mail do funcionário">
+                        <span>Data de Nascimento:</span>
+                        <input id="input_dtNasc" placeholder="Insira a data de nascimento do funcionário">
+                        <span>Permissão</span>
+                        <select class="selectt" id="select_permissao">
+                            <option value="null">Selecionar permissão:</option>
+                            <option value="1">Administrador</option>
+                            <option value="0">Apenas visualização</option>
+                        </select>
+                        <span>Responsável:</span>
+                        <input id="input_responsavel" placeholder="Insira o responsável pelo funcionário">
+                        <span>Senha:</span>
+                        <input id="input_senha" placeholder="Insira a senha">
+                        <span>Confirmação de Senha:</span>
+                        <input id="input_confirmSenha" placeholder="Confirmação de Senha">
+                      
+                      
+                        
+
+
+                        <div id="div_mensagem" class="reprovado">
+
+                            <button onclick="cadastrarFunc()">Enviar</button>
+                            <div id="div_mensagem" class="reprovado">
+                            <div id="div_aguardar" class="loading-div">
+                                <img src="https://loja.maxineo.com.br/wp-content/uploads/2017/10/loading.gif"
+                                    id="loading-gif">
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+</body>
+<script>
+    function cadastrarFunc() {
+        div_aguardar.innerHTML = `<img src="../assets/circle-loading.gif" id="loading-gif">`;
+        aguardar();
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = input_nome.value;
+        var sobrenomeVar = input_sobrenome.value
+        var cpfVar = input_cpf.value;
+        var cargoVar = input_cargo.value;
+        var telefoneVar = input_telefone.value;
+        var emailVar = input_email.value;
+        var dtNascVar = input_dtNasc.value;
+        var responsavelVar = input_responsavel.value
+        var permissaoVar = select_permissao.value
+        var senhaVar = input_senha.value;
+      
+        
+        
+       
+
+        // if(permissaoVar == "null" ){
+                // div_mensagem.innerHTML = "(Por favor, escolha a permissão do funcionário!)"
+
+                // if(senha != confirmSenhaVar){
+                    // div_mensagem.innerHTML = "(As senhas estão diferentes!)"
+                // }
+        
+        if (nomeVar == "" || sobrenomeVar == "" || cpfVar == "" || cargoVar == "" || telefoneVar == ""|| emailVar == "" || dtNascVar == "" || responsavelVar == "" || permissaoVar == ""  || senhaVar == "" || confirmSenhaVar == "") {
+            div_mensagem.innerHTML = "(Por favor, preencha todos os campos!)";
+
+        
+
+            finalizarAguardar();
+            return false;
+            // } else if (cpfVar.length < 11 || cpfVar.length > 11) {
+            //     div_mensagem.innerHTML = "(Formato de cpf invalido!)";
+            //     finalizarAguardar();
+            //     return false;
+            // } else if (cpfVar.length < 14 || cpfVar.length > 14) {
+            //     div_mensagem.innerHTML = "(Formato de cnpj invalido!)";
+            //     finalizarAguardar();
+            //     return false;
+            } else if (senhaVar.length > 6 && senhaVar.indexOf('!') != -1 || senhaVar.indexOf('@') != -1 || senhaVar.indexOf('#') != -1 || senhaVar.indexOf('$') != -1 || senhaVar.indexOf('%') != -1 || senhaVar.indexOf('&') != -1 || senhaVar.indexOf('*') != -1 || senhaVar.indexOf('(') != -1 || senhaVar.indexOf(')') != -1 || senhaVar.indexOf('¨') != -1 || senhaVar.indexOf('-') != -1 || senhaVar.indexOf('_') != -1 || senhaVar.indexOf('=') != -1 || senhaVar.indexOf('+') != -1 || senhaVar.indexOf('§') != -1 || senhaVar.indexOf('´') != -1 || senhaVar.indexOf('`') != -1 || senhaVar.indexOf('[') != -1 || senhaVar.indexOf(']') != -1 || senhaVar.indexOf('{') != -1 || senhaVar.indexOf('}') != -1 || senhaVar.indexOf('ª') != -1 || senhaVar.indexOf('º') != -1 || senhaVar.indexOf('~') != -1 || senhaVar.indexOf('^') != -1 || senhaVar.indexOf(';') != -1 || senhaVar.indexOf(':') != -1 || senhaVar.indexOf('.') != -1 || senhaVar.indexOf('>') != -1 || senhaVar.indexOf('<') != -1 || senhaVar.indexOf(',') != -1 || senhaVar.indexOf('/') != -1 || senhaVar.indexOf('?') != -1 || senhaVar.indexOf('°') != -1 || senhaVar.indexOf('|') != -1 || senhaVar.indexOf(`'`) != -1 || senhaVar.indexOf('"') != -1) {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        else {
+            div_mensagem.innerHTML = "Senha deve conter mais de 6 caracteres e um caractere especial";
+            finalizarAguardar();
+            return false;
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrarFunc", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                sobrenomeServer: sobrenomeVar,
+                cpfServer: cpfVar,
+                cargoServer: cargoVar,
+                telefoneServer: telefoneVar,
+                emailServer: emailVar,
+                dtNascServer: dtNascVar,
+                responsavelVar: responsavelVar,
+                permissaoServer: permissaoVar,
+                senhaServer: senhaVar
+                
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+                div_aguardar.innerHTML = ``;
+                div_mensagem.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        div_mensagem.style.display = "none"
+    }
+</script>
