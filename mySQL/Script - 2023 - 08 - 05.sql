@@ -23,7 +23,7 @@ cargo varchar(30) not null,
 email varchar(45) unique not null,  constraint ckhEmailfunc check(Email like '%@%'),
 senha varchar(14) not null,
 -- dtNasc date not null,
-fkEmpresa char(14), constraint frkEmpresa foreign key(fkEmpresa) 
+fkEmpresa char(18), constraint frkEmpresa foreign key(fkEmpresa) 
 references Empresa(cnpj),
 constraint pkFuncEmp primary key (idFuncionario, fkEmpresa), -- fk dependente
 fkChefe int, constraint FrkChefe foreign key (fkChefe)
@@ -108,6 +108,10 @@ select leitura.umidade, leitura.dtHora, sensor.tipo from leitura join sensor on 
  select * from Funcionario;
  
  DESC funcionario;
+ ALTER TABLE funcionario MODIFY COLUMN fkEmpresa char(18);
+ ALTER TABLE funcionario RENAME COLUMN adm TO permissao;
+ ALTER TABLE funcionario ;
+ 
  ALTER TABLE Funcionario MODIFY COLUMN cpf CHAR(14);
  ALTER TABLE Funcionario MODIFY COLUMN senha VARCHAR(30);
  ALTER TABLE Empresa MODIFY COLUMN cnpj CHAR(18);

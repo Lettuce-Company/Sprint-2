@@ -32,7 +32,9 @@ body{
     align-self: center;
 }
 .divAbout{
-    padding: 10px 10px 1px 10px;
+    padding: 1%;
+    margin-left: 15px;
+    margin-right: 15px;
     font-size: 19px;
     text-align: justify;
 }

@@ -421,7 +421,7 @@ body {
   width: 100%;
 }
 
-.regua-btn{
+.regua-btn {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -458,19 +458,25 @@ body {
   padding-top: 15px;
 }
 
-.critico_mtQuente, .critico_mtFrio{
+.critico_mtQuente,
+.critico_mtFrio {
   color: darkred;
-  }
-  .emergencia_Quente, .emergencia_frio{
+}
+
+.emergencia_Quente,
+.emergencia_frio {
   color: darkorange;
-  }    
-  .atencao_quente, .atencao_frio{
+}
+
+.atencao_quente,
+.atencao_frio {
   color: #CCCC00;
-  }
-  
-  .ideal_0, .ideal_3{
+}
+
+.ideal_0,
+.ideal_3 {
   color: #9ccc65;
-  }
+}
 
 .Atencao {
   background-color: #fff;
@@ -602,16 +608,14 @@ body {
 
 }
 
-custom
-
-.card-gerenciamentoFunc h1 {
+custom .card-gerenciamentoFunc h1 {
   display: flex;
   justify-content: center;
 
 }
 
 .card-gerenciamentoFunc select {
-  box-shadow: 0 10px 25px rgba(0,0,0,0);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0);
   font-size: 1.0rem;
   padding: 1em 5em 1em 1.5em;
   /* background: #4d5061; */
@@ -623,8 +627,8 @@ custom
   outline-style: none;
 }
 
-.custom-select{
-  position:relative;
+.custom-select {
+  position: relative;
 
 }
 
@@ -646,7 +650,7 @@ custom
 .custom-arrow::before,
 .custom-arrow::after {
   --size: 0.65em;
-  
+
   content: '';
   position: absolute;
   width: 0;
@@ -658,24 +662,24 @@ custom
   transform: translate(-50%, -50%);
 }
 
-.custom-arrow::before{
+.custom-arrow::before {
   border-left: var(--size) solid transparent;
   border-right: var(--size) solid transparent;
-  border-bottom: var(--size) solid rgba(255,255,255, .5);
+  border-bottom: var(--size) solid rgba(255, 255, 255, .5);
 
   top: 35%;
 }
 
-.custom-arrow::after{
+.custom-arrow::after {
   border-left: var(--size) solid transparent;
   border-right: var(--size) solid transparent;
-  border-top: var(--size) solid rgba(255,255,255, .5);
+  border-top: var(--size) solid rgba(255, 255, 255, .5);
 
   top: 65%;
 }
 
 
-#div-btn-editar{
+#div-btn-editar {
   display: flex;
   justify-content: center;
   margin-top: 30px;
@@ -683,7 +687,7 @@ custom
 }
 
 
-.btn-editar{
+.btn-editar {
   display: flex;
   background-color: #228B22;
   color: white;

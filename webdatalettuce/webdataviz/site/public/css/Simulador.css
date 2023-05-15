@@ -54,6 +54,7 @@ input {
     display: flex;
     align-items: center;
     color: #494949;
+    outline: none;
 }
 
 .mensagem {
