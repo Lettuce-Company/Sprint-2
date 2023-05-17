@@ -82,10 +82,6 @@
                         <input id="input_senha" placeholder="Insira a senha">
                         <span>Confirmação de Senha:</span>
                         <input id="input_confirmSenha" placeholder="Confirmação de Senha">
-                      
-                      
-                        
-
 
                         <div id="div_mensagem" class="reprovado">
 
@@ -94,6 +90,9 @@
                             <div id="div_aguardar" class="loading-div">
                                 <img src="https://loja.maxineo.com.br/wp-content/uploads/2017/10/loading.gif"
                                     id="loading-gif">
+                            </div>
+                            <div class="card_erro" id="cardErro">
+                                <span id="mensagem_erro"></span>
                             </div>
                         </div>
                         </div>
@@ -122,6 +121,7 @@
         var responsavelVar = input_responsavel.value
         var permissaoVar = select_permissao.value
         var senhaVar = input_senha.value;
+        var confirmSenhaVar = input_confirmSenha.value;
       
         
         
@@ -207,6 +207,7 @@
     }
 
     function sumirMensagem() {
-        div_mensagem.style.display = "none"
-    }
+            cardErro.style.display = "none"
+        }
+    
 </script>
