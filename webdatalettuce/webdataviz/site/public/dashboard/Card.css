@@ -802,3 +802,7 @@ canvas {
   background-color: white;
   border-radius: 30px;
 }
+
+#div_mensagem button:hover{
+  cursor: pointer;
+}

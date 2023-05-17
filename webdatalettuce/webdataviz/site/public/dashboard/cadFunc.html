@@ -69,15 +69,15 @@
                         <span>E-mail:</span>
                         <input id="input_email" placeholder="Insira o e-mail do funcionário">
                         <span>Data de Nascimento:</span>
-                        <input id="input_dtNasc" placeholder="Insira a data de nascimento do funcionário">
+                        <input type="date" id="input_dtNasc" placeholder="Insira a data de nascimento do funcionário">
                         <span>Permissão</span>
                         <select class="selectt" id="select_permissao">
                             <option value="null">Selecionar permissão:</option>
                             <option value="1">Administrador</option>
                             <option value="0">Apenas visualização</option>
                         </select>
-                        <span>Responsável:</span>
-                        <input id="input_responsavel" placeholder="Insira o responsável pelo funcionário">
+                        <!-- <span>Responsável:</span>
+                        <input id="input_responsavel" placeholder="Insira o responsável pelo funcionário"> -->
                         <span>Senha:</span>
                         <input id="input_senha" placeholder="Insira a senha">
                         <span>Confirmação de Senha:</span>
@@ -89,7 +89,7 @@
 
                         <div id="div_mensagem" class="reprovado">
 
-                            <button onclick="cadastrarFunc()">Enviar</button>
+                            <button onclick="cadastrarFuncionario()">Enviar</button>
                             <div id="div_mensagem" class="reprovado">
                             <div id="div_aguardar" class="loading-div">
                                 <img src="https://loja.maxineo.com.br/wp-content/uploads/2017/10/loading.gif"
@@ -106,61 +106,40 @@
 
 </body>
 <script>
-    function cadastrarFunc() {
-        div_aguardar.innerHTML = `<img src="../assets/circle-loading.gif" id="loading-gif">`;
+function cadastrarFuncionario() {
         aguardar();
 
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
-        var nomeVar = input_nome.value;
-        var sobrenomeVar = input_sobrenome.value
-        var cpfVar = input_cpf.value;
-        var cargoVar = input_cargo.value;
-        var telefoneVar = input_telefone.value;
-        var emailVar = input_email.value;
-        var dtNascVar = input_dtNasc.value;
-        var responsavelVar = input_responsavel.value
-        var permissaoVar = select_permissao.value
-        var senhaVar = input_senha.value;
-      
-        
-        
-       
+        var nomeFuncVar = input_nome.value;
+        var sobrenomeFuncVar = input_sobrenome.value;
+        var cpfFuncVar = input_cpf.value;
+        var cargoFuncVar = input_cargo.value;
+        var telefoneFuncVar = input_telefone.value;
+        var emailFuncVar = input_email.value
+        var dtNascFuncVar = input_dtNasc.value
+        var permissaoFuncVar = select_permissao.value;
+        var responsavelFuncVar = sessionStorage.ID_USUARIO;
+        var senhaFuncVar = input_senha.value;
+        var confirmaSenhaFuncVar = input_confirmSenha.value;
+        var empresaFuncVar = sessionStorage.EMPRESA_USUARIO;
 
-        // if(permissaoVar == "null" ){
-                // div_mensagem.innerHTML = "(Por favor, escolha a permissão do funcionário!)"
 
-                // if(senha != confirmSenhaVar){
-                    // div_mensagem.innerHTML = "(As senhas estão diferentes!)"
-                // }
-        
-        if (nomeVar == "" || sobrenomeVar == "" || cpfVar == "" || cargoVar == "" || telefoneVar == ""|| emailVar == "" || dtNascVar == "" || responsavelVar == "" || permissaoVar == ""  || senhaVar == "" || confirmSenhaVar == "") {
-            div_mensagem.innerHTML = "(Por favor, preencha todos os campos!)";
-
-        
-
+        if (nomeFuncVar == "" || sobrenomeFuncVar == "" || cpfFuncVar == "" || cargoFuncVar == "" || telefoneFuncVar == "" || emailFuncVar == "" || dtNascFuncVar == "" || permissaoFuncVar == "" || responsavelFuncVar == "" || senhaFuncVar == "" || confirmaSenhaFuncVar == "") {
+            mensagem_erro.innerHTML = `Preencha todos os campos`;
             finalizarAguardar();
             return false;
-            // } else if (cpfVar.length < 11 || cpfVar.length > 11) {
-            //     div_mensagem.innerHTML = "(Formato de cpf invalido!)";
-            //     finalizarAguardar();
-            //     return false;
-            // } else if (cpfVar.length < 14 || cpfVar.length > 14) {
-            //     div_mensagem.innerHTML = "(Formato de cnpj invalido!)";
-            //     finalizarAguardar();
-            //     return false;
-            } else if (senhaVar.length > 6 && senhaVar.indexOf('!') != -1 || senhaVar.indexOf('@') != -1 || senhaVar.indexOf('#') != -1 || senhaVar.indexOf('$') != -1 || senhaVar.indexOf('%') != -1 || senhaVar.indexOf('&') != -1 || senhaVar.indexOf('*') != -1 || senhaVar.indexOf('(') != -1 || senhaVar.indexOf(')') != -1 || senhaVar.indexOf('¨') != -1 || senhaVar.indexOf('-') != -1 || senhaVar.indexOf('_') != -1 || senhaVar.indexOf('=') != -1 || senhaVar.indexOf('+') != -1 || senhaVar.indexOf('§') != -1 || senhaVar.indexOf('´') != -1 || senhaVar.indexOf('`') != -1 || senhaVar.indexOf('[') != -1 || senhaVar.indexOf(']') != -1 || senhaVar.indexOf('{') != -1 || senhaVar.indexOf('}') != -1 || senhaVar.indexOf('ª') != -1 || senhaVar.indexOf('º') != -1 || senhaVar.indexOf('~') != -1 || senhaVar.indexOf('^') != -1 || senhaVar.indexOf(';') != -1 || senhaVar.indexOf(':') != -1 || senhaVar.indexOf('.') != -1 || senhaVar.indexOf('>') != -1 || senhaVar.indexOf('<') != -1 || senhaVar.indexOf(',') != -1 || senhaVar.indexOf('/') != -1 || senhaVar.indexOf('?') != -1 || senhaVar.indexOf('°') != -1 || senhaVar.indexOf('|') != -1 || senhaVar.indexOf(`'`) != -1 || senhaVar.indexOf('"') != -1) {
+        } else if( senhaFuncVar != confirmaSenhaFuncVar){
+            mensagem_erro.innerHTML = `As senhas não correspondem`;
+            finalizarAguardar();
+            return false;
+        }
+        else {
             setInterval(sumirMensagem, 5000)
         }
 
-        else {
-            div_mensagem.innerHTML = "Senha deve conter mais de 6 caracteres e um caractere especial";
-            finalizarAguardar();
-            return false;
-        }
-
         // Enviando o valor da nova input
-        fetch("/usuarios/cadastrarFunc", {
+        fetch("/usuarios/funccadastro", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -168,32 +147,30 @@
             body: JSON.stringify({
                 // crie um atributo que recebe o valor recuperado aqui
                 // Agora vá para o arquivo routes/usuario.js
-                nomeServer: nomeVar,
-                sobrenomeServer: sobrenomeVar,
-                cpfServer: cpfVar,
-                cargoServer: cargoVar,
-                telefoneServer: telefoneVar,
-                emailServer: emailVar,
-                dtNascServer: dtNascVar,
-                responsavelVar: responsavelVar,
-                permissaoServer: permissaoVar,
-                senhaServer: senhaVar
-                
+                nomeFuncServer: nomeFuncVar,
+                sobrenomeFuncServer: sobrenomeFuncVar,
+                cpfFuncServer: cpfFuncVar,
+                cargoFuncServer: cargoFuncVar,
+                telefoneFuncServer: telefoneFuncVar,
+                emailFuncServer: emailFuncVar,
+                dtNascFuncServer: dtNascFuncVar,
+                permissaoFuncServer: permissaoFuncVar,
+                responsavelFuncServer: responsavelFuncVar,
+                senhaFuncServer: senhaFuncVar,
+                empresaFuncServer: empresaFuncVar
             })
         }).then(function (resposta) {
 
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-
-                div_aguardar.innerHTML = ``;
-                div_mensagem.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+                finalizarAguardar()
 
                 setTimeout(() => {
-                    window.location = "login.html";
+                    window.location = "gerenciamentoFunc.html";
                 }, "2000")
 
-                limparFormulario();
                 finalizarAguardar();
             } else {
                 throw ("Houve um erro ao tentar realizar o cadastro!");
@@ -207,6 +184,6 @@
     }
 
     function sumirMensagem() {
-        div_mensagem.style.display = "none"
+        mensagem_erro.innerHTML = ``;
     }
 </script>

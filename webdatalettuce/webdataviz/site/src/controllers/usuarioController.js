@@ -114,56 +114,48 @@ function cadastrar(req, res) {
     }
 }
 
-function cadastrarFunc(req, res) {
+function funccadastro(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
 
-    var nome = req.body.nomeServer;
-    var sobrenome = req.body.sobrenomeServer;
-    var cpf = req.body.cpfServer;
-    var cargo = req.body.cargoServer;
-    var telefone = req.body.telefoneServer;
-    var email = req.body.emailServer;
-    var dtNasc = req.body.dtNascServer
-    var permissao = req.body.permissaoServer;
-    var responsavel = req.body.responsavelServer;
-    var senha = req.body.senhaServer;
-
+    var nomeFunc = req.body.nomeFuncServer;
+    var sobrenomeFunc = req.body.sobrenomeFuncServer;
+    var permissaoFunc = req.body.permissaoFuncServer;
+    var cpfFunc = req.body.cpfFuncServer;
+    var dtNascFunc = req.body.dtNascFuncServer;
+    var cargoFunc = req.body.cargoFuncServer;
+    var telefoneFunc = req.body.telefoneFuncServer;
+    var emailFunc = req.body.emailFuncServer;
+    var senhaFunc = req.body.senhaFuncServer;
+    var empresaFunc = req.body.empresaFuncServer;
+    var responsavelFunc = req.body.responsavelFuncServer;
 
     // Faça as validações dos valores
-    if (nome == undefined) {
+    if (nomeFunc == undefined) {
         res.status(400).send("O nome está indefinido!");
-    } else if (sobrenome == undefined) {
-        res.status(400).send("O sobrenome está indefinido!");
-    } else if (cpf == undefined) {
-        res.status(400).send("O responsavel está indefinido!");
-    } else if (cargo == undefined) {
-        res.status(400).send("O cargo está indefinido!");
-    } else if (telefone == undefined) {
-        res.status(400).send("O telefone está indefinido!");
-    }
-    else if (email == undefined) {
-        res.status(400).send("O email está indefinido!");
-    }
-    else if (dtNasc == undefined) {
-        res.status(400).send("A data de nascimento está indefinida!");
-
-    } else if (permissao == undefined) {
-        res.status(400).send("A permissão está indefinida!");
-    }
-    else if (responsavel == undefined) {
-        res.status(400).send("O responsável está indefinido!");
-    }
-    else if (senha == undefined) {
-        res.status(400).send("A senha está indefinida!");
-    }
-
-
-
-
-    else {
+    } else if (sobrenomeFunc == undefined) {
+       res.status(400).send("A sobrenome está indefinida!");
+    } else if (cpfFunc == undefined) {
+       res.status(400).send("A cpf está indefinida!");
+    } else if (cargoFunc == undefined) {
+       res.status(400).send("A cargo está indefinida!");
+    } else if (telefoneFunc == undefined) {
+        res.status(400).send("A telefone está indefinida!");
+    } else if (emailFunc == undefined) {
+        res.status(400).send("A email está indefinida!");
+    } else if (dtNascFunc == undefined) {
+       res.status(400).send("A dtNasc está indefinida!");
+    } else if (permissaoFunc == undefined) {
+       res.status(400).send("A permissao está indefinida!");
+    } else if (senhaFunc == undefined) {
+        res.status(400).send("A responsavel está indefinida!");
+    } else if (responsavelFunc == undefined) {
+       res.status(400).send("A senha está indefinida!");
+    } else if (empresaFunc == undefined) {
+        res.status(400).send("A empresa está indefinida!");
+     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrarFunc(nome, sobrenome, cpf, cargo, telefone, email, dtNasc, permissao, responsavel, senha)
+        usuarioModel.funccadastro(nomeFunc, sobrenomeFunc, permissaoFunc, cpfFunc, dtNascFunc, cargoFunc, telefoneFunc, emailFunc, senhaFunc, empresaFunc, responsavelFunc)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -172,7 +164,7 @@ function cadastrarFunc(req, res) {
                 function (erro) {
                     console.log(erro);
                     console.log(
-                        "\nHouve um erro ao realizar o cadastro do Funcionário! Erro: ",
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
                         erro.sqlMessage
                     );
                     res.status(500).json(erro.sqlMessage);
@@ -184,8 +176,8 @@ function cadastrarFunc(req, res) {
 module.exports = {
     entrar,
     cadastrar,
-    cadastrarFunc,
     listar,
-    testar
+    testar,
+    funccadastro
     
 }
