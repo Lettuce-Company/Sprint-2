@@ -35,19 +35,22 @@
             <h3>Dashboard</h3>
             <span class="sidebar-active" class="fa-solid fa-user">Bem vindo, Usuário</span>
             <a href="Dashboard.html"><i class="fa-solid fa-user" class></i>Home</a>
-            <a href="gerencimeantoFunc.html" class="funcionario"><i class="fa-solid fa-id-card"></i>Gerenciar
+            <a href="gerenciamentoFunc.html" class="funcionario"><i class="fa-solid fa-id-card"></i>Gerenciar
                 Funcionários</i></a>
-            <a href="" class="funcionario"><i class="fa-solid fa-truck-arrow-right"></i>Cadastrar Caminhão</i></a>
-            <a href="cadastro_carga.html" class="funcionario"><i class="fa-solid fa-truck-ramp-box"></i>Cadastrar
+            <a href="gerenciamentoCaminhao.html" class="funcionario"><i
+                    class="fa-solid fa-truck-arrow-right"></i>Gerenciar Caminhão</i></a>
+            <a href="gerenciamentoCarga.html" class="funcionario"><i class="fa-solid fa-truck-ramp-box"></i>Gerenciar
                 Carga</a>
+            <a href="https://lettucecompany.atlassian.net/servicedesk/customer/portal/2" class="funcionario"><i
+                    class="fa-solid fa-headset"></i>Suporte</a>
             <a href="../login.html" class="funcionario"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
             <br />
             <select name="pesquisa_caminhao" id="select_caminhão" onchange="location = this.value;"><i
                     class="fa-solid fa-truck-fast"></i>
                 <option value="">Pesquisar Caminhão</option>
                 <option value="Dashboard.html">Macro</option>
-                <option value="Card_1.html">CBW-600</option>
-                <option value="Card_2.html">GDU-2589</option>
+                <option value="Card_1.html">CBW6000</option>
+                <option value="Card_2.html">GDU2589</option>
             </select>
         </div>
 
@@ -57,19 +60,19 @@
                     <div class="cards-gerenciamentoFunc">
                         <div class="card-gerenciamentoFunc">
                             <div>
-                                <h2>Funcionários Cadastrados</h2>
-                                <h1>34</h1>
+                                <h2>Caminhões Cadastrados</h2>
+                                <h1>12</h1>
                             </div>
                             <div>
-                                <h2>Funcionários Ativos</h2>
-                                <h1>13</h1>
+                                <h2>Caminhões Ativos</h2>
+                                <h1>4</h1>
                             </div>
 
                         </div>
                     </div>
                 </div>
                 <div id="div-gerenciamentoFunc">
-                    <button class="button-gerenciamentoFunc" onclick="mudar_pagina()">Cadastrar Funcionários</button>
+                    <button class="button-gerenciamentoFunc" onclick="mudar_pagina()">Cadastrar Caminhões</button>
                 </div>
                 <!-- Select de Funcionário -->
             </div>
@@ -78,47 +81,34 @@
                     <div class="cards-gerenciamentoFunc" style="margin-right: 60px;">
                         <div class="card-gerenciamentoFunc">
                             <div>
-                                <h2>Nome do Funcionário</h2>
+                                <h2>Placa do Caminhão</h2>
                                 <div class="custom-select">
-                                <select name="nomeFunc" id="select_func">
-                                    <option value="">Selecionar Funcionário</option>
-                                    <option value="">Carlos II</option>
-                                    <option value="">Hendrik</option>
-                                    <option value="">Erin</option>
-                                </select>
-                                <span class="custom-arrow"></span>
-                               </div>
-                            </div>
-                            <div>
-                                <h2>Cargo</h2>
-                                <h3>Gerente</h3>
+                                    <select name="nomeFunc" id="select_func">
+                                        <option value="">Selecionar Caminhão</option>
+                                        <option value="">CBW6000</option>
+                                        <option value="">GDU2589</option>
+                                    </select>
+                                    <span class="custom-arrow"></span>
+                                </div>
                             </div>
                             <div>
                                 <h2>Status</h2>
                                 <h3>ativo</h3>
                             </div>
                         </div>
-                        
-                    </div>
-                    </div>
-                    <div id="div-btn-editar">
-                        <button class="btn-editar" type="button">Editar</button>
+
                     </div>
                 </div>
                 <div id="div-btn-editar">
-                    <button class="btn-editar">Editar</button>
+                    <button class="btn-editar" type="button">Editar</button>
                 </div>
             </div>
-                
-    
-                
-
-
-            
         </div>
-        </div>
-        <script>
-            function mudar_pagina(){
-                    window.location = "cadFunc.html"
-            }
-        </script>
+
+    </div>
+    </div>
+    <script>
+        function mudar_pagina() {
+            window.location = "cadastro_caminhao.html"
+        }
+    </script>

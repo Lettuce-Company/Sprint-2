@@ -114,7 +114,7 @@ function cadastrar(req, res) {
     }
 }
 
-function funccadastro(req, res) {
+function cadastrarFuncionario(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
 
     var nomeFunc = req.body.nomeFuncServer;
@@ -133,29 +133,93 @@ function funccadastro(req, res) {
     if (nomeFunc == undefined) {
         res.status(400).send("O nome está indefinido!");
     } else if (sobrenomeFunc == undefined) {
-       res.status(400).send("A sobrenome está indefinida!");
+        res.status(400).send("A sobrenome está indefinida!");
     } else if (cpfFunc == undefined) {
-       res.status(400).send("A cpf está indefinida!");
+        res.status(400).send("A cpf está indefinida!");
     } else if (cargoFunc == undefined) {
-       res.status(400).send("A cargo está indefinida!");
+        res.status(400).send("A cargo está indefinida!");
     } else if (telefoneFunc == undefined) {
         res.status(400).send("A telefone está indefinida!");
     } else if (emailFunc == undefined) {
         res.status(400).send("A email está indefinida!");
     } else if (dtNascFunc == undefined) {
-       res.status(400).send("A dtNasc está indefinida!");
+        res.status(400).send("A dtNasc está indefinida!");
     } else if (permissaoFunc == undefined) {
-       res.status(400).send("A permissao está indefinida!");
+        res.status(400).send("A permissao está indefinida!");
     } else if (senhaFunc == undefined) {
         res.status(400).send("A responsavel está indefinida!");
     } else if (responsavelFunc == undefined) {
-       res.status(400).send("A senha está indefinida!");
+        res.status(400).send("A senha está indefinida!");
     } else if (empresaFunc == undefined) {
         res.status(400).send("A empresa está indefinida!");
-     } else {
+    } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.funccadastro(nomeFunc, sobrenomeFunc, permissaoFunc, cpfFunc, dtNascFunc, cargoFunc, telefoneFunc, emailFunc, senhaFunc, empresaFunc, responsavelFunc)
+        usuarioModel.cadastrarFuncionario(nomeFunc, sobrenomeFunc, permissaoFunc, cpfFunc, dtNascFunc, cargoFunc, telefoneFunc, emailFunc, senhaFunc, empresaFunc, responsavelFunc)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function cadastrarCaminhao(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+
+    var placa = req.body.placaServer;
+    var empresa = req.body.empresaServer;
+
+    // Faça as validações dos valores
+    if (placa == undefined) {
+        res.status(400).send("A placa está indefinida!");
+    } else if (empresa == undefined) {
+        res.status(400).send("A empresa está indefinida!");
+    } else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrarCaminhao(placa, empresa)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function cadastrarCarga(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+
+    var carga = req.body.cargaServer;
+    var caminhao = req.body.caminhaoServer;
+
+    // Faça as validações dos valores
+    if (carga == undefined) {
+        res.status(400).send("A carga está indefinida!");
+    } else if (caminhao == undefined) {
+        res.status(400).send("O caminhao está indefinido!");
+    } else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrarCarga(carga, caminhao)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -178,6 +242,8 @@ module.exports = {
     cadastrar,
     listar,
     testar,
-    funccadastro
-    
+    cadastrarFuncionario,
+    cadastrarCaminhao,
+    cadastrarCarga
+
 }

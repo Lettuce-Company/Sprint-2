@@ -1,5 +1,5 @@
 * {
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 body {
@@ -8,42 +8,40 @@ body {
     height: 910px;
 }
 
-img{
+img {
     width: 60px;
     height: 60px;
     margin-bottom: 5px;
 }
 
-
-
-.header{
+.header {
     width: 100%;
     background-color: white;
     border-bottom: solid rgb(112, 202, 85) 2px;
 }
 
-.header .container{
+.header .container {
     justify-content: space-between;
     align-items: center;
 }
 
-.NavBar ul{
-    color:#482c1d
+.NavBar ul {
+    color: #482c1d
 }
 
-.NavBar a{
+.NavBar a {
     color: #482c1d;
     text-decoration: none;
 }
 
-.header .container h1{
+.header .container h1 {
     font-weight: 600;
     color: rgb(60, 71, 60);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-    'Lucida Sans Unicode',  Verdana, sans-serif;
-} 
+        'Lucida Sans Unicode', Verdana, sans-serif;
+}
 
-.NavBar{
+.NavBar {
     display: flex;
     width: 400px;
     color: #482c1d;
@@ -53,22 +51,23 @@ img{
     justify-content: space-evenly;
 }
 
-.header .container h1{
+.header .container h1 {
     font-weight: 600;
     color: rgb(60, 71, 60);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-    'Lucida Sans Unicode',  Verdana, sans-serif;
-} 
-
-
-h1{
-    display: flex;
+        'Lucida Sans Unicode', Verdana, sans-serif;
 }
-h3{
+
+
+h1 {
     display: flex;
 }
 
-.container{
+h3 {
+    display: flex;
+}
+
+.container {
     display: flex;
     width: 80%;
     margin: auto;
@@ -76,26 +75,27 @@ h3{
     align-items: center;
     height: 100vh;
 }
-.banner{
+
+.banner {
     display: flex;
     width: 100%;
-    background-image:url(../assets/banner.png);
+    background-image: url(../assets/banner.png);
     background-size: cover;
     height: 750px;
     align-items: center;
 }
 
-.banner .container{
+.banner .container {
     justify-content: center;
 }
 
-.formulario{
+.formulario {
     display: flex;
     flex-direction: column;
     width: 55%;
-   font-size: 25px;
-   align-items: center;
-   padding: 15px;
+    font-size: 25px;
+    align-items: center;
+    padding: 15px;
 }
 
 .content {
@@ -144,7 +144,8 @@ h3{
     flex-direction: column;
     width: 55%;
 }
-.form h6{
+
+.form h6 {
     display: flex;
     align-self: center;
     margin-top: 1%;
@@ -171,13 +172,14 @@ h3{
 .second-content {
     position: absolute;
     display: flex;
-} 
-#formRepre{
+}
+
+#formRepre {
     margin-left: 10%;
     margin-bottom: 10px;
 }
 
-.formulario input{
+.formulario input {
     width: 300px;
     height: 30px;
     display: flex;
@@ -185,7 +187,7 @@ h3{
     font-size: 20px;
 }
 
-.banner .caixa_formulario .formulario .input{
+.banner .caixa_formulario .formulario .input {
     margin-bottom: 15px;
     border-radius: 10px;
     border-style: none;
@@ -193,7 +195,7 @@ h3{
     height: 35px;
 }
 
-.formulario button{
+.formulario button {
     width: 200px;
     height: 45px;
     font-size: 30px;
@@ -232,7 +234,7 @@ h3{
     color: white;
 }
 
-#a_contato{
+#a_contato {
     color: white;
     text-decoration: none;
 }
