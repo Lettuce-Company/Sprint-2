@@ -38,14 +38,14 @@ function cadastrarFuncionario(nomeFunc, sobrenomeFunc, permissaoFunc, cpfFunc, d
     return database.executar(instrucao);
 }
 
-function cadastrarCaminhao(placa, empresa); {
+function cadastrarCaminhao(placa, empresa){
     var instrucao = `INSERT INTO Caminhao (placa, fkEmpresa) VALUES ('${placa}', '${empresa}');`;
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", placa, empresa);
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
-function cadastrarCarga(carga, caminhao); {
+function cadastrarCarga(carga, caminhao){
     var instrucao = `INSERT INTO Carga (produto, dt, fkCaminhao) VALUES ('${carga}', default, '${caminhao}');`;
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", carga, caminhao);
     console.log("Executando a instrução SQL: \n" + instrucao);
