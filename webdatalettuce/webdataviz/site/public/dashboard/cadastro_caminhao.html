@@ -58,20 +58,17 @@
 
             <div class="tela_login-cadastroFunc">
                 <div class="container">
-                    <h1>Cadastrar Carga</h1>
+
+                    <h1>Cadastrar Caminhão</h1>
 
                     <div class="boxLogin">
-                        <span>Carga:</span>
-                        <select class="selectt" id="select_carga">
-                            <option value="null">Selecionar tipo de Carga:</option>
-                            <option value="1">Alface</option>
-                            <option value="0">Rúcula</option>
-                        </select>
-                        <span>Caminhão:</span>
-                        <input id="input_caminhao" placeholder="*">
+                        <span>Placa</span>
+                        <input id="input_placa" placeholder="XXXXXXX">
+                        <span>Empresa:</span>
+                        <input id="input_empresa" placeholder="*">
                         <div id="div_mensagem" class="reprovado">
 
-                            <button onclick="cadastrarFuncionario()">Enviar</button>
+                            <button onclick="cadastrarCaminhao()">Enviar</button>
                             <div id="div_mensagem" class="reprovado">
                                 <div id="div_aguardar" class="loading-div">
                                     <img src="https://loja.maxineo.com.br/wp-content/uploads/2017/10/loading.gif"
@@ -91,16 +88,16 @@
 
 </body>
 <script>
-    function cadastrarFuncionario() {
+    function cadastrarCaminhao() {
         aguardar();
 
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
-        var cargaVar = select_carga.value;
-        var caminhaoVar = input_caminhao.value;
+        var PlacaVar = input_placa.value;
+        var EmpresaVar = input_empresa.value;
 
 
-        if (cargaVar == "" || caminhaoVar == "") {
+        if (PlacaVar == "" || EmpresaVar == "") {
             mensagem_erro.innerHTML = `Preencha todos os campos`;
             finalizarAguardar();
             return false;
@@ -110,7 +107,7 @@
         }
 
         // Enviando o valor da nova input
-        fetch("/usuarios/funccadastro", {
+        fetch("/usuarios/funccaminhao", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -118,8 +115,8 @@
             body: JSON.stringify({
                 // crie um atributo que recebe o valor recuperado aqui
                 // Agora vá para o arquivo routes/usuario.js
-                cargaServer: cargaVar,
-                caminhaoServer: caminhaoVar
+                placaServer: PlacaVar,
+                empresaServer: EmpresaVar,
             })
         }).then(function (resposta) {
 
@@ -130,7 +127,7 @@
                 finalizarAguardar()
 
                 setTimeout(() => {
-                    window.location = "gerenciamentoCarga.html";
+                    window.location = "gerenciamentoCaminhao.html";
                 }, "2000")
 
                 finalizarAguardar();

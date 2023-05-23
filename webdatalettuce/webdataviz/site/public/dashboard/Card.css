@@ -397,6 +397,8 @@ body {
   background-color: #74845e;
   height: 100vh;
   overflow: auto;
+  display: flex;
+  flex-direction: row;
 }
 
 .regua {
@@ -417,8 +419,10 @@ body {
 
 .regua-macro-gerenciamentoFunc {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-around; */
   width: 100%;
+  flex-direction: column;
+  height: 100%;
 }
 
 .regua-btn {
@@ -426,6 +430,15 @@ body {
   flex-wrap: wrap;
   width: 100%;
   margin-top: 30px;
+}
+
+.botoes_gerenciar{
+  display: flex;
+  flex-direction: column;
+}
+
+.botoes_gerenciar button{
+width: 260px;
 }
 
 .temp {
@@ -590,7 +603,7 @@ body {
 
 .cards-gerenciamentoFunc {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-left: 8vh;
   width: 100%;
 }
@@ -608,13 +621,13 @@ body {
 
 }
 
-custom .card-gerenciamentoFunc h1 {
+.custom .card-gerenciamentoFunc h1 {
   display: flex;
   justify-content: center;
 
 }
 
-.card-gerenciamentoFunc select {
+.conteiner_select select {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0);
   font-size: 1.0rem;
   padding: 1em 5em 1em 1.5em;
@@ -629,7 +642,6 @@ custom .card-gerenciamentoFunc h1 {
 
 .custom-select {
   position: relative;
-
 }
 
 .custom-arrow {
@@ -686,6 +698,25 @@ custom .card-gerenciamentoFunc h1 {
   margin-right: 80px;
 }
 
+.div_button_procurar_caminhao{
+background-color: #8cd147;
+color: white;
+border-style: none;
+border-radius: 30px;
+display: flex;
+/* text-align: start; */
+/* justify-content: center; */
+align-items: center;
+flex-direction: column;
+width: 260px;
+height: 200px;
+margin-top: 30px;
+}
+.div_button_procurar_caminhao h3{
+  font-size: 24px;
+font-weight: 500;
+
+}
 
 .btn-editar {
   display: flex;
@@ -697,6 +728,7 @@ custom .card-gerenciamentoFunc h1 {
   cursor: pointer;
   align-items: center;
   width: 220px;
+  height: 60px;
   justify-content: center;
 }
 
@@ -803,6 +835,6 @@ canvas {
   border-radius: 30px;
 }
 
-#div_mensagem button:hover{
+#div_mensagem button:hover {
   cursor: pointer;
 }
