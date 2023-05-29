@@ -1,0 +1,318 @@
+*,
+body {
+  font-family: "Exo 2", sans-serif;
+}
+
+.header-left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    height: 100vh;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    border-right: 3px solid rgb(23, 69, 9);
+    background-color: #212124;
+  }
+
+  .header-left h1 {
+    color: black;
+  }
+
+  .header-left a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .dash-header {
+    background-color: #228B22;
+  }
+
+  
+
+.dash {
+    width: 80%;
+    position: relative;
+    top : 0;
+    left: 19%;
+    background-color: #74845e;
+    height: 100vh;
+    overflow: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; 
+}
+
+
+.cards-gerenciamentoFunc {
+    display: flex;
+    flex-direction: column;
+    margin-left: 8vh;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.janela {
+    display: flex;
+    width: 100vw;
+    margin-top: 0px;
+  }
+
+
+.card-gerenciamentoFunc {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border-radius: 30px;
+    background-color: #fff;
+    font-size: 20px;
+    position: relative;
+    width: 50vw;
+    padding: 10px;
+    height: 130px;
+
+}
+
+.header-left img {
+    width: 60%;
+  }
+  
+  .sidebar-logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #8cd147;
+    height: 28%;
+  }
+
+  .header-left span {
+    text-decoration: none;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    color: white;
+    font-size: 20px;
+  }
+  
+  .header-left a {
+    text-decoration: none;
+    margin-left: 15px;
+    color: white;
+    font-size: 20px;
+  }
+  
+  .header-left a:hover {
+    border-left: 4px solid #8cd147;
+    background-color: #006400;
+    color: #999;
+    font-weight: bold;
+  
+  }
+  
+  
+  .header-left h3 {
+    color: white;
+    font-size: 20px;
+    margin: 10px;
+  }
+  
+  
+  .header-left select {
+    background-color: #228B22;
+    color: white;
+    border: none;
+    font-size: 20px;
+    margin-left: 10px;
+    appearance: none;
+  }
+  
+  .header-left i {
+    margin-right: 10px;
+  }
+  
+  
+.custom .card-gerenciamentoFunc h1 {
+    display: flex;
+    justify-content: center;
+
+}
+
+
+.regua-macro-gerenciamentoFunc {
+    display: flex;
+    /* justify-content: space-around; */
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* height: 100%; */
+}
+
+.botoes_gerenciar button {
+    width: 260px;
+}
+
+.botoes_gerenciar {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.button {
+    width: 200px;
+    height: 45px;
+    background-color: #8cd147;
+    color: white;
+    font-size: 30px;
+    border-style: none;
+    border-radius: 50px;
+    cursor: pointer;
+    align-items: center;
+  }
+  
+  button a {
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+  }
+
+  #div-gerenciamentoFunc button {
+    display: flex;
+    background-color: #8cd147;
+    color: white;
+    font-size: 30px;
+    border-style: none;
+    border-radius: 30px;
+    cursor: pointer;
+    align-items: center;
+    margin-top: 15px;
+  
+  }
+
+  .div_button_procurar_caminhao{
+    background-color: #8cd147;
+    color: white;
+    border-style: none;
+    border-radius: 30px;
+    display: flex;
+    /* text-align: start; */
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    width: 260px;
+    height: 200px;
+    margin-top: 30px;
+    }
+
+    .div_button_procurar_caminhao h3{
+      font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    
+    }
+    
+    .btn-editar {
+      display: flex;
+      background-color: #228B22;
+      color: white;
+      font-size: 30px;
+      border-style: none;
+      border-radius: 30px;
+      cursor: pointer;
+      align-items: center;
+      margin-top: 15px;
+      width: 220px;
+      height: 60px;
+      justify-content: center;}
+
+      .conteiner_select{
+        width: 240px;
+      }
+ 
+
+      .conteiner_select select {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0);
+        font-size: 1.0rem;
+        padding: 1em 5em 1em 1.5em;
+        /* background: #4d5061; */
+        background-color: #228B22;
+        color: white;
+        width: 90%;
+        border: 0;
+        border-radius: 20px;
+        outline-style: none;
+      }
+      
+      .custom-select {
+        position: relative;
+      }
+      
+      .custom-arrow {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        background-color: #228B22;
+        height: 100%;
+        width: 3em;
+        pointer-events: none;
+        border-top-right-radius: 16px;
+        border-bottom-right-radius: 16px;
+      }
+      
+      
+      .custom-arrow::before,
+      .custom-arrow::after {
+        --size: 0.65em;
+      
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+      
+      
+      
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      
+      .custom-arrow::before {
+        border-left: var(--size) solid transparent;
+        border-right: var(--size) solid transparent;
+        border-bottom: var(--size) solid rgba(255, 255, 255, .5);
+      
+        top: 35%;
+      }
+      
+      .custom-arrow::after {
+        border-left: var(--size) solid transparent;
+        border-right: var(--size) solid transparent;
+        border-top: var(--size) solid rgba(255, 255, 255, .5);
+      
+        top: 65%;
+      }
+
+      .caminhoes_cad{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+      .caminhoes_cad h1{
+        margin: 0%;
+      }
+      .caminhoes_cad h2{
+        margin: 10px;
+      }
+
+      .caminhoes_atv{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+      .caminhoes_atv h1{
+        margin: 0%;
+      }
+      .caminhoes_atv h2{
+        margin: 10  px;
+        margin-top: 10px;
+      }

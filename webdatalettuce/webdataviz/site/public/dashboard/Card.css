@@ -86,17 +86,17 @@
   display: none;
 }
 
-.loading-div img {
+.loading-div img {.header-left
   height: 50px;
   width: 50px;
 }
 
 /* PAGINA DOS GRÃFICOS */
 
-/* .janela {
+.janela {
   display: flex;
   width: 100vw;
-} */
+}
 
 .header-left a {
   text-decoration: none;
@@ -111,6 +111,7 @@
   position: relative;
   top: 0;
   left: 25%;
+  margin-right: 0px;
 }
 
 .header-left h1 {
@@ -315,18 +316,10 @@ body {
 
 .dash-header {
   background-color: #228B22;
-  ;
 }
 
 
-.botoes_gerenciar{
-  display: flex;
-  flex-direction: column;
-}
 
-.botoes_gerenciar button{
-width: 260px;
-}
 
 .temp {
   background-color: white;
@@ -342,56 +335,6 @@ width: 260px;
   background-color: #74845e;
 }
 
-
-.critico_mtQuente,
-.critico_mtFrio {
-  color: darkred;
-}
-
-.emergencia_Quente,
-.emergencia_frio {
-  color: darkorange;
-}
-
-.atencao_quente,
-.atencao_frio {
-  color: #CCCC00;
-}
-
-.ideal_0,
-.ideal_3 {
-  color: #9ccc65;
-}
-
-.Atencao {
-  background-color: #fff;
-  border-color: #CCCC00;
-  font-size: 20px;
-}
-
-.Atencao h2 {
-  color: darkorange;
-}
-
-.Emergencia {
-  background-color: #fff;
-  border-color: darkorange;
-  font-size: 20px;
-}
-
-.Emergencia h2 {
-  color: yellow;
-}
-
-.Critico {
-  background-color: #fff;
-  border-color: darkred;
-  font-size: 20px;
-}
-
-.Critico h2 {
-  color: green;
-}
 
 .cards {
   display: flex;
@@ -587,7 +530,6 @@ margin-top: 30px;
 .div_button_procurar_caminhao h3{
   font-size: 24px;
 font-weight: 500;
-
 }
 
 .btn-editar {
