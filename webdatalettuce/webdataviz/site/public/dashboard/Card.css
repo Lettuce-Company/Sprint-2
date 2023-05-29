@@ -1,76 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Barlow', "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: black;
-}
-
-/* .funcionario{
-  display: none;
-} */
-.container {
-  width: 80%;
-  margin: auto;
-  display: flex;
-}
-
-.header {
-  border-bottom: 3px solid #32b9cd;
-}
-
-.header .container {
-  justify-content: space-between;
-}
-
-.header a {
-  text-decoration: none;
-  color: #e3b062;
-}
-
-.agora {
-  font-weight: 800;
-}
-
-.navbar {
-  width: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  list-style: none;
-  color: #e3b062;
-}
-
-
-.titulo {
-  color: #32b9cd;
-  width: fit-content;
-  font-weight: 500;
-}
-
-
-
-
-/* FOOTER */
-
-.footer {
-  background-color: #32b9cd;
-  height: 150px;
-  color: #fff;
-  display: flex;
-  font-size: 15px;
-}
-
-.footer .container {
-  justify-content: center;
-  text-align: center;
-}
-
-.footer .container .version {
-  font-size: 12px;
-}
-
 
 /* LOGIN */
 
@@ -164,10 +93,10 @@ body {
 
 /* PAGINA DOS GRÃFICOS */
 
-.janela {
+/* .janela {
   display: flex;
   width: 100vw;
-}
+} */
 
 .header-left a {
   text-decoration: none;
@@ -389,48 +318,6 @@ body {
   ;
 }
 
-.dash {
-  width: 80%;
-  position: relative;
-  top: 0;
-  left: 20%;
-  background-color: #74845e;
-  height: 100vh;
-  overflow: auto;
-  display: flex;
-  flex-direction: row;
-}
-
-.regua {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
-  margin-top: 30px;
-}
-
-.regua-macro {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  width: 100%;
-  margin-top: 30px;
-}
-
-.regua-macro-gerenciamentoFunc {
-  display: flex;
-  /* justify-content: space-around; */
-  width: 100%;
-  flex-direction: column;
-  height: 100%;
-}
-
-.regua-btn {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  margin-top: 30px;
-}
 
 .botoes_gerenciar{
   display: flex;
@@ -455,21 +342,6 @@ width: 260px;
   background-color: #74845e;
 }
 
-.item-regua {
-  padding: 5px;
-  width: 15%;
-  margin: 5px;
-  text-align: center;
-  padding-top: 15px;
-}
-
-.item-regua-macro {
-  padding: 5px;
-  width: 30%;
-  margin: 5px;
-  text-align: center;
-  padding-top: 15px;
-}
 
 .critico_mtQuente,
 .critico_mtFrio {
@@ -830,10 +702,6 @@ canvas {
   height: 80% !important;
 }
 
-.dados {
-  background-color: white;
-  border-radius: 30px;
-}
 
 #div_mensagem button:hover {
   cursor: pointer;
