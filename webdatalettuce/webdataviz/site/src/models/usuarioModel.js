@@ -12,8 +12,7 @@ function listar() {
 function entrar(email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
     var instrucao = `
-        SELECT * FROM Funcionario WHERE email = '${email}' AND senha = sha2('${senha}',256);
-    `;
+    SELECT * FROM Funcionario join Empresa on fkEmpresa = (SELECT fkEmpresa where funcionario.email = '${email}') WHERE funcionario.email = '${email}' AND funcionario.senha = sha2('${senha}',256) limit 1;`;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
@@ -33,7 +32,7 @@ function cadastrar(nome, sobrenome, cpf, cargo, email, senha, nomeEmpr, cnpj, te
 
 function cadastrarFuncionario(nomeFunc, sobrenomeFunc, permissaoFunc, cpfFunc, dtNascFunc, cargoFunc, telefoneFunc, emailFunc, senhaFunc, empresaFunc, responsavelFunc) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nomeFunc, sobrenomeFunc, permissaoFunc, cpfFunc, dtNascFunc, cargoFunc, telefoneFunc, emailFunc, senhaFunc, empresaFunc, responsavelFunc);
-    var instrucao = `INSERT INTO Funcionario (nome, sobrenome, adm, cpf, dtNasc, cargo, telefone, email, senha, fkEmpresa, fkChefe) VALUES ('${nomeFunc}', '${sobrenomeFunc}', '${permissaoFunc}', '${cpfFunc}', '${dtNascFunc}','${cargoFunc}', '${telefoneFunc}', '${emailFunc}', '${senhaFunc}', '${empresaFunc}', '${responsavelFunc}');`;
+    var instrucao = `INSERT INTO Funcionario (nome, sobrenome, adm, cpf, dtNasc, cargo, telefone, email, senha, fkEmpresa, fkChefe) VALUES ('${nomeFunc}', '${sobrenomeFunc}', '${permissaoFunc}', '${cpfFunc}', '${dtNascFunc}','${cargoFunc}', '${telefoneFunc}', '${emailFunc}', sha2('${senhaFunc}',256), '${empresaFunc}', '${responsavelFunc}');`;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
