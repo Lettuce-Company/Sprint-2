@@ -45,11 +45,10 @@ INSERT INTO Funcionario VALUES
 
 desc Funcionario;
 
-
 create table if not exists Caminhao(
 -- idCaminhao int primary key auto_increment,
 placa char(7) primary key unique not null,
-fkEmpresa char(14), constraint fkEmpTrans foreign key(fkEmpresa) references Empresa(cnpj) -- ex
+fkEmpresaVeiculo char(14), constraint fkEmpTrans foreign key(fkEmpresaVeiculo) references Empresa(cnpj) -- ex
 );
 
 insert into Caminhao values
@@ -60,31 +59,29 @@ select * from Caminhao;
 
 
 create table if not exists Carga(
-idCarga int auto_increment,
+idCarga int primary key auto_increment,
 produto varchar(45),
-dthora datetime,
-fkCaminhaoPlaca char(7), 
-constraint fkCaminhao foreign key(fkCaminhaoPlaca) 
-references Caminhao(placa),
-constraint pkCargaCam primary key (idCarga, fkCaminhaoPlaca) -- fk dependente de caminhao
-);
+qtdKg DECIMAL (7,2),
+dtHr datetime
+) auto_increment = 100;
 
 INSERT INTO Carga VALUES
-(null, 'Alface Crespa', '2023-04-21 14:00:21', 'GDU2589'),
-(null, 'Rúcula', '2023-04-13 16:18:55', 'CTU1350');
+(null, 'Alface Crespa', 1000, '2023-04-21 14:00:21'),
+(null, 'Rúcula', 450, '2023-04-13 16:18:55');
 
 SELECT * FROM Carga;
 
 create table if not exists Motorista(
 idMotorista INT PRIMARY KEY auto_increment,
 nome VARCHAR(45),
+email VARCHAR(45),
 telefone CHAR(11),
-CNPJ CHAR(14), constraint chkCNPJ check(CNPJ like '%0001%' OR CNPJ like '%0002%')
+CNH CHAR(11)
 );
 
 INSERT INTO Motorista VALUES
-(null, 'Henrique', '11948294812', '23456789000112'),
-(null, 'Victor', '11956278430', '83718495000242');
+(null, 'Henrique', 'henrique@outlook.com','11948294812', '76441275757'),
+(null, 'Victor', 'victor@outlook.com', '11956278430', '06295081247');
 
 SELECT * FROM Motorista;
 
@@ -100,16 +97,24 @@ fkMotorista INT,
 constraint fkMotoristaViagem foreign key (fkMotorista)
 references Motorista (idMotorista),
 constraint pkCompostaViagem primary key (idViagem, fkCaminhao, fkCarga, fkMotorista),
-origem VARCHAR (45), -- Colocar CEP?
-destino VARCHAR(45),
-duracao INT
+cepOrigem CHAR (8), 
+cepDestino CHAR (8)
 );
+
+INSERT INTO Viagem VALUES
+(null, 'GDU2589', 100, 1, '58402650', '68746476'),
+(null, 'CTU1350', 101, 2, '79081160', '69552285');
+
+
+CREATE INDEX IDX_Viagem ON Viagem
+(idViagem, fkCaminhao, fkCarga, fkMotorista);
+SELECT * FROM Viagem;
 
 create table if not exists Sensor(
 idSensor int primary key not null auto_increment,
 tipo varchar(5) not null, constraint chkSensor check(tipo IN("DHT11", "LM35")),
-fkCaminhao char(7),
- constraint FkSensorCaminhao foreign key (fkCaminhao)
+fkCaminhaoSensor char(7),
+ constraint FkSensorCaminhao foreign key (fkCaminhaoSensor)
  references Caminhao(placa));
  
 insert into sensor values
@@ -125,33 +130,116 @@ umidade decimal (4,2),
 dtHora datetime default current_timestamp,
 fkSensor INT, constraint fkSensor foreign key (fkSensor) 
 references Sensor(idSensor),
-fkCargaLeitura INT,
-constraint fkCargaLeitura foreign key (fkCargaLeitura) 
-references Carga(idCarga),
- constraint pkCompostaLeitura primary key (idLeitura, fkSensor, fkCargaLeitura));
+ constraint pkCompostaLeitura primary key (idLeitura, fkSensor));
  
  INSERT INTO Leitura VALUES
-(null, 25.34, 98.23, default, 1, 1),
-(null, 25.34, 98.23, default, 2, 2);
+(null, 2, 99.29, default, 1),
+(null, 3, 99.50, default, 1),
+(null, 0, 99.80, default, 1),
+(null, -1, 99.90, default, 1), 
+(null, 0, 98.73, default, 1),
+(null, 1, 97.43, default, 1),
+(null, 1.2, 97.23, default, 1),
+(null, 1.5, 96.50, default, 1),
+(null, 1.8, 96.23, default, 1),
+(null, 2.0, 95.35, default, 1),
+(null, 0, 95.42, default, 2),
+(null, 1, 98.23, default, 2),
+(null, 2, 95.24, default, 2),
+(null, 3, 93.23, default, 2),
+(null, 5, 82.23, default, 2),
+(null, 6, 70.23, default, 2),
+(null, 10, 0.23, default, 2);
 
 SELECT * FROM Leitura;
 
 CREATE VIEW VW_Caminhao_leitura AS
 select 
-Caminhao.placa as 'Caminhão',
-Carga.produto as 'Produto da Carga',
 Leitura.temperatura as 'Temperatura',
 Leitura.umidade as 'Umidade',
 Leitura.dtHora as 'Data e hora da leitura'
-FROM Leitura JOIN Sensor
+FROM Leitura 
+JOIN Sensor
 ON fkSensor = idSensor
+JOIN Carga
 JOIN Caminhao
 ON fkCaminhao = placa 
-JOIN Carga
-ON idCarga = fkCargaLeitura; 
+ORDER BY temperatura desc limit 7;
 
--- View das Leituras dos Caminhões
-SELECT * FROM VW_Caminhao_Leitura;
+
+DROP VIEW VW_KPI_Extremos;
+ CREATE VIEW VW_KPI_Extremos AS
+SELECT 
+idLeitura,
+temperatura,
+umidade,
+dtHora,
+fkCaminhao,
+fkSensor,
+Viagem.fkCarga
+FROM Leitura 
+JOIN Sensor
+ON fkSensor = idSensor
+JOIN Carga
+JOIN Caminhao
+ON fkCaminhaoSensor = placa 
+JOIN Empresa
+ON fkEmpresaVeiculo = cnpj
+JOIN Viagem
+ON fkCarga = idCarga;
+
+-- View da KPI dos extremos (temperaturas máximas e mínimas do caminhão)
+SELECT max(temperatura), max(umidade), min(temperatura), min(umidade), dtHora FROM VW_KPI_Extremos WHERE fkCaminhao = 'CTU1350' AND fkSensor  = 2
+GROUP BY idLeitura,  dtHora, fkcaminhao
+ORDER BY idLeitura DESC LIMIT 7;
+
+ CREATE VIEW VW_KPI_Atuais AS
+SELECT 
+idLeitura,
+temperatura,
+umidade,
+dtHora,
+fkCaminhao,
+fkSensor,
+Viagem.fkCarga
+FROM Leitura 
+JOIN Sensor
+ON fkSensor = idSensor
+JOIN Carga
+JOIN Caminhao
+ON fkCaminhaoSensor = placa 
+JOIN Empresa
+ON fkEmpresaVeiculo = cnpj
+JOIN Viagem
+ON fkCarga = idCarga;
+
+-- View da KPI dos extremos (Ultima temperatura e umidade do caminhão)
+SELECT temperatura, umidade, dtHora FROM VW_KPI_Atuais WHERE fkCaminhao = 'CTU1350' AND fkSensor  = (SELECT 
+idSensor
+FROM Sensor WHERE fkCaminhaoSensor = 'CTU1350')
+ORDER BY idLeitura DESC LIMIT 1;
+
+
+SELECT 
+idSensor
+FROM Sensor WHERE fkCaminhaoSensor = 'CTU1350';
+
+CREATE VIEW VW_Motorista AS
+SELECT 
+Motorista.nome,
+Motorista.email,
+Motorista.telefone,
+Motorista.CNPJ 
+FROM Motorista JOIN Viagem 
+ON idMotorista = fkMotorista;
+
+-- View dos dados do motorista
+SELECT * FROM VW_Motorista;
+
+SELECT 
+idSensor
+FROM Sensor WHERE fkCaminhaoSensor = 'CTU1350';
+
 
 CREATE VIEW VW_Func AS
 SELECT 
@@ -169,6 +257,24 @@ ON cnpj = Funcionario.fkEmpresa;
 
 -- View dos Dados dos Funcionários
 SELECT * FROM VW_Func;
+
+CREATE VIEW VW_Carga AS 
+SELECT 
+Carga.produto as 'Produto',
+Carga.qtdKg as 'Quantidade de quilos',
+Carga.dtHr as 'Data da inserção da carga',
+Viagem.origem as 'Endereço da Origem',
+Viagem.destino as 'Endereço do Destino',
+Viagem.duracao as 'Duração da Viagem em minutos'
+FROM Carga
+JOIN Viagem ON 
+idCarga = Viagem.fkCarga;
+
+-- View dos dados da carga
+SELECT * FROM VW_Carga;
+
+
+
 
 -- Procedimento, semelhante a uma função, Realiza as ações contidas nela.
 DELIMITER $$
@@ -188,7 +294,7 @@ END$$
 DELIMITER ;
 
 -- Se quiser dar um select em tudo até agora, use a PROCEDURE abaixo:
--- CALL Select_All()
+CALL Select_All()
 
 -- Operações matemáticas
 -- Aviso!! As operações matemáticas foram comentadas para manter o SELECT'S simplistas, facilitando a visua-

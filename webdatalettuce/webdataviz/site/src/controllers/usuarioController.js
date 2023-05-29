@@ -72,6 +72,8 @@ function cadastrar(req, res) {
     var nomeEmpr = req.body.nomeEmprServer;
     var cnpj = req.body.cnpjServer;
     var telefone = req.body.telefoneServer;
+    var telefoneFunc = req.body.telefoneFuncServer;
+    var dtNasc = req.body.dtNascServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -92,11 +94,15 @@ function cadastrar(req, res) {
         res.status(400).send("O cnpj está indefinido!");
     } else if (telefone == undefined) {
         res.status(400).send("O telefone está indefinido!");
+    } else if (telefoneFunc == undefined) {
+        res.status(400).send("O telefone está indefinido!");
+    } else if (dtNasc == undefined) {
+        res.status(400).send("A data de nascimento está indefinido!");
     }
     else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, sobrenome, cpf, cargo, email, senha, nomeEmpr, cnpj, telefone)
+        usuarioModel.cadastrar(nome, sobrenome, cpf, cargo, email, senha, nomeEmpr, cnpj, telefone, telefoneFunc, dtNasc)
             .then(
                 function (resultado) {
                     res.json(resultado);

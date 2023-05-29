@@ -42,10 +42,12 @@
                             <input id="input_sobrenome" class="input" placeholder="Insira o Sobrenome do responsável">
                             <span>CPF:</span>
                             <input id="input_cpf" class="input" placeholder="XXX.XXX.XXX-XX">
-                            <!-- <span>Data de nascimento:</span>
-                            <input id="input_dtNasc" class="input" type="date" placeholder="DD/MM/AAAA"> -->
+                            <span>Data de nascimento:</span>
+                            <input id="input_dtNasc" class="input" type="date" placeholder="DD/MM/AAAA">
                             <span>Cargo:</span>
                             <input id="input_cargo" class="input" placeholder="Insira seu cargo">
+                            <span>Telefone</span>
+                            <input id="input_telefoneFunc" class="input" placeholder="Insira seu telefone">
                             <span>Email:</span>
                             <input id="input_email" class="input" placeholder="Insira seu email">
                             <span>Senha:</span>
@@ -104,9 +106,11 @@
         var nomeEmprVar = input_empresa.value;
         var cnpjVar = input_cnpj.value;
         var telefoneVar = input_telefone.value;
+        var telefoneFuncVar = input_telefoneFunc.value
+        var dtNascVar = input_dtNasc.value
 
 
-        if (nomeVar == "" || sobrenomeVar == "" || cpfVar == "" || cargoVar == "" || emailVar == '' || senhaVar == "" || nomeEmprVar == "" || cnpjVar == "" || telefoneVar == "") {
+        if (nomeVar == "" || sobrenomeVar == "" || cpfVar == "" || cargoVar == "" || emailVar == '' || senhaVar == "" || nomeEmprVar == "" || cnpjVar == "" || telefoneVar == "" || telefoneFuncVar == "" || dtNascVar == "") {
             div_mensagem.innerHTML = "(Por favor, preencha todos os campos!)";
 
             finalizarAguardar();
@@ -146,7 +150,9 @@
                 senhaServer: senhaVar,
                 nomeEmprServer: nomeEmprVar,
                 cnpjServer: cnpjVar,
-                telefoneServer: telefoneVar
+                telefoneServer: telefoneVar,
+                telefoneFuncServer: telefoneFuncVar,
+                dtNascServer: dtNascVar
             })
         }).then(function (resposta) {
 
