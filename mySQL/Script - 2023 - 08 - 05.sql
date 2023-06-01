@@ -13,6 +13,7 @@ insert into Empresa values
 ('JuicyLettuce', '12345678965478', '11939249423');
 
 select * from Empresa;
+SELECT * FROM Funcionario;
 
 create table if not exists Funcionario(
 idFuncionario int auto_increment,
@@ -23,7 +24,7 @@ cargo varchar(30) not null,
 telefone char(11) not null,
 email varchar(45) unique not null,  constraint ckhEmailfunc check(Email like '%@%'),
 dtNasc date not null,
-permissao boolean,
+adm boolean,
 status boolean,
 senha varchar(100) not null,
 
@@ -149,21 +150,6 @@ references Sensor(idSensor),
 
 SELECT * FROM Leitura;
 
-CREATE VIEW VW_Caminhao_leitura AS
-select 
-Leitura.temperatura as 'Temperatura',
-Leitura.umidade as 'Umidade',
-Leitura.dtHora as 'Data e hora da leitura'
-FROM Leitura 
-JOIN Sensor
-ON fkSensor = idSensor
-JOIN Carga
-JOIN Caminhao
-ON fkCaminhao = placa 
-ORDER BY temperatura desc limit 7;
-
-
-DROP VIEW VW_KPI_Extremos;
  CREATE VIEW VW_KPI_Extremos AS
 SELECT 
 idLeitura,
@@ -213,7 +199,7 @@ ON fkCarga = idCarga;
 SELECT temperatura, umidade, dtHora FROM VW_KPI_Atuais WHERE fkCaminhao = 'CTU1350' AND fkSensor  = (SELECT 
 idSensor
 FROM Sensor WHERE fkCaminhaoSensor = 'CTU1350')
-ORDER BY idLeitura DESC LIMIT 1;
+ORDER BY idLeitura DESC;
 
 
 SELECT 
@@ -225,17 +211,12 @@ SELECT
 Motorista.nome,
 Motorista.email,
 Motorista.telefone,
-Motorista.CNPJ 
+Motorista.CNH
 FROM Motorista JOIN Viagem 
 ON idMotorista = fkMotorista;
 
 -- View dos dados do motorista
 SELECT * FROM VW_Motorista;
-
-SELECT 
-idSensor
-FROM Sensor WHERE fkCaminhaoSensor = 'CTU1350';
-
 
 CREATE VIEW VW_Func AS
 SELECT 
@@ -259,9 +240,8 @@ SELECT
 Carga.produto as 'Produto',
 Carga.qtdKg as 'Quantidade de quilos',
 Carga.dtHr as 'Data da inserção da carga',
-Viagem.origem as 'Endereço da Origem',
-Viagem.destino as 'Endereço do Destino',
-Viagem.duracao as 'Duração da Viagem em minutos'
+Viagem.cepOrigem as 'CEP da Origem',
+Viagem.cepDestino as 'CEP do Destino'
 FROM Carga
 JOIN Viagem ON 
 idCarga = Viagem.fkCarga;
@@ -290,7 +270,7 @@ END$$
 DELIMITER ;
 
 -- Se quiser dar um select em tudo até agora, use a PROCEDURE abaixo:
-CALL Select_All()
+-- CALL Select_All()
 
 -- Operações matemáticas
 -- Aviso!! As operações matemáticas foram comentadas para manter o SELECT'S simplistas, facilitando a visua-
