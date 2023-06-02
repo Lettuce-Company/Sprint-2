@@ -135,7 +135,7 @@ h1 {
   display: flex;
   position: relative;
   height: 35vh;
-  width: 300vw;
+  width: fit-content;
   align-items: center;
   padding: 10px;
   background-color: white;
