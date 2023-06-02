@@ -1,34 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Barlow', "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: black;
+}
 
-/* LOGIN */
-
-.banner .container .card {
-  background-color: #e5e5e5;
-  height: fit-content;
-  width: 400px;
+/* .funcionario{
+  display: none;
+} */
+.container {
+  width: 80%;
+  margin: auto;
   display: flex;
-  flex-direction: column;
-  color: palevioletred;
-  align-items: center;
-  border-radius: 4px;
-}
-
-.card {
-  display: flex;
-  justify-content: space-around;
-}
-
-.card h2 {
-  font-size: 30px;
-}
-
-.card h4 {
-  font-size: 16px;
-}
-
-.banner #div_erros_login {
-  margin-top: 15px;
 }
 
 
@@ -56,29 +41,6 @@
   font-size: 20px;
 }
 
-.formulario .tipo_campo {
-  font-size: 20px;
-  font-weight: 600 !important;
-}
-
-.formulario {
-  display: flex;
-  flex-direction: column;
-}
-
-.btn {
-  font-family: "Barlow", sans-serif;
-  border: 0;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 10px 15px;
-  color: white;
-  background-color: #e6005a;
-  width: 120px;
-  align-self: center;
-  margin-top: 5px;
-}
 
 .loading-div {
   width: 50px;
@@ -91,7 +53,7 @@
   width: 50px;
 }
 
-/* PAGINA DOS GRÃFICOS */
+/* Dashboard Lettuce */
 
 .janela {
   display: flex;
@@ -103,13 +65,11 @@
   color: white;
 }
 
-.dash-right {
-  display: flex;
-  width: 80%;
-  height: fit-content;
-  background-color: #161618;
-  position: relative;
+
+.header-left {
+  position: fixed;
   top: 0;
+<<<<<<< HEAD
   left: 25%;
   margin-right: 0px;
 }
@@ -120,18 +80,17 @@
 
 .hello {
   width: 100%;
+=======
+  left: 0;
+  z-index: 999;
+  height: 100vh;
+  width: 20%;
+>>>>>>> f605ff08e166c0779ee73d5810338bd50ffeabf3
   display: flex;
-  justify-content: center;
-}
-
-.hello h3 {
-  color: black;
-  font-weight: 300;
-  font-size: 1.2rem;
-}
-
-.hello h3 span {
-  font-weight: 800;
+  flex-direction: column;
+  border-right: 3px solid rgb(23, 69, 9);
+  background-color: #212124;
+  /* border: 3px solid pink; */
 }
 
 .btn-nav {
@@ -178,146 +137,52 @@
   cursor: pointer;
 }
 
-/* pagina extra - simulador */
-.simulador {
-  color: white;
-
-}
-
-.simulador .container {
-  flex-direction: column
-}
-
-/* pagina mural */
-
-*,
-body {
-  font-family: "Exo 2", sans-serif;
-}
-
-.label-captura {
-  display: flex;
-  justify-content: center;
-}
-
-.dash-right .avisos {
-  width: 100%;
-  /* border: 3px solid pink; */
-  color: rgb(216, 216, 216);
-  font-family: "Exo 2", sans-serif;
-}
-
-.dash-right .avisos .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.dash-right .avisos .container .div-form {
-  width: 100%;
-}
-
-.dash-right .avisos .container .div-form #form_postagem {
-  width: 100%;
-}
-
-.dash-right .avisos .div-form label {
-  width: 100%;
-}
-
-.dash-right .avisos .div-form input {
-  width: 100%;
-  border-radius: 5px;
-}
-
-.dash-right .avisos .div-form textarea {
-  width: 100%;
-  /* color: #E6005A; */
-  border: 3px solid #e6005a;
-  background-color: white;
-  border-radius: 5px;
-}
-
-.dash-right .avisos .div-form button {
-  cursor: pointer;
-  font-family: "Exo 2", sans-serif;
-  border: 0;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 10px 15px;
-  color: white;
-  background-color: #e6005a;
-  width: 120px;
-}
-
-.publicacao-btn-editar {
-  cursor: pointer;
-  font-family: "Exo 2", sans-serif;
-  border: 0;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 14px;
-  padding: 5px 8px;
-  color: white;
-  background-color: #e6005a;
-  width: 80px;
-}
-
-.publicacao {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: stretch;
-  flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
-  border-bottom: 3px solid #e6005a;
-  padding: 20px;
-}
-
-.publicacao>*:not(:last-child) {
-  padding: 0 0 10px 0;
-}
-
-.div-results {
-  width: 100%;
-}
-
-.div-results .feed-container {
-  background-color: #212124;
-  border-radius: 5px;
-  margin-bottom: 80px;
-}
-
-.div-buttons {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.div-buttons>* {
-  margin-left: 30px;
-}
-
-/* pagina graficos */
-
-.header-left {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  height: 100vh;
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  border-right: 3px solid rgb(23, 69, 9);
-  background-color: #212124;
-  /* border: 3px solid pink; */
-}
-
 .dash-header {
   background-color: #228B22;
 }
 
+.dash {
+  width: 80%;
+  position: relative;
+  top: 0;
+  left: 20%;
+  background-color: #74845e;
+  height: 100vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.regua {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.regua-macro {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.regua-macro-gerenciamentoFunc {
+  display: flex;
+  /* justify-content: space-around; */
+  width: 100%;
+  flex-direction: column;
+  height: 100%;
+}
+
+.regua-btn {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 30px;
+}
 
 
 
@@ -335,7 +200,47 @@ body {
   background-color: #74845e;
 }
 
+.item-regua {
+  padding: 5px;
+  width: 15%;
+  margin: 5px;
+  text-align: center;
+  padding-top: 15px;
+}
 
+.item-regua-macro {
+  padding: 5px;
+  width: 30%;
+  margin: 5px;
+  text-align: center;
+  padding-top: 15px;
+}
+
+<<<<<<< HEAD
+=======
+.critico_mtQuente,
+.critico_mtFrio {
+  color: darkred;
+}
+
+.emergencia_Quente,
+.emergencia_frio {
+  color: darkorange;
+}
+
+.atencao_quente,
+.atencao_frio {
+  color: #CCCC00;
+}
+
+.ideal_0,
+.ideal_3 {
+  color: #9ccc65;
+}
+
+
+
+>>>>>>> f605ff08e166c0779ee73d5810338bd50ffeabf3
 .cards {
   display: flex;
   flex-direction: row;
@@ -581,12 +486,6 @@ font-weight: 500;
   /* background-color: #c7c7c7; */
 }
 
-.btns-dash {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 30px;
-}
 
 .graph {
   width: 80%;
@@ -600,28 +499,6 @@ font-weight: 500;
   justify-content: center;
 }
 
-.btn-chart {
-  font-family: "Exo 2", sans-serif;
-  border: 0;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 10px 15px;
-  color: #e6005a;
-  background-color: white;
-  margin: 5px;
-  border-radius: 3px;
-}
-
-.btn-pink {
-  color: white;
-  background-color: #e6005a;
-}
-
-.btn-white {
-  color: #e6005a;
-  background-color: white;
-
-}
 
 .label-captura {
   height: 80px;
@@ -644,6 +521,10 @@ canvas {
   height: 80% !important;
 }
 
+.dados {
+  background-color: white;
+  border-radius: 30px;
+}
 
 #div_mensagem button:hover {
   cursor: pointer;
