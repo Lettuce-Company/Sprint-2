@@ -333,3 +333,76 @@ button a {
   height: 50px;
   width: 50px;
 }
+
+
+.regua {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.regua-macro {
+  display: flex;
+  /* flex-wrap: wrap; */
+  justify-content: space-around;
+  flex-direction: row;
+  height: 200px;
+  width: 900px;
+  margin-top: 30px;
+}
+
+.regua-macro-gerenciamentoFunc {
+  display: flex;
+  /* justify-content: space-around; */
+  width: 100%;
+  flex-direction: column;
+  height: 100%;
+}
+
+.regua-btn {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.dash {
+  width: 80%;
+  position: relative;
+  top: 0;
+  left: 20%;
+  background-color: #74845e;
+  height: 100vh;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item-regua {
+  padding: 5px;
+  width: 15%;
+  margin: 7px;
+  text-align: center;
+  padding-top: 15px;
+}
+
+.item-regua-macro {
+  padding: 5px;
+  width: 30%;
+  margin: 5px;
+  text-align: center;
+  padding-top: 15px;
+}
+
+.dados {
+  background-color: white;
+  border-radius: 30px;
+  width: 30%;
+}
+
+.item-regua.dados h4{
+  font-size: 23px;
+}

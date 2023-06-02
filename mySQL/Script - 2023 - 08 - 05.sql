@@ -1,6 +1,8 @@
-DROP DATABASE lettuce;
+-- DROP DATABASE lettuce;
 CREATE DATABASE IF NOT EXISTS lettuce;
 use lettuce;
+
+-- COLOCAR TELEFONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 
 
 create table if not exists Empresa (
 -- idEmpresa int primary key auto_increment,
@@ -35,11 +37,13 @@ references Funcionario(idFuncionario) -- fk self related
 
 ) auto_increment = 1000;
 
+alter table funcionario rename column permissao to adm;
+
 INSERT INTO Funcionario VALUES
 (NULL, 'Marcos', 'Telúrio', '12345678900', 'Gerente', '11913829401', 'marcos.telurio@gmail.com', '1980-02-15', true, true, sha2('yub56m8123459', 256), '12345678965478', null),
 (NULL, 'Antônio', 'Figueredes', '29345678900', 'Funcionário', '11938291931', 'antonio@gmail.com', '1994-12-07', false, true, sha2('abcacsf28183', 256), '12345678965478', 1000);
 
-select * from Funcionario;
+desc Funcionario;
 
 create table if not exists Caminhao(
 -- idCaminhao int primary key auto_increment,
