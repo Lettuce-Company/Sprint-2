@@ -14,6 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="card.css">
     <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="KPIS.css">
     <script src="https://kit.fontawesome.com/4c5e041356.js" crossorigin="anonymous"></script>
 
     <!-- <script src="../js/main.js"></script> -->
@@ -23,7 +24,7 @@
         rel="stylesheet">
 </head>
 
-<body>
+<body onload="atualizacaoPeriodica(), limpar_listas()">
 
     <div class="janela">
 
@@ -60,36 +61,36 @@
 
                 <div class="item-regua temp">
                     <h4>Temperatura Máxima Captada</h4>
-                    <h2 style="color: green;">2°C</h2>
+                    <h2 id="temperatura_maxima"></h2>
                 </div>
                 <div class="item-regua temp">
                     <h4>Temperatura Mínima Captada</h4>
-                    <h2 style="color: green;">0.1°C</h2>
+                    <h2 id="temperatura_minima"></h2>
                 </div>
                 <div class="item-regua ideal">
 
                 </div>
                 <div class="item-regua umid">
                     <h4>Umidade Máxima Captada</h4>
-                    <h2 style="color: darkorange;">95.0%</h2>
+                    <h2 id="umidade_maxima"></h2>
                 </div>
                 <div class="item-regua umid">
                     <h4>Umidade Mínima Captada</h4>
-                    <h2 style="color: red;">79.1%</h2>
+                    <h2 id="umidade_minima"></h2>
                 </div>
             </div>
             <div class="cards">
                 <div class="card">
                     <h1>índice de Temperatura - Atual</h1>
                     <div class="temperatura">
-                        <p id="temp_aquario_1">2°C</p>
+                        <p id="temp_caminhao"></p>
                     </div>
                     <div class="cor-alerta" id="card_1"></div>
                 </div>
                 <div class="card">
                     <h1>índice de Umidade - Atual</h1>
-                    <div class="temperatura">
-                        <p id="temp_aquario_2">93.6%</p>
+                    <div class="">
+                        <p id="umid_caminhao"></p>
                     </div>
                     <div class="cor-alerta" id="card_2"></div>
                 </div>
@@ -128,7 +129,7 @@
                                 <h4>São Paulo - SP</h4>
                             </div>
                             <div>
-                                <h3>Placa</h3>
+                                <h3>placa</h3>
                                 <h4>CBW6000</h4>
                             </div>
                             <div>
@@ -152,45 +153,491 @@
 </body>
 
 <script>
+    var placa = 'CTU1350'
+    var temp_max = 0;
+    var temp_min = 0;
+    var umid_max = 0;
+    var umid_min = 0;
 
-
-    var paginacao = {};
-    var tempo = {};
-    function obterDados(grafico, endpoint) {
-        var http = new XMLHttpRequest();
-        http.open('GET', 'http://localhost:3000/sensores/' + endpoint, false);
-        http.send(null);
-        var valores = JSON.parse(http.responseText);
-        if (paginacao[endpoint] == null) {
-            paginacao[endpoint] = 0;
-        }
-        if (tempo[endpoint] == null) {
-            tempo[endpoint] = 0;
-        }
-        // Exibir à partir do último elemento exibido anteriormente
-        var ultimaPaginacao = paginacao[endpoint];
-        paginacao[endpoint] = valores.length;
-        var valores = valores.slice(ultimaPaginacao);
-        valores.forEach((valor) => {
-            //Máximo de 60 itens exibidos no gráfico
-            if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
-                grafico.data.labels.shift();
-                grafico.data.datasets[0].data.shift();
-            }
-
-            grafico.data.labels.push(tempo[endpoint]++);
-            grafico.data.datasets[0].data.push(parseFloat(valor));
-            grafico.update();
-        })
+    function atualizacaoPeriodica() {
+        obterdados_ultimas(placa);
+        obterdados_maximas_minimas(placa)
+        setTimeout(atualizacaoPeriodica, 5000);
     }
 
-    setInterval(() => {
-        obterDados(dht11Umidade, 'dht11/umidade');
-        // obterDados(dht11Temperatura, 'dht11/temperatura');
-        // obterDados(luminosidade, 'luminosidade');
-        obterDados(lm35Temperatura, 'lm35/temperatura');
-        // obterDados(chave, 'chave');
-    }, 1000);
+    function obterdados_ultimas(placa) {
+        fetch(`/medidas/tempo-real/${placa}`)
+            .then(resposta => {
+
+                if (resposta.ok) {
+                    resposta.json().then(resposta => {
+
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        alertar_temperatura(resposta, placa)
+                        alertar_umidade(resposta, placa)
+
+
+                    });
+                } else {
+
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do caminhão p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function obterdados_maximas_minimas(placa) {
+        fetch(`/medidas/maximas-minimas/${placa}`)
+            .then(resposta1 => {
+
+                if (resposta1.ok) {
+                    resposta1.json().then(resposta1 => {
+
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta1)}`);
+
+                        alertar_temperatura_max_min(resposta1, placa)
+                        alertar_umidade_max_min(resposta1, placa)
+
+
+                    });
+                } else {
+
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do caminhão p/ gráfico: ${error.message}`);
+            });
+    }
+
+
+
+    // var ListaTemp = []
+    // var ListaUmid = []
+
+    // function limpar_listas() {
+    //     if (ListaUmid.length > 7) {
+    //         for (var contador = 0; ListaUmid.length > 7; contador++) {
+    //             ListaUmid.splice(contador, 1)
+    //         }
+
+    //     }
+
+    //     if (ListaTemp.length > 7)
+    //         for (var contador = 0; ListaTemp.length > 7; contador++) {
+    //             ListaTemp.splice(contador, 1)
+    //         }
+    // }
+
+
+
+
+    function alertar_temperatura(resposta, placa) {
+        var temp = resposta[0].temperatura;
+
+
+
+
+        // ListaTemp.push(Number(resposta[0].temperatura))
+        // ListaTemp.push(Number(resposta[1].temperatura))
+        // ListaTemp.push(Number(resposta[2].temperatura))
+        // ListaTemp.push(Number(resposta[3].temperatura))
+        // ListaTemp.push(Number(resposta[4].temperatura))
+        // ListaTemp.push(Number(resposta[5].temperatura))
+        // ListaTemp.push(Number(resposta[6].temperatura))
+
+        // for (var contador = 0; contador < ListaTemp.length; contador++) {
+        //     if (ListaTemp[contador] > temp_max) {
+        //         temp_max = ListaTemp[contador]
+        //     }
+
+        //     if (ListaTemp[contador] < temp_min) {
+        //         temp_min = ListaTemp[contador]
+        //     }
+
+        // }
+
+
+        var limites = {
+            critico_mtQuente: 10,
+            emergencia_Quente: 8,
+            atencao_quente: 4,
+            ideal_3: 0,
+            ideal_0: 3,
+            atencao_frio: -0.1,
+            emergencia_frio: -0.4,
+            critico_mtFrio: -0.5
+        };
+
+        // Validando a classe do Último registro de Temperatura
+
+        var classe_temperatura = 'cor-alerta';
+
+        if (temp >= limites.critico_mtQuente) {
+            classe_temperatura = 'cor-alerta critico_mtQuente';
+            console.log("caiu no 1")
+        }
+        else if (temp < limites.critico_mtQuente && temp >= limites.emergencia_quente) {
+            classe_temperatura = 'cor-alerta emergencia_quente';
+            console.log("caiu no 2")
+        }
+        else if (temp < limites.emergencia_Quente && temp >= limites.atencao_quente) {
+            classe_temperatura = 'cor-alerta atencao_quente';
+            console.log("caiu no 3")
+        }
+        else if (temp <= limites.ideal_3 && temp >= limites.ideal_0) {
+            classe_temperatura = 'cor-alerta ideal';
+            console.log("caiu no 4")
+        }
+        else if (temp <= limites.atencao_frio && temp > limites.emergencia_frio) {
+            classe_temperatura = 'cor-alerta atencao_frio';
+            console.log("caiu no 5")
+        }
+        else if (temp <= limites.emergencia_frio && temp > limites.critico_mtFrio) {
+            classe_temperatura = 'cor-alerta emergencia_frio';
+            console.log("caiu no 6")
+        }
+        else if (temp <= limites.critico_mtFrio) {
+            classe_temperatura = 'cor-alerta critico_mtFrio';
+            console.log("caiu no 7")
+        }
+
+
+        temp_caminhao.innerHTML = temp + "°C";
+
+
+        // alterando
+        const temp_caminhao_estilo = document.getElementById('temp_caminhao')
+        temp_caminhao_estilo.className = classe_temperatura;
+    }
+
+
+
+    function alertar_temperatura_max_min(resposta1, placa) {
+        temp_max = resposta1[0].maximo_temperatura
+        temp_min = resposta1[0].minimo_temperatura
+
+        var classe_temperatura_max = 'cor-alerta';
+
+        var limites = {
+            critico_mtQuente: 10,
+            emergencia_Quente: 8,
+            atencao_quente: 4,
+            ideal_3: 0,
+            ideal_0: 3,
+            atencao_frio: -0.1,
+            emergencia_frio: -0.4,
+            critico_mtFrio: -0.5
+        };
+
+
+
+        // Validando a Classe do Registro Máximo de temperatura dentre 7 linhas
+
+        if (temp_max >= limites.critico_mtQuente) {
+            classe_temperatura_max = 'cor-alerta critico_mtQuente';
+            console.log("caiu no 1")
+        }
+        else if (temp_max < limites.critico_mtQuente && temp_max >= limites.emergencia_quente) {
+            classe_temperatura_max = 'cor-alerta emergencia_quente';
+            console.log("caiu no 2")
+        }
+        else if (temp_max < limites.emergencia_Quente && temp_max >= limites.atencao_quente) {
+            classe_temperatura_max = 'cor-alerta atencao_quente';
+            console.log("caiu no 3")
+        }
+        else if (temp_max <= limites.ideal_3 && temp_max >= limites.ideal_0) {
+            classe_temperatura_max = 'cor-alerta ideal';
+            console.log("caiu no 4")
+        }
+        else if (temp_max <= limites.atencao_frio && temp_max > limites.emergencia_frio) {
+            classe_temperatura_max = 'cor-alerta atencao_frio';
+            console.log("caiu no 5")
+        }
+        else if (temp_max <= limites.emergencia_frio && temp_max > limites.critico_mtFrio) {
+            classe_temperatura_max = 'cor-alerta emergencia_frio';
+            console.log("caiu no 6")
+        }
+        else if (temp_max <= limites.critico_mtFrio) {
+            classe_temperatura_max = 'cor-alerta critico_mtFrio';
+            console.log("caiu no 7")
+        }
+
+
+        temperatura_maxima.innerHTML = temp_max + "°C";
+
+
+        // alterando
+        const temp_max_estilo = document.getElementById('temperatura_maxima')
+        temp_max_estilo.className = classe_temperatura_max;
+
+
+        // Validando a Classe do Registro Mínimo de temperatura dentre 7 linhas
+        var classe_temperatura_min = 'cor-alerta';
+
+        if (temp_min >= limites.critico_mtQuente) {
+            classe_temperatura_min = 'cor-alerta critico_mtQuente';
+            console.log("caiu no 1")
+        }
+        else if (temp_min < limites.critico_mtQuente && temp_min >= limites.emergencia_quente) {
+            classe_temperatura_min = 'cor-alerta emergencia_quente';
+            console.log("caiu no 2")
+        }
+        else if (temp_min < limites.emergencia_Quente && temp_min >= limites.atencao_quente) {
+            classe_temperatura_min = 'cor-alerta atencao_quente';
+            console.log("caiu no 3")
+        }
+        else if (temp_min <= limites.ideal_3 && temp_min >= limites.ideal_0) {
+            classe_temperatura_min = 'cor-alerta ideal';
+            console.log("caiu no 4")
+        }
+        else if (temp_min <= limites.atencao_frio && temp_min > limites.emergencia_frio) {
+            classe_temperatura_min = 'cor-alerta atencao_frio';
+            console.log("caiu no 5")
+        }
+        else if (temp_min <= limites.emergencia_frio && temp_min > limites.critico_mtFrio) {
+            classe_temperatura_min = 'cor-alerta emergencia_frio';
+            console.log("caiu no 6")
+        }
+        else if (temp_min <= limites.critico_mtFrio) {
+            classe_temperatura_min = 'cor-alerta critico_mtFrio';
+            console.log("caiu no 7")
+        }
+
+
+        temperatura_minima.innerHTML = temp_min + "°C";
+
+
+        // alterando
+        const temp_min_estilo = document.getElementById('temperatura_minima')
+        temp_min_estilo.className = classe_temperatura_min;
+    }
+
+    function alertar_umidade(resposta, placa) {
+        var umid = resposta[0].umidade;
+
+
+
+        // ListaUmid.push(Number(resposta[0].umidade))
+        // ListaUmid.push(Number(resposta[1].umidade))
+        // ListaUmid.push(Number(resposta[2].umidade))
+        // ListaUmid.push(Number(resposta[3].umidade))
+        // ListaUmid.push(Number(resposta[4].umidade))
+        // ListaUmid.push(Number(resposta[5].umidade))
+        // ListaUmid.push(Number(resposta[6].umidade))
+
+        // for (var contador = 0; contador < ListaUmid.length; contador++) {
+        //     if (ListaUmid[contador] > umid_max) {
+        //         umid_max = ListaUmid[contador]
+        //     }
+
+        //     if (ListaUmid[contador] < umid_min) {
+        //         umid_min = ListaUmid[contador]
+        //     }
+
+        // }
+
+        var limites = {
+            critico_mtUmido: 100,
+            emergencia_Umido: 98,
+            atencao_Umido: 96,
+            ideal_max: 94,
+            ideal_min: 90,
+            atencao_pouca_desitradacao: 87,
+            emergencia_media_desitradacao: 84,
+            critico_alta_desitradacao: 80
+        };
+
+        var classe_umidade = 'cor-alerta';
+
+        // Validando a classe do Último registro de Umidade
+
+        if (umid >= limites.critico_mtUmido) {
+            classe_umidade = 'cor-alerta critico_mtUmido';
+            console.log("caiu no 1")
+        }
+        else if (umid < limites.critico_mtUmido && umid >= limites.emergencia_Umido) {
+            classe_umidade = 'cor-alerta emergencia_Umido';
+            console.log("caiu no 2")
+        }
+        else if (umid < limites.emergencia_Umid && umid >= limites.atencao_Umido) {
+            classe_umidade = 'cor-alerta atencao_Umido';
+            console.log("caiu no 3")
+        }
+        else if (umid <= limites.ideal_max && umid >= limites.ideal_min) {
+            classe_umidade = 'cor-alerta ideal';
+            console.log("caiu no 4")
+        }
+        else if (umid <= limites.atencao_pouca_desitradacao && umid > limites.emergencia_media_desitradacao) {
+            classe_umidade = 'cor-alerta atencao_pouca_desitradacao';
+            console.log("caiu no 5")
+        }
+        else if (umid <= limites.emergencia_media_desitradacao && umid > limites.critico_alta_desitradacao) {
+            classe_umidade = 'cor-alerta emergencia_frio';
+            console.log("caiu no 6")
+        }
+        else if (umid <= limites.critico_alta_desitradacao) {
+            classe_umidade = 'cor-alerta critico_alta_desitradacao';
+            console.log("caiu no 7")
+        }
+
+
+        umid_caminhao.innerHTML = umid + "%";
+
+
+        // alterando
+        const umid_caminhao_estilo = document.getElementById('umid_caminhao')
+        umid_caminhao_estilo.className = classe_umidade;
+    }
+
+    function alertar_umidade_max_min(resposta1, placa) {
+        
+        umid_max = resposta1[0].maximo_umidade
+        umid_min = resposta1[0].minimo_umidade
+
+        var limites = {
+            critico_mtUmido: 100,
+            emergencia_Umido: 98,
+            atencao_Umido: 96,
+            ideal_max: 94,
+            ideal_min: 90,
+            atencao_pouca_desitradacao: 87,
+            emergencia_media_desitradacao: 84,
+            critico_alta_desitradacao: 80
+        };
+
+
+        var classe_umidade_max = 'cor-alerta';
+
+                // Validando a classe do registro Máximo dentro de 7 linhas
+        if (umid_max >= limites.critico_mtUmido) {
+            classe_umidade_max = 'cor-alerta critico_mtUmido';
+            console.log("caiu no 1")
+        }
+        else if (umid_max < limites.critico_mtUmido && umid_max >= limites.emergencia_Umido) {
+            classe_umidade_max = 'cor-alerta emergencia_Umido';
+            console.log("caiu no 2")
+        }
+        else if (umid_max < limites.emergencia_Umid && umid_max >= limites.atencao_Umido) {
+            classe_umidade_max = 'cor-alerta atencao_Umido';
+            console.log("caiu no 3")
+        }
+        else if (umid_max <= limites.ideal_max && umid_max >= limites.ideal_min) {
+            classe_umidade_max = 'cor-alerta ideal';
+            console.log("caiu no 4")
+        }
+        else if (umid_max <= limites.atencao_pouca_desitradacao && umid_max > limites.emergencia_media_desitradacao) {
+            classe_umidade_max = 'cor-alerta atencao_pouca_desitradacao';
+            console.log("caiu no 5")
+        }
+        else if (umid_max <= limites.emergencia_media_desitradacao && umid_max > limites.critico_alta_desitradacao) {
+            classe_umidade_max = 'cor-alerta emergencia_frio';
+            console.log("caiu no 6")
+        }
+        else if (umid_max <= limites.critico_alta_desitradacao) {
+            classe_umidade_max = 'cor-alerta critico_alta_desitradacao';
+            console.log("caiu no 7")
+        }
+
+
+        umidade_maxima.innerHTML = umid_max + "%";
+
+
+        // alterando
+        const umid_max_estilo = document.getElementById('umidade_maxima')
+        umid_max_estilo.className = classe_umidade_max;
+
+
+        // Validando a classe do registro Minimo dentro de 7 linhas
+
+        var classe_umidade_min = 'cor-alerta';
+
+
+        if (umid_min >= limites.critico_mtUmido) {
+            classe_umidade_min = 'cor-alerta critico_mtUmido';
+            console.log("caiu no 1")
+        }
+        else if (umid_min < limites.critico_mtUmido && umid_min >= limites.emergencia_Umido) {
+            classe_umidade_min = 'cor-alerta emergencia_Umido';
+            console.log("caiu no 2")
+        }
+        else if (umid_min < limites.emergencia_Umid && umid_min >= limites.atencao_Umido) {
+            classe_umidade_min = 'cor-alerta atencao_Umido';
+            console.log("caiu no 3")
+        }
+        else if (umid_min <= limites.ideal_max && umid_min >= limites.ideal_min) {
+            classe_umidade_min = 'cor-alerta ideal';
+            console.log("caiu no 4")
+        }
+        else if (umid_min <= limites.atencao_pouca_desitradacao && umid_min > limites.emergencia_media_desitradacao) {
+            classe_umidade_min = 'cor-alerta atencao_pouca_desitradacao';
+            console.log("caiu no 5")
+        }
+        else if (umid_min <= limites.emergencia_media_desitradacao && umid_min > limites.critico_alta_desitradacao) {
+            classe_umidade_min = 'cor-alerta emergencia_frio';
+            console.log("caiu no 6")
+        }
+        else if (umid_min <= limites.critico_alta_desitradacao) {
+            classe_umidade_min = 'cor-alerta critico_alta_desitradacao';
+            console.log("caiu no 7")
+        }
+
+
+        umidade_minima.innerHTML = umid_min + "%";
+
+
+        // alterando
+        const umid_min_estilo = document.getElementById('umidade_minima')
+        umid_min_estilo.className = classe_umidade_min;
+    }
+
+
+
+
+
+
+
+
+    // var paginacao = {};
+    // var tempo = {};
+    // function obterDados(grafico, endpoint) {
+    //     var http = new XMLHttpRequest();
+    //     http.open('GET', 'http://localhost:3000/sensores/' + endpoint, false);
+    //     http.send(null);
+    //     var valores = JSON.parse(http.responseText);
+    //     if (paginacao[endpoint] == null) {
+    //         paginacao[endpoint] = 0;
+    //     }
+    //     if (tempo[endpoint] == null) {
+    //         tempo[endpoint] = 0;
+    //     }
+    //     // Exibir à partir do último elemento exibido anteriormente
+    //     var ultimaPaginacao = paginacao[endpoint];
+    //     paginacao[endpoint] = valores.length;
+    //     var valores = valores.slice(ultimaPaginacao);
+    //     valores.forEach((valor) => {
+    //         //Máximo de 60 itens exibidos no gráfico
+    //         if (grafico.data.labels.length == 10 && grafico.data.datasets[0].data.length == 10) {
+    //             grafico.data.labels.shift();
+    //             grafico.data.datasets[0].data.shift();
+    //         }
+
+    //         grafico.data.labels.push(tempo[endpoint]++);
+    //         grafico.data.datasets[0].data.push(parseFloat(valor));
+    //         grafico.update();
+    //     })
+    // }
+
+    // setInterval(() => {
+    //     obterDados(dht11Umidade, 'dht11/umidade');
+    //     // obterDados(dht11Temperatura, 'dht11/temperatura');
+    //     // obterDados(luminosidade, 'luminosidade');
+    //     obterDados(lm35Temperatura, 'lm35/temperatura');
+    //     // obterDados(chave, 'chave');
+    // }, 1000);
 
 </script>
 
