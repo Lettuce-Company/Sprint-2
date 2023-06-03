@@ -265,8 +265,8 @@
             critico_mtQuente: 10,
             emergencia_Quente: 8,
             atencao_quente: 4,
-            ideal_3: 0,
-            ideal_0: 3,
+            ideal_3: 3,
+            ideal_0: 0,
             atencao_frio: -0.1,
             emergencia_frio: -0.4,
             critico_mtFrio: -0.5
@@ -326,8 +326,8 @@
             critico_mtQuente: 10,
             emergencia_Quente: 8,
             atencao_quente: 4,
-            ideal_3: 0,
-            ideal_0: 3,
+            ideal_3: 3,
+            ideal_0: 0,
             atencao_frio: -0.1,
             emergencia_frio: -0.4,
             critico_mtFrio: -0.5
@@ -376,7 +376,7 @@
 
 
         // Validando a Classe do Registro Mínimo de temperatura dentre 7 linhas
-        var classe_temperatura_min = 'cor-alerta';
+        var classe_temperatura_min = 'cor-alerta'
 
         if (temp_min >= limites.critico_mtQuente) {
             classe_temperatura_min = 'cor-alerta critico_mtQuente';
@@ -413,7 +413,7 @@
 
         // alterando
         const temp_min_estilo = document.getElementById('temperatura_minima')
-        temp_min_estilo.className = classe_temperatura_min;
+        temp_min_estilo.className = classe_temperatura_min
     }
 
     function alertar_umidade(resposta, placa) {

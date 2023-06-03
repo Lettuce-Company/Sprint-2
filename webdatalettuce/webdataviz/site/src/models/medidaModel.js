@@ -68,12 +68,24 @@ function buscarMedidasMaximasMinimas(placa) {
                     order by id desc`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `SELECT max(temperatura) as maximo_temperatura, max(umidade) as maximo_umidade , min(temperatura) as minimo_temperatura, min(umidade) as minimo_umidade
-         FROM
-         VW_KPI_Extremos 
-         WHERE fkCaminhao = '${placa}' AND fkSensor = (SELECT 
-            idSensor
-            FROM Sensor WHERE fkCaminhaoSensor = '${placa}')  order by idLeitura DESC LIMIT 7;`;
+        instrucaoSql = `SELECT
+    MAX(leitura.temperatura) AS maximo_temperatura,
+    MAX(leitura.umidade) AS maximo_umidade,
+    MIN(leitura.temperatura) AS minimo_temperatura,
+    MIN(leitura.umidade) AS minimo_umidade
+FROM
+    VW_KPI_Extremos leitura
+    JOIN (
+        SELECT idLeitura
+        FROM VW_KPI_Extremos
+        WHERE
+            fkCaminhao = '${placa}'
+            AND fkSensor = (
+                SELECT idSensor FROM Sensor WHERE fkCaminhaoSensor = '${placa}'
+            )
+        ORDER BY idLeitura DESC
+        LIMIT 7
+    ) AS subquery ON leitura.idLeitura = subquery.idLeitura`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
