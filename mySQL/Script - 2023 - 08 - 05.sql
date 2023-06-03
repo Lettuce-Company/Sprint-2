@@ -228,7 +228,7 @@ CONCAT(funcionario.nome, ' ', funcionario.sobrenome) AS 'Funcionário',
 Funcionario.email as 'E-mail',
 Funcionario.telefone as 'Telefone',
 Funcionario.Cargo as 'Cargo',
-Funcionario.permissao as 'Permissão do funcionário',
+Funcionario.adm as 'Permissão do funcionário',
 Funcionario.senha as 'Senha',
 Chefe.nome as 'Chefe'
 FROM Funcionario JOIN Funcionario AS Chefe
@@ -238,6 +238,7 @@ ON cnpj = Funcionario.fkEmpresa;
 
 -- View dos Dados dos Funcionários
 SELECT * FROM VW_Func;
+select * from funcionario;
 
 CREATE VIEW VW_Carga AS 
 SELECT 
@@ -250,7 +251,7 @@ FROM Carga
 JOIN Viagem ON 
 idCarga = Viagem.fkCarga;
 
--- View dos dados da carga
+-- View dos dados 
 SELECT * FROM VW_Carga;
 
 
@@ -299,5 +300,11 @@ DELIMITER ;
 
 -- select leitura.temperatura, leitura.dtHora, sensor.tipo from leitura join sensor on fkSensor = idSensor where tipo = 'LM35';
 
-
- 
+select * from leitura;
+insert into leitura (temperatura, fkSensor) value
+(80 - 27.3, 1);
+select * from sensor;
+create view VW_Grafico as select temperatura, umidade, date_format(dtHora,'%H:%i:%s %d/%m/%Y') as data_formatado, caminhao.placa, leitura.idLeitura from leitura join sensor on fkSensor = idSensor join caminhao on fkCaminhaoSensor = placa;
+select temperatura, umidade, date_format as dtFormatado, caminhao.placa, leitura.idLeitura from leitura join sensor on fkSensor = idSensor join caminhao on fkCaminhaoSensor = placa;
+select * from VW_Grafico where placa = 'CTU1350' order by idLeitura desc limit 7;
+select * from VW_Grafico;

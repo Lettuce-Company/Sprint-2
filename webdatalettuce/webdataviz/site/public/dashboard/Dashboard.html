@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="card.css">
     <script src="main.js"></script>
+    <script src="../js/funcoes.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -25,16 +26,16 @@
     </style>
 </head>
 
-<body>
+<body onload="validarSessao()">
 
-    </div>
-    <section class="main">
-        <div class="header-left dash-header">
-            <div class="sidebar-logo">
+    
+      <section class="main">
+          <div class="header-left dash-header">
+              <div class="sidebar-logo">
                 <img src="../assets/logo_borda.png" alt="Alface lettuce company">
             </div>
-            <h3>Dashboard</h3>
-            <span class="sidebar-active">Bem vindo, Usuário</span>
+            <h3>Dashboard — <span id="b_empresa"></span></h3>
+            <span class="sidebar-active">Bem vindo,<span id="b_usuario"></span></span>
             <a href="dashboard.html"><i class="fa-solid fa-user"></i>Home</a>
             <a href="gerenciamentoFunc.html" class="funcionario"><i class="fa-solid fa-id-card"></i>Gerenciar
                 Funcionário</i></a>
@@ -59,7 +60,7 @@
 
 
 
-        <div class="dash">  
+        <div class="dash">
 
             <div class="regua-macro">
                 <div class="item-regua-macro temp Atencao">

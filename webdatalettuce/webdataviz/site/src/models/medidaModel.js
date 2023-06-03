@@ -1,28 +1,8 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(placa) {
-
-    instrucaoSql = ''
-
-    if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top ${limite_linhas}
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,  
-                        momento,
-                        FORMAT(momento, 'HH:mm:ss') as momento_grafico
-                    from medida
-                    where fk_aquario = ${placa}
-                    order by id desc`;
-    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `SELECT temperatura, umidade, dtHora FROM VW_KPI_Atuais WHERE fkCaminhao = '${placa}' AND fkSensor  = (SELECT 
-            idSensor
-            FROM Sensor WHERE fkCaminhaoSensor = '${placa}')
-            ORDER BY idLeitura DESC LIMIT 1`;
-    } else {
-        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
-        return
-    }
-
+function buscarUltimasMedidas(placa, limite_linhas) {
+    instrucaoSql = `select * from VW_Grafico where placa = '${placa}' order by idLeitura desc limit ${limite_linhas};`;
+    
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
