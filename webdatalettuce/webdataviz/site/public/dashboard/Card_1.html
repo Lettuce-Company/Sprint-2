@@ -174,15 +174,15 @@
 
     function obterdados_ultimas(placa) {
         fetch(`/medidas/tempo-real/${placa}`)
-            .then(resposta => {
+            .then(resposta_tempo_real => {
 
-                if (resposta.ok) {
-                    resposta.json().then(resposta => {
+                if (resposta_tempo_real.ok) {
+                    resposta_tempo_real.json().then(resposta_tempo_real => {
 
-                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta_tempo_real)}`);
 
-                        alertar_temperatura(resposta, placa)
-                        alertar_umidade(resposta, placa)
+                        alertar_temperatura(resposta_tempo_real, placa)
+                        alertar_umidade(resposta_tempo_real, placa)
 
 
                     });
@@ -228,19 +228,19 @@
 
 
 
-    function alertar_temperatura(resposta, placa) {
-        var temp = resposta[0].temperatura;
+    function alertar_temperatura(resposta_tempo_real, placa) {
+        var temp = resposta_tempo_real[0].temperatura;
 
 
 
 
-        // ListaTemp.push(Number(resposta[0].temperatura))
-        // ListaTemp.push(Number(resposta[1].temperatura))
-        // ListaTemp.push(Number(resposta[2].temperatura))
-        // ListaTemp.push(Number(resposta[3].temperatura))
-        // ListaTemp.push(Number(resposta[4].temperatura))
-        // ListaTemp.push(Number(resposta[5].temperatura))
-        // ListaTemp.push(Number(resposta[6].temperatura))
+        // ListaTemp.push(Number(resposta_tempo_real[0].temperatura))
+        // ListaTemp.push(Number(resposta_tempo_real[1].temperatura))
+        // ListaTemp.push(Number(resposta_tempo_real[2].temperatura))
+        // ListaTemp.push(Number(resposta_tempo_real[3].temperatura))
+        // ListaTemp.push(Number(resposta_tempo_real[4].temperatura))
+        // ListaTemp.push(Number(resposta_tempo_real[5].temperatura))
+        // ListaTemp.push(Number(resposta_tempo_real[6].temperatura))
 
         // for (var contador = 0; contador < ListaTemp.length; contador++) {
         //     if (ListaTemp[contador] > temp_max) {
@@ -409,8 +409,8 @@
         temp_min_estilo.className = classe_temperatura_min
     }
 
-    function alertar_umidade(resposta, placa) {
-        var umid = resposta[0].umidade;
+    function alertar_umidade(resposta_tempo_real, placa) {
+        var umid = resposta_tempo_real[0].umidade;
 
 
 
@@ -645,10 +645,10 @@
 
         fetch(`/medidas/ultimas/${placa}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
-                response.json().then(function (resposta3) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta3)}`);
-                    resposta3.reverse();
-                    plotarGrafico(resposta3, placa);
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+                    plotarGrafico(resposta, placa);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -662,12 +662,12 @@
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGrafico(resposta3, placa) {
-        grafico_lm35(resposta3, placa)
-        grafico_dht11(resposta3, placa)
+    function plotarGrafico(resposta, placa) {
+        grafico_lm35(resposta, placa)
+        grafico_dht11(resposta, placa)
     }
 
-    function grafico_lm35(resposta3, placa) {
+    function grafico_lm35(resposta, placa) {
         console.log('iniciando plotagem do gráfico...');
 
         // Criando estrutura para plotar gráfico - labels
@@ -690,11 +690,11 @@
 
         console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-        console.log(resposta3)
+        console.log(resposta)
 
         // Inserindo valores recebidos em estrutura para plotar o gráfico
-        for (i = 0; i < resposta3.length; i++) {
-            var registro = resposta3[i];
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
             /*var diaDoRegistro = new Date(Date.parse(registro.data_formatado));
             var diaFormatado = `${diaDoRegistro.getDay()}/${diaDoRegistro.getMonth()}/${diaDoRegistro.getFullYear()} ${diaDoRegistro.getHours()}:${diaDoRegistro.getMinutes()}`
             labels.push(registro.diaFormatado);*/
@@ -730,7 +730,7 @@
         setTimeout(() => atualizarGraficoLM35(placa, dados, myChartLM35), 5000);
     }
 
-    function grafico_dht11(resposta3, placa) {
+    function grafico_dht11(resposta, placa) {
 
         console.log('iniciando plotagem do gráfico...');
 
@@ -754,11 +754,11 @@
 
         console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-        console.log(resposta3)
+        console.log(resposta)
 
         // Inserindo valores recebidos em estrutura para plotar o gráfico
-        for (i = 0; i < resposta3.length; i++) {
-            var registro = resposta3[i];
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
             labels.push(registro.data_formatado);
             dados.datasets[0].data.push(registro.umidade);
             // dados.datasets[1].data.push(registro.umidade);
