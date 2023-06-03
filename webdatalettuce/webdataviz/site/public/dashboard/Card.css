@@ -48,7 +48,7 @@ body {
   display: none;
 }
 
-.loading-div img {.header-left
+.loading-div img {
   height: 50px;
   width: 50px;
 }
@@ -69,23 +69,10 @@ body {
 .header-left {
   position: fixed;
   top: 0;
-<<<<<<< HEAD
-  left: 25%;
-  margin-right: 0px;
-}
-
-.header-left h1 {
-  color: black;
-}
-
-.hello {
-  width: 100%;
-=======
   left: 0;
   z-index: 999;
   height: 100vh;
   width: 20%;
->>>>>>> f605ff08e166c0779ee73d5810338bd50ffeabf3
   display: flex;
   flex-direction: column;
   border-right: 3px solid rgb(23, 69, 9);
@@ -139,6 +126,7 @@ body {
 
 .dash-header {
   background-color: #228B22;
+  ;
 }
 
 .dash {
@@ -184,7 +172,14 @@ body {
   margin-top: 30px;
 }
 
+.botoes_gerenciar{
+  display: flex;
+  flex-direction: column;
+}
 
+.botoes_gerenciar button{
+width: 260px;
+}
 
 .temp {
   background-color: white;
@@ -196,9 +191,7 @@ body {
   border-radius: 30px;
 }
 
-.ideal {
-  background-color: #74845e;
-}
+
 
 .item-regua {
   padding: 5px;
@@ -216,8 +209,6 @@ body {
   padding-top: 15px;
 }
 
-<<<<<<< HEAD
-=======
 .critico_mtQuente,
 .critico_mtFrio {
   color: darkred;
@@ -240,7 +231,6 @@ body {
 
 
 
->>>>>>> f605ff08e166c0779ee73d5810338bd50ffeabf3
 .cards {
   display: flex;
   flex-direction: row;
@@ -435,6 +425,7 @@ margin-top: 30px;
 .div_button_procurar_caminhao h3{
   font-size: 24px;
 font-weight: 500;
+
 }
 
 .btn-editar {

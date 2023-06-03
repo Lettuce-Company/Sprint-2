@@ -1,0 +1,27 @@
+
+.critico_mtQuente,
+.critico_mtFrio,
+.critico_mtUmido,
+.critico_alta_desitradacao {
+  color: darkred;
+}
+
+.emergencia_Quente,
+.emergencia_frio,
+.emergencia_Umido,
+.emergencia_media_desitradacao
+ {
+  color: darkorange;
+}
+
+.atencao_quente,
+.atencao_frio,
+.atencao_Umido,
+.atencao_pouca_desitradacao {
+  color: #CCCC00;
+}
+
+.ideal
+ {
+  color: #9ccc65;
+}

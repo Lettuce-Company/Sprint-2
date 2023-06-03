@@ -51,13 +51,22 @@ h1 {
   height: 65px;
 }
 
+.header-left img {
+  width: 60%;
+}
+
+.sidebar-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #8cd147;
+  height: 100%
+}
+
 
 .header-left h1 {
   color: black;
-}
-
-.header-left img {
-  width: 60%;
 }
 
 .sidebar-logo {
@@ -135,7 +144,7 @@ h1 {
   display: flex;
   position: relative;
   height: 35vh;
-  width: fit-content;
+  width: 34vw;
   align-items: center;
   padding: 10px;
   background-color: white;
@@ -396,55 +405,4 @@ button a {
 
 .item-regua.dados h4{
   font-size: 23px;
-}
-
-
-.critico_mtQuente,
-.critico_mtFrio {
-  color: darkred;
-}
-
-.emergencia_Quente,
-.emergencia_frio {
-  color: darkorange;
-}
-
-.atencao_quente,
-.atencao_frio {
-  color: #CCCC00;
-}
-
-.ideal_0,
-.ideal_3 {
-  color: #9ccc65;
-}
-
-.Atencao {
-  background-color: #fff;
-  border-color: #CCCC00;
-  font-size: 20px;
-}
-
-.Atencao h2 {
-  color: darkorange;
-}
-
-.Emergencia {
-  background-color: #fff;
-  border-color: darkorange;
-  font-size: 20px;
-}
-
-.Emergencia h2 {
-  color: yellow;
-}
-
-.Critico {
-  background-color: #fff;
-  border-color: darkred;
-  font-size: 20px;
-}
-
-.Critico h2 {
-  color: green;
 }

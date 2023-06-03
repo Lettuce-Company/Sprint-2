@@ -15,6 +15,7 @@ insert into Empresa values
 ('JuicyLettuce', '12345678965478', '11939249423');
 
 select * from Empresa;
+SELECT * FROM Funcionario;
 
 create table if not exists Funcionario(
 idFuncionario int auto_increment,
@@ -25,7 +26,7 @@ cargo varchar(30) not null,
 telefone char(11) not null,
 email varchar(45) unique not null,  constraint ckhEmailfunc check(Email like '%@%'),
 dtNasc date not null,
-permissao boolean,
+adm boolean,
 status boolean,
 senha varchar(100) not null,
 
@@ -153,21 +154,6 @@ references Sensor(idSensor),
 
 SELECT * FROM Leitura;
 
-CREATE VIEW VW_Caminhao_leitura AS
-select 
-Leitura.temperatura as 'Temperatura',
-Leitura.umidade as 'Umidade',
-Leitura.dtHora as 'Data e hora da leitura'
-FROM Leitura 
-JOIN Sensor
-ON fkSensor = idSensor
-JOIN Carga
-JOIN Caminhao
-ON fkCaminhao = placa 
-ORDER BY temperatura desc limit 7;
-
-
-DROP VIEW VW_KPI_Extremos;
  CREATE VIEW VW_KPI_Extremos AS
 SELECT 
 idLeitura,
@@ -217,7 +203,7 @@ ON fkCarga = idCarga;
 SELECT temperatura, umidade, dtHora FROM VW_KPI_Atuais WHERE fkCaminhao = 'CTU1350' AND fkSensor  = (SELECT 
 idSensor
 FROM Sensor WHERE fkCaminhaoSensor = 'CTU1350')
-ORDER BY idLeitura DESC LIMIT 1;
+ORDER BY idLeitura DESC;
 
 
 SELECT 
@@ -229,17 +215,12 @@ SELECT
 Motorista.nome,
 Motorista.email,
 Motorista.telefone,
-Motorista.CNPJ 
+Motorista.CNH
 FROM Motorista JOIN Viagem 
 ON idMotorista = fkMotorista;
 
 -- View dos dados do motorista
 SELECT * FROM VW_Motorista;
-
-SELECT 
-idSensor
-FROM Sensor WHERE fkCaminhaoSensor = 'CTU1350';
-
 
 CREATE VIEW VW_Func AS
 SELECT 
@@ -247,7 +228,7 @@ CONCAT(funcionario.nome, ' ', funcionario.sobrenome) AS 'Funcionário',
 Funcionario.email as 'E-mail',
 Funcionario.telefone as 'Telefone',
 Funcionario.Cargo as 'Cargo',
-Funcionario.permissao as 'Permissão do funcionário',
+Funcionario.adm as 'Permissão do funcionário',
 Funcionario.senha as 'Senha',
 Chefe.nome as 'Chefe'
 FROM Funcionario JOIN Funcionario AS Chefe
@@ -257,20 +238,20 @@ ON cnpj = Funcionario.fkEmpresa;
 
 -- View dos Dados dos Funcionários
 SELECT * FROM VW_Func;
+select * from funcionario;
 
 CREATE VIEW VW_Carga AS 
 SELECT 
 Carga.produto as 'Produto',
 Carga.qtdKg as 'Quantidade de quilos',
 Carga.dtHr as 'Data da inserção da carga',
-Viagem.origem as 'Endereço da Origem',
-Viagem.destino as 'Endereço do Destino',
-Viagem.duracao as 'Duração da Viagem em minutos'
+Viagem.cepOrigem as 'CEP da Origem',
+Viagem.cepDestino as 'CEP do Destino'
 FROM Carga
 JOIN Viagem ON 
 idCarga = Viagem.fkCarga;
 
--- View dos dados da carga
+-- View dos dados 
 SELECT * FROM VW_Carga;
 
 
@@ -294,7 +275,7 @@ END$$
 DELIMITER ;
 
 -- Se quiser dar um select em tudo até agora, use a PROCEDURE abaixo:
-CALL Select_All()
+-- CALL Select_All()
 
 -- Operações matemáticas
 -- Aviso!! As operações matemáticas foram comentadas para manter o SELECT'S simplistas, facilitando a visua-
@@ -319,5 +300,11 @@ CALL Select_All()
 
 -- select leitura.temperatura, leitura.dtHora, sensor.tipo from leitura join sensor on fkSensor = idSensor where tipo = 'LM35';
 
-
- 
+select * from leitura;
+insert into leitura (temperatura, fkSensor) value
+(80 - 27.3, 1);
+select * from sensor;
+create view VW_Grafico as select temperatura, umidade, date_format(dtHora,'%H:%i:%s %d/%m/%Y') as data_formatado, caminhao.placa, leitura.idLeitura from leitura join sensor on fkSensor = idSensor join caminhao on fkCaminhaoSensor = placa;
+select temperatura, umidade, date_format as dtFormatado, caminhao.placa, leitura.idLeitura from leitura join sensor on fkSensor = idSensor join caminhao on fkCaminhaoSensor = placa;
+select * from VW_Grafico where placa = 'CTU1350' order by idLeitura desc limit 7;
+select * from VW_Grafico;
