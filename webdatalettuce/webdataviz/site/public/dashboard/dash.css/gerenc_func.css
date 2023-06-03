@@ -24,10 +24,8 @@
 
 .regua-macro-gerenciamentoFunc {
   display: flex;
-  /* justify-content: space-around; */
   width: 80%;
   flex-direction: column;
-  justify-content: space-evenly;
   height: 100vh;
 }
 
@@ -40,11 +38,13 @@
   font-size: 20px;
   position: relative;
   flex-direction: row;
-  width: 60vw;
+  width: 57vw;
   margin: 15px;
   padding: 10px;
   height: 130px;
+  text-align: center;
 }
+
 
 
 
@@ -72,12 +72,11 @@
   border-radius: 50px;
   cursor: pointer;
   align-items: center;
+  margin: 20px;
 }
 
 button a {
   text-decoration: none;
-  color: white;
-  font-size: 30px;
 }
 
 
@@ -100,8 +99,8 @@ button a {
     width: 65px;
     height: 65px;
   }
-  
-  
+
+
   .header-left h1 {
     color: black;
   }
