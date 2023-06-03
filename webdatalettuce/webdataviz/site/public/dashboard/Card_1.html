@@ -20,7 +20,7 @@
         rel="stylesheet">
 </head>
 
-<body onload="atualizacaoPeriodica(), limpar_listas()">
+<body onload="atualizacaoPeriodica(), obterDadosGrafico(placa)">
 
     <div class="janela">
 
@@ -153,7 +153,6 @@
     var placa = 'GDU2589'
     let proximaAtualizacao;
 
-    window.onload = obterDadosGrafico(placa);
 
     // O gráfico é construído com três funções:
     // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
@@ -646,10 +645,10 @@
 
         fetch(`/medidas/ultimas/${placa}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    resposta.reverse();
-                    plotarGrafico(resposta, placa);
+                response.json().then(function (resposta3) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta3)}`);
+                    resposta3.reverse();
+                    plotarGrafico(resposta3, placa);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
@@ -663,12 +662,12 @@
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGrafico(resposta, placa) {
-        grafico_lm35(resposta, placa)
-        grafico_dht11(resposta, placa)
+    function plotarGrafico(resposta3, placa) {
+        grafico_lm35(resposta3, placa)
+        grafico_dht11(resposta3, placa)
     }
 
-    function grafico_lm35(resposta, placa) {
+    function grafico_lm35(resposta3, placa) {
         console.log('iniciando plotagem do gráfico...');
 
         // Criando estrutura para plotar gráfico - labels
@@ -691,11 +690,11 @@
 
         console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-        console.log(resposta)
+        console.log(resposta3)
 
         // Inserindo valores recebidos em estrutura para plotar o gráfico
-        for (i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
+        for (i = 0; i < resposta3.length; i++) {
+            var registro = resposta3[i];
             /*var diaDoRegistro = new Date(Date.parse(registro.data_formatado));
             var diaFormatado = `${diaDoRegistro.getDay()}/${diaDoRegistro.getMonth()}/${diaDoRegistro.getFullYear()} ${diaDoRegistro.getHours()}:${diaDoRegistro.getMinutes()}`
             labels.push(registro.diaFormatado);*/
@@ -731,7 +730,7 @@
         setTimeout(() => atualizarGraficoLM35(placa, dados, myChartLM35), 5000);
     }
 
-    function grafico_dht11(resposta, placa) {
+    function grafico_dht11(resposta3, placa) {
 
         console.log('iniciando plotagem do gráfico...');
 
@@ -755,11 +754,11 @@
 
         console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-        console.log(resposta)
+        console.log(resposta3)
 
         // Inserindo valores recebidos em estrutura para plotar o gráfico
-        for (i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
+        for (i = 0; i < resposta3.length; i++) {
+            var registro = resposta3[i];
             labels.push(registro.data_formatado);
             dados.datasets[0].data.push(registro.umidade);
             // dados.datasets[1].data.push(registro.umidade);
