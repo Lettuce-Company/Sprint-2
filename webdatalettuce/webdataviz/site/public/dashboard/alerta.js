@@ -22,13 +22,15 @@ function obterdados(placa) {
 
 }
 
-function alertar(resposta, placa) {
-    var temp = resposta[0].temperatura;
+function alertar_temperatura(resposta, placa) {
+    var temp = resposta[0].temperatura
+    var umid = resposta[0].umidade
+
 
     console.log(placa === resposta[0].placa)
     
     var grauDeAviso ='';
-    function alertar(temperatura, placa) {
+
         var limites = {
             critico_mtQuente: 10,
             emergencia_Quente: 8,
@@ -39,7 +41,7 @@ function alertar(resposta, placa) {
             emergencia_frio: -0.4,
             critico_mtFrio: -0.5
         };
-    }
+    
     
     if (temperatura >= limites) {
             classe_temperatura = 'cor-alerta critico_mtQuente';

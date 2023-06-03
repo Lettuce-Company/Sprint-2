@@ -11,8 +11,8 @@ router.get("/tempo-real/:placa", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
 })
 
-// router.get("/maximas-minimas/:placa", function (req, res) {
-//     medidaController.buscarMedidasMaximasMinimas(req, res);
-// })
+router.get("/maximas-minimas/:placa", function (req, res) {
+    medidaController.buscarMedidasMaximasMinimas(req, res);
+})
 
 module.exports = router;

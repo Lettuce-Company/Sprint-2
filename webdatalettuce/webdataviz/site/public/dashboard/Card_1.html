@@ -160,12 +160,12 @@
     var umid_min = 0;
 
     function atualizacaoPeriodica() {
-        obterdados(placa);
-        limpar_listas()
+        obterdados_ultimas(placa);
+        obterdados_maximas_minimas(placa)
         setTimeout(atualizacaoPeriodica, 5000);
     }
 
-    function obterdados(placa) {
+    function obterdados_ultimas(placa) {
         fetch(`/medidas/tempo-real/${placa}`)
             .then(resposta => {
 
@@ -189,22 +189,48 @@
             });
     }
 
-    var ListaTemp = []
-    var ListaUmid = []
+    function obterdados_maximas_minimas(placa) {
+        fetch(`/medidas/maximas-minimas/${placa}`)
+            .then(resposta1 => {
 
-    function limpar_listas() {
-        if (ListaUmid.length > 7) {
-            for (var contador = 0; ListaUmid.length > 7; contador++) {
-                ListaUmid.splice(contador, 1)
-            }
+                if (resposta1.ok) {
+                    resposta1.json().then(resposta1 => {
 
-        }
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta1)}`);
 
-        if (ListaTemp.length > 7)
-            for (var contador = 0; ListaTemp.length > 7; contador++) {
-                ListaTemp.splice(contador, 1)
-            }
+                        alertar_temperatura_max_min(resposta1, placa)
+                        alertar_umidade_max_min(resposta1, placa)
+
+
+                    });
+                } else {
+
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do caminhão p/ gráfico: ${error.message}`);
+            });
     }
+
+
+
+    // var ListaTemp = []
+    // var ListaUmid = []
+
+    // function limpar_listas() {
+    //     if (ListaUmid.length > 7) {
+    //         for (var contador = 0; ListaUmid.length > 7; contador++) {
+    //             ListaUmid.splice(contador, 1)
+    //         }
+
+    //     }
+
+    //     if (ListaTemp.length > 7)
+    //         for (var contador = 0; ListaTemp.length > 7; contador++) {
+    //             ListaTemp.splice(contador, 1)
+    //         }
+    // }
 
 
 
@@ -215,24 +241,24 @@
 
 
 
-        ListaTemp.push(Number(resposta[0].temperatura))
-        ListaTemp.push(Number(resposta[1].temperatura))
-        ListaTemp.push(Number(resposta[2].temperatura))
-        ListaTemp.push(Number(resposta[3].temperatura))
-        ListaTemp.push(Number(resposta[4].temperatura))
-        ListaTemp.push(Number(resposta[5].temperatura))
-        ListaTemp.push(Number(resposta[6].temperatura))
+        // ListaTemp.push(Number(resposta[0].temperatura))
+        // ListaTemp.push(Number(resposta[1].temperatura))
+        // ListaTemp.push(Number(resposta[2].temperatura))
+        // ListaTemp.push(Number(resposta[3].temperatura))
+        // ListaTemp.push(Number(resposta[4].temperatura))
+        // ListaTemp.push(Number(resposta[5].temperatura))
+        // ListaTemp.push(Number(resposta[6].temperatura))
 
-        for (var contador = 0; contador < ListaTemp.length; contador++) {
-            if (ListaTemp[contador] > temp_max) {
-                temp_max = ListaTemp[contador]
-            }
+        // for (var contador = 0; contador < ListaTemp.length; contador++) {
+        //     if (ListaTemp[contador] > temp_max) {
+        //         temp_max = ListaTemp[contador]
+        //     }
 
-            if (ListaTemp[contador] < temp_min) {
-                temp_min = ListaTemp[contador]
-            }
+        //     if (ListaTemp[contador] < temp_min) {
+        //         temp_min = ListaTemp[contador]
+        //     }
 
-        }
+        // }
 
 
         var limites = {
@@ -286,9 +312,30 @@
         // alterando
         const temp_caminhao_estilo = document.getElementById('temp_caminhao')
         temp_caminhao_estilo.className = classe_temperatura;
+    }
+
+
+
+    function alertar_temperatura_max_min(resposta1, placa) {
+        temp_max = resposta1[0].maximo_temperatura
+        temp_min = resposta1[0].minimo_temperatura
+
+        var classe_temperatura_max = 'cor-alerta';
+
+        var limites = {
+            critico_mtQuente: 10,
+            emergencia_Quente: 8,
+            atencao_quente: 4,
+            ideal_3: 0,
+            ideal_0: 3,
+            atencao_frio: -0.1,
+            emergencia_frio: -0.4,
+            critico_mtFrio: -0.5
+        };
+
+
 
         // Validando a Classe do Registro Máximo de temperatura dentre 7 linhas
-        var classe_temperatura_max = 'cor-alerta';
 
         if (temp_max >= limites.critico_mtQuente) {
             classe_temperatura_max = 'cor-alerta critico_mtQuente';
@@ -374,24 +421,24 @@
 
 
 
-        ListaUmid.push(Number(resposta[0].umidade))
-        ListaUmid.push(Number(resposta[1].umidade))
-        ListaUmid.push(Number(resposta[2].umidade))
-        ListaUmid.push(Number(resposta[3].umidade))
-        ListaUmid.push(Number(resposta[4].umidade))
-        ListaUmid.push(Number(resposta[5].umidade))
-        ListaUmid.push(Number(resposta[6].umidade))
+        // ListaUmid.push(Number(resposta[0].umidade))
+        // ListaUmid.push(Number(resposta[1].umidade))
+        // ListaUmid.push(Number(resposta[2].umidade))
+        // ListaUmid.push(Number(resposta[3].umidade))
+        // ListaUmid.push(Number(resposta[4].umidade))
+        // ListaUmid.push(Number(resposta[5].umidade))
+        // ListaUmid.push(Number(resposta[6].umidade))
 
-        for (var contador = 0; contador < ListaUmid.length; contador++) {
-            if (ListaUmid[contador] > umid_max) {
-                umid_max = ListaUmid[contador]
-            }
+        // for (var contador = 0; contador < ListaUmid.length; contador++) {
+        //     if (ListaUmid[contador] > umid_max) {
+        //         umid_max = ListaUmid[contador]
+        //     }
 
-            if (ListaUmid[contador] < umid_min) {
-                umid_min = ListaUmid[contador]
-            }
+        //     if (ListaUmid[contador] < umid_min) {
+        //         umid_min = ListaUmid[contador]
+        //     }
 
-        }
+        // }
 
         var limites = {
             critico_mtUmido: 100,
@@ -444,12 +491,28 @@
         // alterando
         const umid_caminhao_estilo = document.getElementById('umid_caminhao')
         umid_caminhao_estilo.className = classe_umidade;
+    }
 
-        // Validando a classe do registro Máximo dentro de 7 linhas
+    function alertar_umidade_max_min(resposta1, placa) {
+        
+        umid_max = resposta1[0].maximo_umidade
+        umid_min = resposta1[0].minimo_umidade
+
+        var limites = {
+            critico_mtUmido: 100,
+            emergencia_Umido: 98,
+            atencao_Umido: 96,
+            ideal_max: 94,
+            ideal_min: 90,
+            atencao_pouca_desitradacao: 87,
+            emergencia_media_desitradacao: 84,
+            critico_alta_desitradacao: 80
+        };
+
 
         var classe_umidade_max = 'cor-alerta';
 
-
+                // Validando a classe do registro Máximo dentro de 7 linhas
         if (umid_max >= limites.critico_mtUmido) {
             classe_umidade_max = 'cor-alerta critico_mtUmido';
             console.log("caiu no 1")
@@ -530,6 +593,8 @@
         const umid_min_estilo = document.getElementById('umidade_minima')
         umid_min_estilo.className = classe_umidade_min;
     }
+
+
 
 
 
