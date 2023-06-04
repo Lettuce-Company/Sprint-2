@@ -7,7 +7,7 @@ function buscarUltimasMedidas(placa, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(placa) {
+function buscarMedidasEmTempoRealKPIS(placa) {
 
     instrucaoSql = ''
 
@@ -33,6 +33,33 @@ function buscarMedidasEmTempoReal(placa) {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+
+function buscarMedidasEmTempoRealGraficos(placa) {
+
+    instrucaoSql = ''
+
+    if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `select top 1
+        dht11_temperatura as temperatura, 
+        dht11_umidade as umidade,  
+                        CONVERT(varchar, momento, 108) as momento_grafico, 
+                        fk_aquario 
+                        from medida where fk_aquario = '${placa}' 
+                    order by id desc`;
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `select * from VW_Grafico where placa = '${placa}' order by idLeitura desc limit 2;`;
+    } else {
+        console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
+        return
+    }
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
+
 
 function buscarMedidasMaximasMinimas(placa) {
 
@@ -79,6 +106,7 @@ FROM
 
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal,
+    buscarMedidasEmTempoRealKPIS,
+    buscarMedidasEmTempoRealGraficos,
     buscarMedidasMaximasMinimas
 }
