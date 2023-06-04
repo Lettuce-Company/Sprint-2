@@ -1,2 +1,31 @@
-# SPRINT-3
-Entregaveis da Sprint 3
+# Bem-vindo ao Repositório da Lettuce Company
+
+<img height="200px" src="https://avatars.githubusercontent.com/u/129685347?s=400&u=0e0c60563fc7844de506edf23d2ea3d3326b5df8&v=4">
+
+## Sobre Nós
+
+Somos a Lettuce Company, uma equipe apaixonada por desenvolvimento de software e soluções inovadoras no ramo de monitoramento de temperatura e umidade no transporte de hortalicas. Trabalhamos para oferecer aos nossos clientes produtos e serviços de alta qualidade, focados em satisfazer suas necessidades e superar suas expectativas.
+
+Aqui no nosso repositório, você encontrará projetos interessantes, códigos fonte e exemplos práticos relacionados ao nosso trabalho. Sinta-se à vontade para explorar e contribuir!
+
+## Tecnologias utilizadas
+<img height="30px" src="https://camo.githubusercontent.com/d63d473e728e20a286d22bb2226a7bf45a2b9ac6c72c59c0e61e9730bfe4168c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f48544d4c352d4533344632363f7374796c653d666f722d7468652d6261646765266c6f676f3d68746d6c35266c6f676f436f6c6f723d7768697465"> <img height="30px" src="https://camo.githubusercontent.com/3a0f693cfa032ea4404e8e02d485599bd0d192282b921026e89d271aaa3d7565/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f435353332d3135373242363f7374796c653d666f722d7468652d6261646765266c6f676f3d63737333266c6f676f436f6c6f723d7768697465"> <img height="30px" src="[https://marcas-logos.net/wp-content/uploads/2020/11/JavaScript-logo.png](https://camo.githubusercontent.com/93c855ae825c1757f3426f05a05f4949d3b786c5b22d0edb53143a9e8f8499f6/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4a6176615363726970742d3332333333303f7374796c653d666f722d7468652d6261646765266c6f676f3d6a617661736372697074266c6f676f436f6c6f723d463744463145)"> <img height="30px" src="https://camo.githubusercontent.com/5570c2e81e8a9a8ef75662a9c3c2f58e5114c8423a31e3f3c2ff59ab9d1bf08b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4e6f64654a732d3333393933333f7374796c653d666f722d7468652d6261646765266c6f676f3d6e6f6465646f746a73266c6f676f436f6c6f723d7768697465"> <img height="30px" src="https://camo.githubusercontent.com/0a560b96403b09d3efb08ca51ab6a7251f35fce7a4fe4ab07c3f2f51756e18f9/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f43686172744a732d4646363338343f7374796c653d666f722d7468652d6261646765266c6f676f3d6368617274646f746a73266c6f676f436f6c6f723d7768697465"> <img height="30px" src="https://camo.githubusercontent.com/6a84c650fe2e1db95ebc33f0e5abd00f2287c27071a58f1b69228c5ec7ea64d0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f41726475696e6f2d3030393739443f7374796c653d666f722d7468652d6261646765266c6f676f3d61726475696e6f266c6f676f436f6c6f723d7768697465"> <img height="30px" src="https://camo.githubusercontent.com/afe324c0a9be4192f44873e833a390f145ca66063bb896c0b62223346e594266/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4749542d4533344632363f7374796c653d666f722d7468652d6261646765266c6f676f3d676974266c6f676f436f6c6f723d7768697465"> <img height="30px" src="https://camo.githubusercontent.com/72d5d565837601adafe0d60fe7cd948221a5cbc1622809209e214fa26855b1ec/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7472656c6c6f2d3830396165623f7374796c653d666f722d7468652d6261646765266c6f676f3d7472656c6c6f266c6f676f436f6c6f723d626c7565"> <img height="30px" src="https://camo.githubusercontent.com/b48b034b98c7b1e334d3bd62583cb61c1208fee66ac5c02f5b7b29e23ad71761/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5653253230436f64652d3332333333303f7374796c653d666f722d7468652d6261646765266c6f676f3d56697375616c53747564696f436f6465266c6f676f436f6c6f723d626c7565"> <img height="30px" src="https://camo.githubusercontent.com/a4a4a017a5d519d7c4ce2a3cd3d2194fb7af4b1ca424850784565007c2acc7d8/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4d7953514c2d3030354338343f7374796c653d666f722d7468652d6261646765266c6f676f3d6d7973716c266c6f676f436f6c6f723d7768697465"> <img height="30px" src="https://camo.githubusercontent.com/fbc3df79ffe1a99e482b154b29262ecbb10d6ee4ed22faa82683aa653d72c4e1/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4769744875622d3130303030303f7374796c653d666f722d7468652d6261646765266c6f676f3d676974687562266c6f676f436f6c6f723d7768697465">
+
+## Como Contribuir
+
+Nós adoramos receber contribuições da comunidade! Se você quiser ajudar a melhorar nossos projetos, siga estas etapas:
+
+1. Faça um fork deste repositório.
+2. Crie uma nova branch com uma descrição clara do que você está trabalhando.
+3. Faça as alterações desejadas.
+4. Envie um pull request explicando suas alterações e por que elas são importantes.
+
+Ficaremos felizes em revisar sua contribuição e incorporá-la ao nosso código!
+
+## Contato
+
+Se você tiver alguma dúvida, sugestão ou apenas quiser dizer olá, sinta-se à vontade para entrar em contato conosco:
+
+- Suporte https://lettuce-co.atlassian.net/servicedesk/customer/portal/2
+
+Estamos ansiosos para ouvir de você!
