@@ -15,6 +15,11 @@ router.get("/listar/:idUsuario", function (req, res) {
     avisoController.listarPorUsuario(req, res);
 });
 
+router.get("/listarFunc/:cnpj_empresaVar", function (req, res) {
+    avisoController.listarFunc(req, res);
+});
+
+
 router.get("/pesquisar/:descricao", function (req, res) {
     avisoController.pesquisarDescricao(req, res);
 });
