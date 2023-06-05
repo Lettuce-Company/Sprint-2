@@ -158,6 +158,7 @@ display: flex;
 
 .botoes_gerenciar button {
     width: 260px;
+    font-weight: 500;
 }
 
 .botoes_gerenciar {
@@ -212,8 +213,8 @@ display: flex;
     }
 
     .div_button_procurar_caminhao h3{
-      font-size: 24px;
-    font-weight: 500;
+      font-size: 26px;
+    font-weight: 600;
     margin-bottom: 0px;
     margin-top: 0px;
     
@@ -237,6 +238,9 @@ display: flex;
         width: 240px;
       }
  
+      #select_func{
+        width: 240px;
+      }
 
       .conteiner_select select {
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0);
@@ -319,8 +323,10 @@ display: flex;
       }
       .caminhoes_atv h1{
         margin: 0%;
+        margin-bottom: 5px;
       }
       .caminhoes_atv h2{
         margin: 10  px;
         margin-top: 10px;
+        margin-bottom: 10px;
       }
