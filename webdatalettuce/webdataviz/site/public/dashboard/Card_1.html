@@ -173,7 +173,7 @@
     }
 
     function obterdados_ultimas(placa) {
-        fetch(`/medidas/tempo-real/${placa}`)
+        fetch(`/medidas/tempo-real-KPIS/${placa}`)
             .then(resposta_tempo_real => {
 
                 if (resposta_tempo_real.ok) {
@@ -410,7 +410,7 @@
     }
 
     function alertar_umidade(resposta_tempo_real, placa) {
-        var umid = resposta_tempo_real[0].umidade;
+        var umid = resposta_tempo_real[1].umidade;
 
 
 
@@ -683,8 +683,8 @@
                 tension: 0.1,
                 fill: false ,
                 showLine: true,
-                borderColor: 'rgb(179, 126, 181)',  
-                backgroundColor: 'rgb(179, 126, 181)'
+                borderColor: 'rgb(0,255,0)',  
+                backgroundColor: 'rgb(0,255,0)'
             }]
         };
 
@@ -747,8 +747,8 @@
                 tension: 0.1,
                 fill: false ,
                 showLine: true,
-                borderColor: 'rgb(179, 126, 181)',  
-                backgroundColor: 'rgb(179, 126, 181)'
+                borderColor: 'rgb(0,255,0)',  
+                backgroundColor: 'rgb(0,255,0)'
             }]
         };
 
@@ -804,18 +804,19 @@
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
     function atualizarGraficoLM35(placa, dados, myChartLM35) {
-        fetch(`/medidas/tempo-real/${placa}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/tempo-real-Graficos/${placa}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
                     // obterdados(placa);
                     // alertar(novoRegistro, placa);
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                     console.log(`Dados atuais do gráfico:`);
-                    console.log(dados);
+                    console.log (JSON.stringify(dados));
 
                     // let avisoCaptura = document.getElementById(`avisoCaptura${placa}`)
                     // avisoCaptura.innerHTML = ""
                     if (novoRegistro[0].data_formatado == dados.labels[dados.labels.length - 1]) {
+                        console.log(dados + ' <= Aqui Estão os dados')
                         console.log("---------------------------------------------------------------")
                         console.log("Como não há dados novos para captura, o gráfico não atualizará.")
                         // avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
@@ -851,7 +852,7 @@
     }
 
     function atualizarGraficoDHT11(placa, dados, myChartDHT11) {
-        fetch(`/medidas/tempo-real/${placa}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/tempo-real-Graficos/${placa}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
                     // obterdados(placa);
