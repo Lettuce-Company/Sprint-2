@@ -413,12 +413,21 @@ button a {
 
 
 .back_graph{
-  background-color: white;
+  background-color: rgb(24, 92, 7);
   border-radius: 30px;
   margin-top: 30px;
   margin-bottom: 30px;
   width: 600px;
   height: 400px;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  display: flex;
+}
+
+.back_graph h1{
+color: white;
+font-size: 38px;
 }
 
 .all_items{
@@ -428,3 +437,37 @@ button a {
   /* justify-content: space-evenly; */
   }
   
+  /* .conteiner_select{
+    /* width: 240px; */
+  /* }  */
+
+
+  .conteiner_select select {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0);
+    font-size: 1.0rem;
+    padding: 1em 5em 1em 1.5em;
+    /* background: #4d5061; */
+    background-color: #228B22;
+    color: white;
+    width: 90%;
+    border: 0;
+    border-radius: 20px;
+    outline-style: none;
+  }
+  
+  .custom-select {
+    position: relative;
+  }
+
+  .custom-arrow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    background-color: #228B22;
+    height: 100%;
+    width: 3em;
+    pointer-events: none;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+  }
