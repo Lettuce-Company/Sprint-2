@@ -17,112 +17,186 @@
     <script src="https://kit.fontawesome.com/4c5e041356.js" crossorigin="anonymous"></script>
 
     <!-- <script src="../js/main.js"></script> -->
+    <script src="../js/funcoes.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 </head>
 
-<body>
-
+<body onload="atualizarFeed(), validarSessao()">
     <div class="janela">
+        <section class="main">
+            <div class="header-left dash-header">
+                <div class="sidebar-logo">
+                    <img src="../assets/logo_borda.png" alt="Alface lettuce company">
+                </div>
+                <h3>Dashboard — <span id="b_empresa"></span></h3>
+                <span class="sidebar-active">Bem vindo,<span id="b_usuario"></span></span>
+                <a href="dashboard.html"><i class="fa-solid fa-user"></i>Home</a>
+                <a href="gerenciamentoFunc.html" class="funcionario"><i class="fa-solid fa-id-card"></i>Gerenciar
+                    Funcionário</i></a>
+                <a href="gerenciamentoCaminhao.html" class="funcionario"><i
+                        class="fa-solid fa-truck-arrow-right"></i>Gerenciar Caminhão</i></a>
+                <!-- <a href="gerenciamentoCarga.html" class="funcionario"><i class="fa-solid fa-truck-ramp-box"></i>Gerenciar
+                    Carga</a> -->
+                <a href="https://app.pipefy.com/public/form/382TxORQ" class="funcionario">
+                    <i class="fa-solid fa-headset"></i>Suporte</a>
+                <a href="../login.html" class="funcionario"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+                <br />
+                <!-- <select name="pesquisa_caminhao" id="select_caminhão" onchange="location = this.value;"><i
+                        class="fa-solid fa-truck-fast"></i>
+                    <option value="">Pesquisar Caminhão</option>
+                    <option value="">Macro</option>
+                    <option value="Card_1.html">CBW-6000</option>
+                    <option value="Card_2.html">GDU-2589</option>
+                </select> -->
 
-
-        <div class="header-left dash-header">
-            <div class="sidebar-logo">
-                <img src="../assets/logo_borda.png" alt="Alface lettuce company">
             </div>
-            <h3>Dashboard</h3>
-            <span class="sidebar-active" class="fa-solid fa-user">Bem vindo, Usuário</span>
-            <a href="Dashboard.html"><i class="fa-solid fa-user" class></i>Home</a>
-            <a href="gerenciamentoFunc.html" class="funcionario"><i class="fa-solid fa-id-card"></i>Gerenciar
-                Funcionários</i></a>
-            <a href="gerenciamentoCaminhao.html" class="funcionario"><i
-                    class="fa-solid fa-truck-arrow-right"></i>Gerenciar Caminhão</i></a>
-            <!-- <a href="gerenciamentoCarga.html" class="funcionario"><i class="fa-solid fa-truck-ramp-box"></i>Gerenciar
-                Carga</a> -->
-            <a href="https://lettuce-co.atlassian.net/servicedesk/customer/portal/2" class="funcionario"><i
-                    class="fa-solid fa-headset"></i>Suporte</a>
-            <a href="../login.html" class="funcionario"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
-            <br />
-            <!-- <select name="pesquisa_caminhao" id="select_caminhão" onchange="location = this.value;"><i
-                    class="fa-solid fa-truck-fast"></i>
-                <option value="">Pesquisar Caminhão</option>
-                <option value="Dashboard.html">Macro</option>
-                <option value="Card_1.html">CBW6000</option>
-                <option value="Card_2.html">GDU2589</option>
-            </select> -->
-        </div>
+    </div>
+    </div>
 
 
 
-        <div class="dash">
-            <div class="regua-macro-gerenciamentoFunc">
-                <!-- <div class="regua"> -->
-                <div class="cards-gerenciamentoFunc">
+
+
+    <div class="dash">
+        <div class="regua-macro-gerenciamentoFunc">
+            <!-- <div class="regua"> -->
+            <div class="cards-gerenciamentoFunc">
+                <div class="card-gerenciamentoFunc">
+                    <div class="func_cad">
+                        <h2>Funcionários Cadastrados</h2>
+                        <h1>34</h1>
+                    </div>
+                    <div class="func_cad">
+                        <h2>Funcionários Ativos</h2>
+                        <h1>13</h1>
+                    </div>
+
+                </div>
+            </div>
+            <!-- </div> -->
+            <div class="regua-btn">
+                <div class="cards-gerenciamentoFunc" id="feed_func">
                     <div class="card-gerenciamentoFunc">
-                        <div class="func_cad">
-                            <h2>Funcionários Cadastrados</h2>
-                            <h1>34</h1>
+                        <div>
+                            <h2>Nome do Funcionário</h2>
+
                         </div>
-                        <div class="func_cad">
-                            <h2>Funcionários Ativos</h2>
-                            <h1>13</h1>
+                        <div>
+                            <h2>Cargo</h2>
+                            <h3>Gerente</h3>
                         </div>
-
-                    </div>
-                </div>
-                <!-- </div> -->
-                <div class="regua-btn">
-                    <div class="cards-gerenciamentoFunc">
-                        <div class="card-gerenciamentoFunc">
-                             <div>
-                                <h2>Nome do Funcionário</h2>
-
-                                <!-- <div class="custom-select">
-                                   <select name="nomeFunc" id="select_func">
-                                        <option value="">Selecionar Funcionário</option>
-                                        <option value="">Carlos II</option>
-                                        <option value="">Hendrik</option>
-                                        <option value="">Erin</option>
-                                    </select>
-                                    <span class="custom-arrow"></span> 
-                                </div>   -->
-
-                            </div>
-                            <div>
-                                <h2>Cargo</h2>
-                                <h3>Gerente</h3>
-                            </div>
-                            <div>
-                                <h2>Status</h2>
-                                <h3>ativo</h3>
-                            </div>
+                        <div>
+                            <h2>Status</h2>
+                            <h3>ativo</h3>
                         </div>
                     </div>
                 </div>
-
-            
             </div>
 
+        </div>
 
-            <div id="container_card_botoes">
-                <div class="botoes_gerenciar">
-                    <div id="div-gerenciamentoFunc">
-                        <button class="button" onclick="mudar_pagina()">Cadastrar Funcionários</button>
-                    </div>
-                    <div id="div-btn-editar">
-                        <button class="button" type="button">Editar</button>
-                    </div>
+
+        <div id="container_card_botoes">
+            <div class="botoes_gerenciar">
+                <div id="div-gerenciamentoFunc">
+                    <button class="button" onclick="mudar_pagina()">Cadastrar Funcionários</button>
+                </div>
+                <div id="div-btn-editar">
+                    <button class="button" type="button">Editar</button>
                 </div>
             </div>
         </div>
+    </div>
 
 
     </div>
     </div>
     <script>
+        var cnpj_empresaVar = sessionStorage.getItem('EMPRESA_USUARIO')
+
         function mudar_pagina() {
             window.location = "cadastro_func.html"
+        }
+
+        function atualizarFeed() {
+            //aguardar();
+            fetch(`/avisos/listarFunc/${cnpj_empresaVar}`).then(function (resposta) {
+                if (resposta.ok) {
+                    if (resposta.status == 204) {
+                        var feed = document.getElementById("feed_func");
+                        var mensagem = document.createElement("span");
+                        mensagem.innerHTML = "Nenhum resultado encontrado."
+                        feed.appendChild(mensagem);
+                        throw "Nenhum resultado encontrado!!";
+                    }
+
+                    resposta.json().then(function (resposta) {
+                        console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                        var feed = document.getElementById("feed_func");
+                        feed.innerHTML = "";
+                        for (let i = 0; i < resposta.length; i++) {
+                            var publicacao = resposta[i];
+                            if(publicacao.Permissoes == 1){
+                                var permissao = 'ADM'
+                            } else{
+                                var permissao = 'Funcionario'
+                            }
+                            // criando e manipulando elementos do HTML via JavaScript
+                            var cardGerenciamento = document.createElement("div");
+                            var cardGeral = document.createElement("div");
+                            var h2Nome = document.createElement("h2");
+                            var h2Cargo = document.createElement("h2");
+                            var h2Status = document.createElement("h2");
+                            var h2Permissao = document.createElement("h2");
+                            // var spanStatus = document.createElement("span");
+                            var btnEditar = document.createElement("button");
+
+
+                            h2Nome.innerHTML = "Nome do Funcionaro" + '<br>' + publicacao.Funcionário;
+                            h2Cargo.innerHTML = "Cargo" + '<br>' + publicacao.Cargo;
+                            h2Status.innerHTML = "Status" + '<br>' + publicacao.Status;
+                            h2Permissao.innerHTML = "Permissões" + '<br>' + permissao;
+                            // spanStatus.innerHTML = publicacao.Funcionario;
+                            btnEditar.innerHTML = publicacao.Funcionario;
+
+                            cardGeral.className = "card-gerenciamentoFunc"
+                            cardGerenciamento.className = "cards-gerenciamentoFunc";
+                            // spanTitulo.id = "inputNumero" + publicacao.idAviso;
+                            // spanNome.className = "publicacao-nome";
+                            // spanTitulo.className = "publicacao-titulo";
+                            // divDescricao.className = "publicacao-descricao";
+
+                            // divButtons.className = "div-buttons"
+
+                            // btnEditar.className = "btn-editar"
+                            // btnEditar.setAttribute("onclick", `editar(${publicacao.idAviso})`);
+
+ /*                            divPublicacao.appendChild(spanID);
+                            divPublicacao.appendChild(spanNome);
+                            divPublicacao.appendChild(spanTitulo);
+                            divPublicacao.appendChild(divDescricao);
+                            divPublicacao.appendChild(divButtons);
+                            divButtons.appendChild(btnEditar);*/-
+                            cardGeral.appendChild(h2Nome);
+                            cardGeral.appendChild(h2Cargo);
+                            cardGeral.appendChild(h2Status);
+                            cardGeral.appendChild(h2Permissao);
+                            cardGerenciamento.appendChild(cardGeral);
+                            feed.appendChild(cardGerenciamento);
+                        }
+
+                        finalizarAguardar();
+                    });
+                } else {
+                    throw ('Houve um erro na API!');
+                }
+            }).catch(function (resposta) {
+                console.error(resposta);
+                finalizarAguardar();
+            });
         }
     </script>
