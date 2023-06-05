@@ -14,6 +14,7 @@
     <script src="https://kit.fontawesome.com/4c5e041356.js" crossorigin="anonymous"></script>
 
     <!-- <script src="../js/main.js"></script> -->
+    <script src="../js/alerta.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -23,8 +24,6 @@
 <body onload="atualizacaoPeriodica(), obterDadosGrafico(placa)">
 
     <div class="janela">
-
-
         <div class="header-left dash-header">
             <div class="sidebar-logo">
                 <img src="../assets/logo_borda.png" alt="Alface lettuce company">
@@ -32,14 +31,14 @@
             <h3>Dashboard</h3>
             <span class="sidebar-active" class="fa-solid fa-user">Bem vindo, Usuário</span>
             <a href="Dashboard.html"><i class="fa-solid fa-user" class></i>Home</a>
-            <a href="gerenciamento_funcionario.html" class="funcionario"><i class="fa-solid fa-id-card"></i>Gerenciar
+            <a href="gerenciamentoFunc.html" class="funcionario"><i class="fa-solid fa-id-card"></i>Gerenciar
                 Funcionário</i></a>
             <a href="gerenciamentoCaminhao.html" class="funcionario"><i
                     class="fa-solid fa-truck-arrow-right"></i>Gerenciar Caminhão</i></a>
             <!-- <a href="gerenciamentoCarga.html" class="funcionario"><i class="fa-solid fa-truck-ramp-box"></i>Gerenciar
                 Carga</a> -->
             <a href="https://lettuce-co.atlassian.net/servicedesk/customer/portal/2" class="funcionario"><i
-                    class="fa-solid fa-headset"></i>Suporte</a>
+                    class="0fa-solid fa-headset"></i>Suporte</a>
             <a href="../login.html" class="funcionario"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
             <br />
             <select name="pesquisa_caminhao" id="select_caminhão" onchange="location = this.value;"><i
@@ -52,7 +51,9 @@
         </div>
 
         <div class="dash">
-
+                <div class="alerta-dash" id="alerta">
+                    TESTE FODA
+                </div>
             <div class="regua">
 
                 <div class="item-regua temp">
@@ -93,7 +94,7 @@
             </div>
             <div>
                 <div class="dashboard">
-                    <div class="chart-container" style="margin-left: 30px;">
+                    <div class="chart-container">
                         <canvas id="lm35Temperatura"></canva>
                     </div>
                     <div class="chart-container">
@@ -144,22 +145,18 @@
                     </div>
                 </div>
             </div>
-            
-            
-        </body>
-        
-        <script>
+
+
+</body>
+
+<script>
     Chart.overrides.line.spanGaps = true
-    var placa = 'GDU2589'
     let proximaAtualizacao;
-
-
     // O gráfico é construído com três funções:
     // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
     // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
     // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
-
-
+    var placa = 'GDU2589'
     var temp_max = 0;
     var temp_min = 0;
     var umid_max = 0;
@@ -230,29 +227,6 @@
     function alertar_temperatura(resposta_tempo_real, placa) {
         var temp = resposta_tempo_real[0].temperatura;
 
-
-
-
-        // ListaTemp.push(Number(resposta_tempo_real[0].temperatura))
-        // ListaTemp.push(Number(resposta_tempo_real[1].temperatura))
-        // ListaTemp.push(Number(resposta_tempo_real[2].temperatura))
-        // ListaTemp.push(Number(resposta_tempo_real[3].temperatura))
-        // ListaTemp.push(Number(resposta_tempo_real[4].temperatura))
-        // ListaTemp.push(Number(resposta_tempo_real[5].temperatura))
-        // ListaTemp.push(Number(resposta_tempo_real[6].temperatura))
-
-        // for (var contador = 0; contador < ListaTemp.length; contador++) {
-        //     if (ListaTemp[contador] > temp_max) {
-        //         temp_max = ListaTemp[contador]
-        //     }
-
-        //     if (ListaTemp[contador] < temp_min) {
-        //         temp_min = ListaTemp[contador]
-        //     }
-
-        // }
-
-
         var limites = {
             critico_mtQuente: 10,
             emergencia_Quente: 8,
@@ -270,31 +244,49 @@
 
         if (temp >= limites.critico_mtQuente) {
             classe_temperatura = 'cor-alerta critico_mtQuente';
-            console.log("caiu no 1")
+            // console.log("caiu no 1")
+            grauDeAviso = 'critico mtQuente'
+            grauDeAvisoCor = 'cor-alerta critico_mtQuente'
+            exibirAlerta(temp, placa, grauDeAviso, grauDeAvisoCor)
         }
         else if (temp < limites.critico_mtQuente && temp >= limites.emergencia_quente) {
             classe_temperatura = 'cor-alerta emergencia_quente';
-            console.log("caiu no 2")
+            // console.log("caiu no 2")
+            grauDeAviso = 'emergencia quente'
+            grauDeAvisoCor = 'cor-alerta emergencia_quente'
+            exibirAlerta(temp, placa, grauDeAviso, grauDeAvisoCor)
         }
         else if (temp < limites.emergencia_Quente && temp >= limites.atencao_quente) {
             classe_temperatura = 'cor-alerta atencao_quente';
-            console.log("caiu no 3")
+            // console.log("caiu no 3")
+            grauDeAviso = 'atencao quente'
+            grauDeAvisoCor = 'cor-alerta atencao_quente'
+            exibirAlerta(temp, placa, grauDeAviso, grauDeAvisoCor)
         }
         else if (temp <= limites.ideal_3 && temp >= limites.ideal_0) {
             classe_temperatura = 'cor-alerta ideal';
-            console.log("caiu no 4")
+            // console.log("caiu no 4")
         }
         else if (temp <= limites.atencao_frio && temp > limites.emergencia_frio) {
             classe_temperatura = 'cor-alerta atencao_frio';
-            console.log("caiu no 5")
+            // console.log("caiu no 5")
+            grauDeAviso = 'atencao frio'
+            grauDeAvisoCor = 'cor-alerta atencao_frio'
+            exibirAlerta(temp, placa, grauDeAviso, grauDeAvisoCor)
         }
         else if (temp <= limites.emergencia_frio && temp > limites.critico_mtFrio) {
             classe_temperatura = 'cor-alerta emergencia_frio';
-            console.log("caiu no 6")
+            // console.log("caiu no 6")
+            grauDeAviso = 'emergencia frio'
+            grauDeAvisoCor = 'cor-alerta emergencia_frio'
+            exibirAlerta(temp, placa, grauDeAviso, grauDeAvisoCor)
         }
         else if (temp <= limites.critico_mtFrio) {
             classe_temperatura = 'cor-alerta critico_mtFrio';
-            console.log("caiu no 7")
+            // console.log("caiu no 7")
+            grauDeAviso = 'critico_mtFrio'
+            grauDeAvisoCor = 'cor-alerta critico_mtFrio'
+            exibirAlerta(temp, placa, grauDeAviso, grauDeAvisoCor)
         }
 
 
@@ -411,27 +403,6 @@
     function alertar_umidade(resposta_tempo_real, placa) {
         var umid = resposta_tempo_real[1].umidade;
 
-
-
-        // ListaUmid.push(Number(resposta[0].umidade))
-        // ListaUmid.push(Number(resposta[1].umidade))
-        // ListaUmid.push(Number(resposta[2].umidade))
-        // ListaUmid.push(Number(resposta[3].umidade))
-        // ListaUmid.push(Number(resposta[4].umidade))
-        // ListaUmid.push(Number(resposta[5].umidade))
-        // ListaUmid.push(Number(resposta[6].umidade))
-
-        // for (var contador = 0; contador < ListaUmid.length; contador++) {
-        //     if (ListaUmid[contador] > umid_max) {
-        //         umid_max = ListaUmid[contador]
-        //     }
-
-        //     if (ListaUmid[contador] < umid_min) {
-        //         umid_min = ListaUmid[contador]
-        //     }
-
-        // }
-
         var limites = {
             critico_mtUmido: 100,
             emergencia_Umido: 98,
@@ -449,31 +420,49 @@
 
         if (umid >= limites.critico_mtUmido) {
             classe_umidade = 'cor-alerta critico_mtUmido';
-            console.log("caiu no 1")
+            // console.log("caiu no 1")
+            grauDeAviso = 'critico Umido'
+            grauDeAvisoCor = 'cor-alerta critico_mtUmido';
+            exibirAlerta(umid, placa, grauDeAviso, grauDeAvisoCor)
         }
         else if (umid < limites.critico_mtUmido && umid >= limites.emergencia_Umido) {
             classe_umidade = 'cor-alerta emergencia_Umido';
-            console.log("caiu no 2")
+            // console.log("caiu no 2")
+            grauDeAviso = 'emergencia Umido'
+            grauDeAvisoCor = 'cor-alerta emergencia_Umido';
+            exibirAlerta(umid, placa, grauDeAviso, grauDeAvisoCor)
         }
         else if (umid < limites.emergencia_Umid && umid >= limites.atencao_Umido) {
             classe_umidade = 'cor-alerta atencao_Umido';
-            console.log("caiu no 3")
+            // console.log("caiu no 3")
+            grauDeAviso = 'atencao Umido'
+            grauDeAvisoCor = 'cor-alerta atencao_Umido';
+            exibirAlerta(umid, placa, grauDeAviso, grauDeAvisoCor)
         }
         else if (umid <= limites.ideal_max && umid >= limites.ideal_min) {
             classe_umidade = 'cor-alerta ideal';
-            console.log("caiu no 4")
+            // console.log("caiu no 4")
         }
         else if (umid <= limites.atencao_pouca_desitradacao && umid > limites.emergencia_media_desitradacao) {
             classe_umidade = 'cor-alerta atencao_pouca_desitradacao';
-            console.log("caiu no 5")
+            // console.log("caiu no 5")
+            grauDeAviso = 'atencao hidratacao'
+            grauDeAvisoCor = 'cor-alerta atencao_pouca_desitradacao';
+            exibirAlerta(umid, placa, grauDeAviso, grauDeAvisoCor)
         }
         else if (umid <= limites.emergencia_media_desitradacao && umid > limites.critico_alta_desitradacao) {
             classe_umidade = 'cor-alerta emergencia_frio';
-            console.log("caiu no 6")
+            // console.log("caiu no 6")
+            grauDeAviso = 'emergencia frio'
+            grauDeAvisoCor = 'cor-alerta emergencia_frio';
+            exibirAlerta(umid, placa, grauDeAviso, grauDeAvisoCor)
         }
         else if (umid <= limites.critico_alta_desitradacao) {
             classe_umidade = 'cor-alerta critico_alta_desitradacao';
-            console.log("caiu no 7")
+            // console.log("caiu no 7")
+            grauDeAviso = 'critico alta desitradacao'
+            grauDeAvisoCor = 'cor-alerta critico_alta_desitradacao';
+            exibirAlerta(umid, placa, grauDeAviso, grauDeAvisoCor)
         }
 
 
@@ -486,7 +475,7 @@
     }
 
     function alertar_umidade_max_min(resposta1, placa) {
-        
+
         umid_max = resposta1[0].maximo_umidade
         umid_min = resposta1[0].minimo_umidade
 
@@ -504,34 +493,34 @@
 
         var classe_umidade_max = 'cor-alerta';
 
-                // Validando a classe do registro Máximo dentro de 7 linhas
+        // Validando a classe do registro Máximo dentro de 7 linhas
         if (umid_max >= limites.critico_mtUmido) {
+            // console.log("caiu no 1")
             classe_umidade_max = 'cor-alerta critico_mtUmido';
-            console.log("caiu no 1")
         }
         else if (umid_max < limites.critico_mtUmido && umid_max >= limites.emergencia_Umido) {
             classe_umidade_max = 'cor-alerta emergencia_Umido';
-            console.log("caiu no 2")
+            // console.log("caiu no 2")
         }
         else if (umid_max < limites.emergencia_Umid && umid_max >= limites.atencao_Umido) {
             classe_umidade_max = 'cor-alerta atencao_Umido';
-            console.log("caiu no 3")
+            // console.log("caiu no 3")
         }
         else if (umid_max <= limites.ideal_max && umid_max >= limites.ideal_min) {
             classe_umidade_max = 'cor-alerta ideal';
-            console.log("caiu no 4")
+            // console.log("caiu no 4")
         }
         else if (umid_max <= limites.atencao_pouca_desitradacao && umid_max > limites.emergencia_media_desitradacao) {
             classe_umidade_max = 'cor-alerta atencao_pouca_desitradacao';
-            console.log("caiu no 5")
+            // console.log("caiu no 5")
         }
         else if (umid_max <= limites.emergencia_media_desitradacao && umid_max > limites.critico_alta_desitradacao) {
             classe_umidade_max = 'cor-alerta emergencia_frio';
-            console.log("caiu no 6")
+            // console.log("caiu no 6")
         }
         else if (umid_max <= limites.critico_alta_desitradacao) {
             classe_umidade_max = 'cor-alerta critico_alta_desitradacao';
-            console.log("caiu no 7")
+            // console.log("caiu no 7")
         }
 
 
@@ -680,9 +669,9 @@
                 data: [],
                 borderWidth: 3,
                 tension: 0.1,
-                fill: false ,
+                fill: false,
                 showLine: true,
-                borderColor: 'rgb(0,255,0)',  
+                borderColor: 'rgb(0,255,0)',
                 backgroundColor: 'rgb(0,255,0)'
             }]
         };
@@ -713,7 +702,8 @@
         // Adicionando gráfico criado em div na tela
         const graficolm35 = document.getElementById(`lm35Temperatura`)
         let myChartLM35 = new Chart(graficolm35,
-            {   type: 'line',
+            {
+                type: 'line',
                 data: dados,
                 options: {
                     scales: {
@@ -744,9 +734,9 @@
                 data: [],
                 borderWidth: 3,
                 tension: 0.1,
-                fill: false ,
+                fill: false,
                 showLine: true,
-                borderColor: 'rgb(0,255,0)',  
+                borderColor: 'rgb(0,255,0)',
                 backgroundColor: 'rgb(0,255,0)'
             }]
         };
@@ -780,7 +770,8 @@
         // Adicionando gráfico criado em div na tela
         const grafico_dht11 = document.getElementById(`dht11Umidade`)
         let myChartDHT11 = new Chart(grafico_dht11,
-        {   type: 'line',
+            {
+                type: 'line',
                 data: dados,
                 options: {
                     scales: {
@@ -810,7 +801,7 @@
                     // alertar(novoRegistro, placa);
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                     console.log(`Dados atuais do gráfico:`);
-                    console.log (JSON.stringify(dados));
+                    console.log(JSON.stringify(dados));
 
                     // let avisoCaptura = document.getElementById(`avisoCaptura${placa}`)
                     // avisoCaptura.innerHTML = ""

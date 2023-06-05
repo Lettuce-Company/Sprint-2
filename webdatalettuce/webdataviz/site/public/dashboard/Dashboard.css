@@ -428,3 +428,57 @@ button a {
   /* justify-content: space-evenly; */
   }
   
+  #alerta {
+    position: absolute;
+    right: 0px;
+  }
+  .alertas-lista{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    position: absolute;
+  }
+  
+  .mensagem-alarme {
+    background-color: #70ca55;
+    border: #228B22 solid 5px;
+    border-radius: 5px;
+    width: 300px;
+    height: 80px;
+    margin: 10px;
+    display: flex;
+    padding: 2%;
+    justify-content: space-evenly;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  #umidade_aviso{
+    background-color: #228B22;
+    border: #70ca55 solid 5px;
+    color: white;
+  }
+  
+  .mensagem-alarme h3 {
+    font-size: 14px;
+    margin: 0;
+  }
+  
+  .mensagem-alarme .informacao {
+    margin: 10px;
+  }
+  
+  .alarme-sino {
+    width: fit-content;
+    height: 48px;
+    animation-name: bell;
+    animation-duration: 4s;
+    background-image: url('https://cdn-icons-png.flaticon.com/128/5875/5875035.png');
+    background-size: cover;
+    animation-iteration-count: infinite;
+  }
+
+  .mensagem-alarme img{
+    width: 48px;
+    height: 48px;
+  }
