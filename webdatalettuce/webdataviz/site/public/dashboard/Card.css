@@ -2,9 +2,9 @@
 
 body {
   margin: 0;
-  padding: 0;
+  width: 100% !important;
+  height: 100% !important;
   font-family: 'Barlow', "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: black;
 }
 
 /* .funcionario{
@@ -55,10 +55,6 @@ body {
 
 /* Dashboard Lettuce */
 
-.janela {
-  display: flex;
-  width: 100vw;
-}
 
 .header-left a {
   text-decoration: none;
@@ -129,17 +125,7 @@ body {
   ;
 }
 
-.dash {
-  width: 80%;
-  position: relative;
-  top: 0;
-  left: 20%;
-  background-color: #74845e;
-  height: 100vh;
-  overflow: auto;
-  display: flex;
-  flex-direction: row;
-}
+
 
 .regua {
   display: flex;
