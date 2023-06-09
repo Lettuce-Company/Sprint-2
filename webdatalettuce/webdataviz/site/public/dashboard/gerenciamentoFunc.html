@@ -140,7 +140,7 @@
                         feed.innerHTML = "";
                         for (let i = 0; i < resposta.length; i++) {
                             var publicacao = resposta[i];
-                            if(publicacao.Permissoes == 1){
+                            if(publicacao.Permissoes == "1"){
                                 var permissao = 'ADM'
                             } else{
                                 var permissao = 'Funcionario'
@@ -156,10 +156,10 @@
                             var btnEditar = document.createElement("button");
 
 
-                            h2Nome.innerHTML = `Nome do Funcionário <div>${publicacao.Funcionário}</div>`;
-                            h2Cargo.innerHTML = `Cargo <div>${publicacao.Cargo}</div>`;
-                            h2Status.innerHTML = `Status <div> ${publicacao.Status}</div>`;
-                            h2Permissao.innerHTML = `Permissões <div> ${permissao}</div>`;
+                            h2Nome.innerHTML = `Nome do Funcionário <div class = 'cardHistorico'>${publicacao.Funcionário}</div>`;
+                            h2Cargo.innerHTML = `Cargo <div class = 'cardHistorico'>${publicacao.Cargo}</div>`;
+                            h2Status.innerHTML = `Status <div class = 'cardHistorico'> ${publicacao.Status}</div>`;
+                            h2Permissao.innerHTML = `Permissões <div class = 'cardHistorico'> ${permissao}</div>`;
                             // spanStatus.innerHTML = publicacao.Funcionario;
                             btnEditar.innerHTML = `publicacao.Funcionario`
 
