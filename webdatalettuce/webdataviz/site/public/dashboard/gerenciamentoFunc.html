@@ -104,9 +104,6 @@
                 <div id="div-gerenciamentoFunc">
                     <button class="button" onclick="mudar_pagina()">Cadastrar Funcionários</button>
                 </div>
-                <div id="div-btn-editar">
-                    <button class="button" type="button">Editar</button>
-                </div>
             </div>
         </div>
     </div>
@@ -135,12 +132,11 @@
 
                     resposta.json().then(function (resposta) {
                         console.log("Dados recebidos: ", JSON.stringify(resposta));
-
                         var feed = document.getElementById("feed_func");
                         feed.innerHTML = "";
                         for (let i = 0; i < resposta.length; i++) {
                             var publicacao = resposta[i];
-                            if(publicacao.Permissoes == "1"){
+                            if(publicacao.permissao == 1){
                                 var permissao = 'ADM'
                             } else{
                                 var permissao = 'Funcionario'
@@ -149,21 +145,27 @@
                             var cardGerenciamento = document.createElement("div");
                             var cardGeral = document.createElement("div");
                             var h2Nome = document.createElement("h2");
+                            var h2Sobrenome = document.createElement("h2");
                             var h2Cargo = document.createElement("h2");
-                            var h2Status = document.createElement("h2");
+                           
                             var h2Permissao = document.createElement("h2");
                             // var spanStatus = document.createElement("span");
-                            var btnEditar = document.createElement("button");
+                            var divButton = document.createElement("div");
+                            divButton.className = "button-card-gerenciamentoFunc";
 
-
-                            h2Nome.innerHTML = `Nome do Funcionário <div class = 'cardHistorico'>${publicacao.Funcionário}</div>`;
-                            h2Cargo.innerHTML = `Cargo <div class = 'cardHistorico'>${publicacao.Cargo}</div>`;
-                            h2Status.innerHTML = `Status <div class = 'cardHistorico'> ${publicacao.Status}</div>`;
-                            h2Permissao.innerHTML = `Permissões <div class = 'cardHistorico'> ${permissao}</div>`;
+                            h2Nome.id = `CardNome${publicacao.idFuncionario}`;
+                            h2Sobrenome.id = `CardSobrenome${publicacao.idFuncionario}`;
+                            h2Cargo.id = `CardCargo${publicacao.idFuncionario}`;
+                            h2Permissao.id = `CardPermissao${publicacao.idFuncionario}`;
+                            h2Nome.innerHTML = `Nome do Funcionário <div class = 'cardHistorico' id = h2Nome${publicacao.idFuncionario}>${publicacao.nome}</div>`;
+                            h2Sobrenome.innerHTML = `Sobrenome do Funcionário <div class = 'cardHistorico' id = h2Sobrenome${publicacao.idFuncionario}>${publicacao.sobrenome}</div>`;
+                            h2Cargo.innerHTML = `Cargo <div class = 'cardHistorico' id = h2Cargo${publicacao.idFuncionario}>${publicacao.Cargo}</div>`;
+                            h2Permissao.innerHTML = `Permissões <div class = 'cardHistorico' id = h2Permissao${publicacao.idFuncionario}> ${permissao}</div>`;
                             // spanStatus.innerHTML = publicacao.Funcionario;
-                            btnEditar.innerHTML = `publicacao.Funcionario`
+                            divButton.innerHTML = `<div class = 'button-card-gerenciamentoFunc' id = CardButton${publicacao.idFuncionario}><button type="button" id = ${publicacao.idFuncionario} onclick = "editarFuncionario(this.id)">Editar</button></div>`
 
                             cardGeral.className = "card-gerenciamentoFunc"
+                            cardGeral.id = "cardGerenciamento" + publicacao.idFuncionario;
                             cardGerenciamento.className = "cards-gerenciamentoFunc";
                             // spanTitulo.id = "inputNumero" + publicacao.idAviso;
                             // spanNome.className = "publicacao-nome";
@@ -182,9 +184,10 @@
                             divPublicacao.appendChild(divButtons);
                             divButtons.appendChild(btnEditar);*/-
                             cardGeral.appendChild(h2Nome);
+                            cardGeral.appendChild(h2Sobrenome);
                             cardGeral.appendChild(h2Cargo);
-                            cardGeral.appendChild(h2Status);
                             cardGeral.appendChild(h2Permissao);
+                            cardGeral.appendChild(divButton);
                             cardGerenciamento.appendChild(cardGeral);
                             feed.appendChild(cardGerenciamento);
                         }
@@ -199,4 +202,125 @@
                 finalizarAguardar();
             });
         }
+
+
+        function editarFuncionario(idBotao){
+            var dados = pegarDadosCardEPorEmJson(idBotao);
+            RemoverDivsDoCard(dados);
+            CriarInputsParaEdicao(dados);
+        }
+
+        
+
+        function pegarDadosCardEPorEmJson(idBotao, dados){
+            var idFuncionario = idBotao;
+            var nomeFuncionario = document.getElementById(`h2Nome${idFuncionario}`).innerHTML;
+            var sobrenomeFuncionario = document.getElementById(`h2Sobrenome${idFuncionario}`).innerHTML;
+            var cargoFuncionario = document.getElementById(`h2Cargo${idFuncionario}`).innerHTML;
+            var permissaoFuncionario = document.getElementById(`h2Permissao${idFuncionario}`).innerHTML;
+
+            var dados = {
+                "idFuncionario": idFuncionario,
+                "nomeFuncionario": nomeFuncionario,
+                "sobrenomeFuncionario": sobrenomeFuncionario,
+                "cargoFuncionario": cargoFuncionario,
+                "permissaoFuncionario": permissaoFuncionario
+            }
+
+            return dados
+         }
+
+        function RemoverDivsDoCard(dados){
+            let nomeFuncionario = document.getElementById(`h2Nome${dados.idFuncionario}`);
+            let sobrenomeFuncionario = document.getElementById(`h2Sobrenome${dados.idFuncionario}`);
+            let cargoFuncionario = document.getElementById(`h2Cargo${dados.idFuncionario}`);
+            let permissaoFuncionario = document.getElementById(`h2Permissao${dados.idFuncionario}`);
+
+             nomeFuncionario.remove()
+             sobrenomeFuncionario.remove()
+             cargoFuncionario.remove()
+             permissaoFuncionario.remove() 
+
+         }
+
+        function CriarInputsParaEdicao(dados){
+            var inputNome = document.createElement("input");
+            var inputSobrenome = document.createElement("input");
+            var inputCargo = document.createElement("input");
+            var SelectPermissao = document.createElement("select");
+
+            var optionAdministrador = document.createElement("option");
+            var optionFuncionario = document.createElement("option");
+            var buttonSalvar = document.createElement("button");
+
+
+           
+            inputNome.id = `inputNome${dados.idFuncionario}`
+            inputSobrenome.id = `inputSobrenome${dados.idFuncionario}`
+            inputCargo.id = `inputCargo${dados.idFuncionario}`
+            SelectPermissao.id = `SelectPermissao${dados.idFuncionario}`
+            buttonSalvar.id = `${dados.idFuncionario}`
+            buttonSalvar.setAttribute("onclick", `SalvarAtualizacaoEMandarParaBanco(this.id)`)
+
+            inputNome.value = dados.nomeFuncionario
+            inputSobrenome.value = dados.sobrenomeFuncionario
+            inputCargo.value = dados.cargoFuncionario
+            SelectPermissao.value = dados.permissaoFuncionario
+
+            optionAdministrador.innerHTML = "Administrador"
+            optionFuncionario.innerHTML = "Funcionário"
+            buttonSalvar.innerHTML = "Salvar"
+
+            optionAdministrador.value = "true"
+            optionFuncionario.value = "false"
+
+            document.getElementById(`CardNome${dados.idFuncionario}`).appendChild(inputNome)
+            document.getElementById(`CardSobrenome${dados.idFuncionario}`).appendChild(inputSobrenome)
+            document.getElementById(`CardCargo${dados.idFuncionario}`).appendChild(inputCargo)
+            document.getElementById(`CardPermissao${dados.idFuncionario}`).appendChild(SelectPermissao)
+            document.getElementById(`SelectPermissao${dados.idFuncionario}`).appendChild(optionAdministrador)
+            document.getElementById(`SelectPermissao${dados.idFuncionario}`).appendChild(optionFuncionario)
+            document.getElementById(`CardButton${dados.idFuncionario}`).appendChild(buttonSalvar)
+
+         }
+
+         function SalvarAtualizacaoEMandarParaBanco(idSalvarEdicao){
+            var idFuncionario = idSalvarEdicao;
+
+            var nome = document.getElementById(`inputNome${idFuncionario}`).value;
+            var sobrenome = document.getElementById(`inputSobrenome${idFuncionario}`).value;
+            var cargo = document.getElementById(`inputCargo${idFuncionario}`).value;
+            var permissao = document.getElementById(`SelectPermissao${idFuncionario}`).value;
+
+            var dados = {
+                "idFuncionario": idFuncionario,
+                "nomeFuncionario": nome,
+                "sobrenomeFuncionario": sobrenome,
+                "cargoFuncionario": cargo,
+                "permissaoFuncionario": permissao
+            }
+
+            var json = JSON.stringify(dados);
+            console.log('DEBUG: ' + json);
+
+            fetch("/funcionarios/atualizarDadosFuncionario", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: json
+            }).then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+                        console.log(resposta);
+                        alert("Funcionário atualizado com sucesso!");
+                        window.location.reload();
+                    });
+                } else {
+                    throw ('Houve um erro na atualização dos dados do funcionário!');
+                }
+            }).catch(function (resposta) {
+                console.error(resposta);
+            });
+         }
     </script>

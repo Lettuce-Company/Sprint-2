@@ -61,7 +61,7 @@ body {
 
 #container_card_botoes {
   display: flex;
-  height: 30vh;
+  height: 23vh;
   flex-direction: column;
   justify-content: center;
   margin-left: 2%;
@@ -97,6 +97,49 @@ body {
   padding-left: 1vh;
   padding-right: 1vh;
 }
+
+.card-gerenciamentoFunc input {
+  width: 33vh;
+  font-size: 22px;
+  color: black;
+  background-color: #fff;
+  border-color: black;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.card-gerenciamentoFunc select{
+  width: 33vh;
+  font-size: 22px;
+  color: black;
+  border-color: black;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.button-card-gerenciamentoFunc{
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  padding-top: 1vh;
+}
+
+.button-card-gerenciamentoFunc button {
+  display: flex;
+  width: 200px;
+  height: 45px;
+  background-color: #8cd147;
+  color: white;
+  font-size: 30px;
+  border-style: none;
+  border-radius: 50px;
+  cursor: pointer;
+  align-items: center;
+ justify-content: center;
+ margin-left: 2vh;
+}
+
+
 
 .header-left img {
   width: 60%;
@@ -208,8 +251,6 @@ button a {
   border-radius: 30px;
   cursor: pointer;
   align-items: center;
-  margin-top: 15px;
-
 }
 
 .div_button_procurar_caminhao {
