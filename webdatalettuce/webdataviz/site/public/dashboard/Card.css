@@ -233,7 +233,7 @@ width: 260px;
   flex-wrap: wrap;
   text-align: center;
   border-radius: 30px;
-  background-color: rgb(23, 69, 9);
+  background-color: #228B22;
   font-size: 20px;
   position: relative;
   width: 40vw;
@@ -296,6 +296,7 @@ width: 260px;
   text-align: left;
   font-weight: lighter;
   margin: 20px;
+  color: white;
 }
 
 
@@ -524,6 +525,10 @@ canvas {
   margin-left: 20px;
 }
 
+.mensagens{
+  display: flex;
+  flex-direction: row
+}
 
 
 

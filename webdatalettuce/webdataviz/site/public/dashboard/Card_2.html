@@ -24,126 +24,131 @@
 <body onload="atualizacaoPeriodica(), obterDadosGrafico(placa)">
 
     <div class="janela">
-        <div class="header-left dash-header">
-            <div class="sidebar-logo">
-                <img src="../assets/logo_borda.png" alt="Alface lettuce company">
-            </div>
-            <h3>Dashboard</h3>
-            <span class="sidebar-active" class="fa-solid fa-user">Bem vindo, Usuário</span>
-            <a href="Dashboard.html"><i class="fa-solid fa-user" class></i>Home</a>
-            <a href="gerenciamentoFunc.html" class="funcionario"><i class="fa-solid fa-id-card"></i>Gerenciar
-                Funcionário</i></a>
-            <a href="gerenciamentoCaminhao.html" class="funcionario"><i
-                    class="fa-solid fa-truck-arrow-right"></i>Gerenciar Caminhão</i></a>
-            <!-- <a href="gerenciamentoCarga.html" class="funcionario"><i class="fa-solid fa-truck-ramp-box"></i>Gerenciar
+        <section class="main">
+            <div class="header-left dash-header">
+                <div class="sidebar-logo">
+                    <img src="../assets/logo_borda.png" alt="Alface lettuce company">
+                </div>
+                <h3>Dashboard — <span id="b_empresa"></span></h3>
+                <span class="sidebar-active">Bem vindo,<span id="b_usuario"></span></span>
+                <a href="Dashboard.html"><i class="fa-solid fa-user" class></i>Home</a>
+                <a href="gerenciamentoFunc.html" class="funcionario"><i class="fa-solid fa-id-card"></i>Gerenciar
+                    Funcionário</i></a>
+                <a href="gerenciamentoCaminhao.html" class="funcionario"><i
+                        class="fa-solid fa-truck-arrow-right"></i>Gerenciar Caminhão</i></a>
+                <!-- <a href="gerenciamentoCarga.html" class="funcionario"><i class="fa-solid fa-truck-ramp-box"></i>Gerenciar
                 Carga</a> -->
-            <a href="https://lettuce-co.atlassian.net/servicedesk/customer/portal/2" class="funcionario"><i
-                    class="0fa-solid fa-headset"></i>Suporte</a>
-            <a href="../login.html" class="funcionario"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
-            <br />
-            <!-- <select name="pesquisa_caminhao" id="select_caminhão" onchange="location = this.value;"><i
+                <a href="https://app.pipefy.com/public/form/382TxORQ" class="funcionario">
+                    <i class="fa-solid fa-headset"></i>Suporte</a>
+                <a href="../login.html" class="funcionario"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+                <br />
+                <!-- <select name="pesquisa_caminhao" id="select_caminhão" onchange="location = this.value;"><i
                     class="fa-solid fa-truck-fast"></i>
                 <option value="">Pesquisar Caminhão</option>
                 <option value="Dashboard.html">Macro</option>
                 <option value="Card_1.html">CBW6000</option>
                 <option value="Card_2.html">GDU2589</option>
             </select> -->
-        </div>
-
-        <div class="dash">
-                <div class="alerta-dash" id="alerta">
-                </div>
-            <div class="regua">
-
-                <div class="item-regua temp">
-                    <h4>Temperatura Máxima Captada</h4>
-                    <h2 id="temperatura_maxima"></h2>
-                </div>
-                <div class="item-regua temp">
-                    <h4>Temperatura Mínima Captada</h4>
-                    <h2 id="temperatura_minima"></h2>
-                </div>
-                <div class="item-regua ideal">
-
-                </div>
-                <div class="item-regua umid">
-                    <h4>Umidade Máxima Captada</h4>
-                    <h2 id="umidade_maxima"></h2>
-                </div>
-                <div class="item-regua umid">
-                    <h4>Umidade Mínima Captada</h4>
-                    <h2 id="umidade_minima"></h2>
-                </div>
             </div>
-            <div class="cards">
-                <div class="card">
-                    <h1>índice de Temperatura - Atual</h1>
-                    <div class="temperatura">
-                        <p id="temp_caminhao"></p>
-                    </div>
-                    <div class="cor-alerta" id="card_1"></div>
-                </div>
-                <div class="card">
-                    <h1>índice de Umidade - Atual</h1>
-                    <div class="">
-                        <p id="umid_caminhao"></p>
-                    </div>
-                    <div class="cor-alerta" id="card_2"></div>
-                </div>
-            </div>
-            <div>
-                <div class="dashboard">
-                    <div class="chart-container">
-                        <canvas id="lm35Temperatura"></canva>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="dht11Umidade"></canva>
-                    </div>
-                </div>
-            </div>
-            <div class="regua-macro">
-                <div class="item-regua dados">
-                    <h2>Temperatura Mín/Max ideal</h2>
-                    <h4>0°C | 3°C</h4>
-                </div>
 
-                <div class="item-regua dados">
-                    <h2>Umidade Mín/Max ideal</h2>
-                    <h4>90% | 94%</h4>
+            <div class="dash">
+                <div class="mensagens">
+                    <div class="alerta-dash" id="alerta_temp">
+                    </div>
+                    <div class="alerta-dash" id="alerta_umid">
+                    </div>
                 </div>
-
                 <div class="regua">
-                    <div class="cards-carga">
-                        <div class="card-carga">
-                            <h1>Carga Atual</h1>
-                            <div>
-                                <h3>Origem</h3>
-                                <h4>Santos - SP</h4>
-                            </div>
-                            <div>
-                                <h3>Destino</h3>
-                                <h4>São Paulo - SP</h4>
-                            </div>
-                            <div>
-                                <h3>placa</h3>
-                                <h4>CBW6000</h4>
-                            </div>
-                            <div>
-                                <h3>Lote(kg)</h3>
-                                <h4>20.0</h4>
-                            </div>
-                            <div>
-                                <h3>Tipo de carga</h3>
-                                <h4>Rúcula</h4>
-                            </div>
-                            <div>
-                                <h3>Duração viagem (min)</h3>
-                                <h4>60.0</h4>
+
+                    <div class="item-regua temp">
+                        <h4>Temperatura Máxima Captada</h4>
+                        <h2 id="temperatura_maxima"></h2>
+                    </div>
+                    <div class="item-regua temp">
+                        <h4>Temperatura Mínima Captada</h4>
+                        <h2 id="temperatura_minima"></h2>
+                    </div>
+                    <div class="item-regua ideal">
+
+                    </div>
+                    <div class="item-regua umid">
+                        <h4>Umidade Máxima Captada</h4>
+                        <h2 id="umidade_maxima"></h2>
+                    </div>
+                    <div class="item-regua umid">
+                        <h4>Umidade Mínima Captada</h4>
+                        <h2 id="umidade_minima"></h2>
+                    </div>
+                </div>
+                <div class="cards">
+                    <div class="card">
+                        <h1>índice de Temperatura - Atual</h1>
+                        <div class="temperatura">
+                            <p id="temp_caminhao"></p>
+                        </div>
+                        <div class="cor-alerta" id="card_1"></div>
+                    </div>
+                    <div class="card">
+                        <h1>índice de Umidade - Atual</h1>
+                        <div class="">
+                            <p id="umid_caminhao"></p>
+                        </div>
+                        <div class="cor-alerta" id="card_2"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="dashboard">
+                        <div class="chart-container">
+                            <canvas id="lm35Temperatura"></canva>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="dht11Umidade"></canva>
+                        </div>
+                    </div>
+                </div>
+                <div class="regua-macro">
+                    <div class="item-regua dados">
+                        <h2>Temperatura Mín/Max ideal</h2>
+                        <h4>0°C | 3°C</h4>
+                    </div>
+
+                    <div class="item-regua dados">
+                        <h2>Umidade Mín/Max ideal</h2>
+                        <h4>90% | 94%</h4>
+                    </div>
+
+                    <div class="regua">
+                        <div class="cards-carga">
+                            <div class="card-carga">
+                                <h1>Carga Atual</h1>
+                                <div>
+                                    <h3>Origem</h3>
+                                    <h4>Santos - SP</h4>
+                                </div>
+                                <div>
+                                    <h3>Destino</h3>
+                                    <h4>São Paulo - SP</h4>
+                                </div>
+                                <div>
+                                    <h3>placa</h3>
+                                    <h4>CBW6000</h4>
+                                </div>
+                                <div>
+                                    <h3>Lote(kg)</h3>
+                                    <h4>20.0</h4>
+                                </div>
+                                <div>
+                                    <h3>Tipo de carga</h3>
+                                    <h4>Rúcula</h4>
+                                </div>
+                                <div>
+                                    <h3>Duração viagem (min)</h3>
+                                    <h4>60.0</h4>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
 
 </body>
@@ -246,21 +251,21 @@
             // console.log("caiu no 1")
             grauDeAviso = 'critico mtQuente'
             grauDeAvisoCor = 'cor-alerta critico_mtQuente'
-            exibirAlerta(temp, placa, grauDeAviso, grauDeAvisoCor)
+            exibirAlertaTemp(temp, placa, grauDeAviso, grauDeAvisoCor)
         }
         else if (temp < limites.critico_mtQuente && temp >= limites.emergencia_quente) {
             classe_temperatura = 'cor-alerta emergencia_quente';
             // console.log("caiu no 2")
             grauDeAviso = 'emergencia quente'
             grauDeAvisoCor = 'cor-alerta emergencia_quente'
-            exibirAlerta(temp, placa, grauDeAviso, grauDeAvisoCor)
+            exibirAlertaTemp(temp, placa, grauDeAviso, grauDeAvisoCor)
         }
         else if (temp < limites.emergencia_Quente && temp >= limites.atencao_quente) {
             classe_temperatura = 'cor-alerta atencao_quente';
             // console.log("caiu no 3")
             grauDeAviso = 'atencao quente'
             grauDeAvisoCor = 'cor-alerta atencao_quente'
-            exibirAlerta(temp, placa, grauDeAviso, grauDeAvisoCor)
+            exibirAlertaTemp(temp, placa, grauDeAviso, grauDeAvisoCor)
         }
         else if (temp <= limites.ideal_3 && temp >= limites.ideal_0) {
             classe_temperatura = 'cor-alerta ideal';
@@ -271,21 +276,21 @@
             // console.log("caiu no 5")
             grauDeAviso = 'atencao frio'
             grauDeAvisoCor = 'cor-alerta atencao_frio'
-            exibirAlerta(temp, placa, grauDeAviso, grauDeAvisoCor)
+            exibirAlertaTemp(temp, placa, grauDeAviso, grauDeAvisoCor)
         }
         else if (temp <= limites.emergencia_frio && temp > limites.critico_mtFrio) {
             classe_temperatura = 'cor-alerta emergencia_frio';
             // console.log("caiu no 6")
             grauDeAviso = 'emergencia frio'
             grauDeAvisoCor = 'cor-alerta emergencia_frio'
-            exibirAlerta(temp, placa, grauDeAviso, grauDeAvisoCor)
+            exibirAlertaTemp(temp, placa, grauDeAviso, grauDeAvisoCor)
         }
         else if (temp <= limites.critico_mtFrio) {
             classe_temperatura = 'cor-alerta critico_mtFrio';
             // console.log("caiu no 7")
             grauDeAviso = 'critico_mtFrio'
             grauDeAvisoCor = 'cor-alerta critico_mtFrio'
-            exibirAlerta(temp, placa, grauDeAviso, grauDeAvisoCor)
+            exibirAlertaTemp(temp, placa, grauDeAviso, grauDeAvisoCor)
         }
 
 
@@ -422,21 +427,21 @@
             // console.log("caiu no 1")
             grauDeAviso = 'critico Umido'
             grauDeAvisoCor = 'cor-alerta critico_mtUmido';
-            exibirAlerta(umid, placa, grauDeAviso, grauDeAvisoCor)
+            exibirAlertaUmid(umid, placa, grauDeAviso, grauDeAvisoCor)
         }
         else if (umid < limites.critico_mtUmido && umid >= limites.emergencia_Umido) {
             classe_umidade = 'cor-alerta emergencia_Umido';
             // console.log("caiu no 2")
             grauDeAviso = 'emergencia Umido'
             grauDeAvisoCor = 'cor-alerta emergencia_Umido';
-            exibirAlerta(umid, placa, grauDeAviso, grauDeAvisoCor)
+            exibirAlertaUmid(umid, placa, grauDeAviso, grauDeAvisoCor)
         }
-        else if (umid < limites.emergencia_Umid && umid >= limites.atencao_Umido) {
+        else if (umid < limites.emergencia_Umido && umid >= limites.atencao_Umido) {
             classe_umidade = 'cor-alerta atencao_Umido';
             // console.log("caiu no 3")
             grauDeAviso = 'atencao Umido'
             grauDeAvisoCor = 'cor-alerta atencao_Umido';
-            exibirAlerta(umid, placa, grauDeAviso, grauDeAvisoCor)
+            exibirAlertaUmid(umid, placa, grauDeAviso, grauDeAvisoCor)
         }
         else if (umid <= limites.ideal_max && umid >= limites.ideal_min) {
             classe_umidade = 'cor-alerta ideal';
@@ -447,21 +452,21 @@
             // console.log("caiu no 5")
             grauDeAviso = 'atencao hidratacao'
             grauDeAvisoCor = 'cor-alerta atencao_pouca_desitradacao';
-            exibirAlerta(umid, placa, grauDeAviso, grauDeAvisoCor)
+            exibirAlertaUmid(umid, placa, grauDeAviso, grauDeAvisoCor)
         }
         else if (umid <= limites.emergencia_media_desitradacao && umid > limites.critico_alta_desitradacao) {
             classe_umidade = 'cor-alerta emergencia_frio';
             // console.log("caiu no 6")
             grauDeAviso = 'emergencia frio'
             grauDeAvisoCor = 'cor-alerta emergencia_frio';
-            exibirAlerta(umid, placa, grauDeAviso, grauDeAvisoCor)
+            exibirAlertaUmid(umid, placa, grauDeAviso, grauDeAvisoCor)
         }
         else if (umid <= limites.critico_alta_desitradacao) {
             classe_umidade = 'cor-alerta critico_alta_desitradacao';
             // console.log("caiu no 7")
             grauDeAviso = 'critico alta desitradacao'
             grauDeAvisoCor = 'cor-alerta critico_alta_desitradacao';
-            exibirAlerta(umid, placa, grauDeAviso, grauDeAvisoCor)
+            exibirAlertaUmid(umid, placa, grauDeAviso, grauDeAvisoCor)
         }
 
 
@@ -501,7 +506,7 @@
             classe_umidade_max = 'cor-alerta emergencia_Umido';
             // console.log("caiu no 2")
         }
-        else if (umid_max < limites.emergencia_Umid && umid_max >= limites.atencao_Umido) {
+        else if (umid_max < limites.emergencia_Umido && umid_max >= limites.atencao_Umido) {
             classe_umidade_max = 'cor-alerta atencao_Umido';
             // console.log("caiu no 3")
         }
@@ -544,7 +549,7 @@
             classe_umidade_min = 'cor-alerta emergencia_Umido';
             console.log("caiu no 2")
         }
-        else if (umid_min < limites.emergencia_Umid && umid_min >= limites.atencao_Umido) {
+        else if (umid_min < limites.emergencia_Umido && umid_min >= limites.atencao_Umido) {
             classe_umidade_min = 'cor-alerta atencao_Umido';
             console.log("caiu no 3")
         }
