@@ -61,6 +61,8 @@ function buscarMedidasEmTempoRealGraficos(placa) {
 
 
 
+
+
 function buscarMedidasMaximasMinimas(placa) {
 
     instrucaoSql = ''
@@ -102,11 +104,22 @@ FROM
     return database.executar(instrucaoSql);
 }
 
+function RegistrarAlerta(instrucaoSQL){
+    console.log("Executando a instrução SQL de RegistrarAlerta: \n" + instrucaoSQL)
+    return database.executar(instrucaoSQL);
+}
 
+function buscarDadosRegistroAlerta(cnpj_empresa){
+    var instrucaoSQL = `SELECT atencao, emergencia, critico FROM VW_RegistroAlerta WHERE fkAlertaCNPJ = ${cnpj_empresa}`;
+    console.log("Executando a instrução SQL de buscarDadosRegistroAlerta: \n" + instrucaoSQL)
+    return database.executar(instrucaoSQL);
+}
 
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoRealKPIS,
     buscarMedidasEmTempoRealGraficos,
-    buscarMedidasMaximasMinimas
+    buscarMedidasMaximasMinimas,
+    RegistrarAlerta,
+    buscarDadosRegistroAlerta
 }

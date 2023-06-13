@@ -80,10 +80,46 @@ function buscarMedidasMaximasMinimas(req, res) {
     });
 }
 
+function RegistrarAlerta(req, res){
+    var instrucaoSQL = req.body.instrucaoSQL 
+    medidaModel.RegistrarAlerta(instrucaoSQL).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao registrar alerta.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+
+}
+
+function buscarDadosRegistroAlerta (req, res) {
+
+    var cnpj_empresa = req.params.cnpj_empresa;
+
+    console.log(`Recuperando dados de registro de alerta`);
+
+    medidaModel.buscarDadosRegistroAlerta(cnpj_empresa).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os dados de registro de alerta.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
 module.exports = {
     buscarUltimasMedidas,
     buscarMedidasEmTempoRealKPIS,
     buscarMedidasEmTempoRealGraficos,
-    buscarMedidasMaximasMinimas
-
+    buscarMedidasMaximasMinimas,
+    RegistrarAlerta,
+    buscarDadosRegistroAlerta
 }

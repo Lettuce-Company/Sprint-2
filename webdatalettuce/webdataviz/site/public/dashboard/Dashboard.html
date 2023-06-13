@@ -8,7 +8,6 @@
     <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
     <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="card.css">
-    <script src="main.js"></script>
     <script src="../js/funcoes.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -95,16 +94,16 @@
                 <div class="regua-macro">
                     <div class="item-regua-macro temp Atencao">
                         <h4>Registros de Atenção registrados</h4>
-                        <h2>15</h2>
+                        <h2 id="RegistroAtencao"></h2>
                     </div>
 
                     <div class="item-regua-macro umid Emergencia">
                         <h4>Registros de Emergência registrados</h4>
-                        <h2>8</h2>
+                        <h2 id="RegistroEmergencia"></h2>
                     </div>
                     <div class="item-regua-macro umid Critico">
                         <h4>Registros Críticos registrados</h4>
-                        <h2>3</h2>
+                        <h2 id="RegistroCritico"></h2>
                     </div>
 
                 </div>
@@ -128,43 +127,32 @@
                 </div>
             </div>
 
-            <!-- <div class="regua-macro">
-                <div class="item-regua-macro temp Atencao">
-                    <h4>Registros de Atenção esse ano</h4>
-                    <h2>32</h2>
-                </div>
-
-                <div class="item-regua-macro umid Emergencia">
-                    <h4>Registros de Emergência esse ano</h4>
-                    <h2>17</h2>
-                </div>
-                <div class="item-regua-macro umid Critico">
-                    <h4>Registros Críticos esse ano</h4>
-                    <h2>3</h2>
-                </div>
-            </div> -->
-
-
-            <!-- <div class="regua-macro">
-                <div class="item-regua dados">
-                    <h2>Umidade Mín/Max</h2>
-                    <h4>90% | 94%</h4>
-                </div>
-                <div class="item-regua dados">
-                    <h2>Temperatura Mín/Max</h2>
-                    <h4>0°C | 3°C</h4>
-                </div>
-
-                <div class="item-regua dados">
-                    <h2>Qtd de Veiculos</h2>
-                    <h4>2</h4>
-                </div>
-                <div class="item-regua dados">
-                    <h2>Sensores Utilizados</h2>
-                    <h4>LM35 <br> DHT11</h4>
-                </div>
-            </div> -->
+   
 
         </div>
 
 </html>
+<script>
+
+            window.onload = function(){
+                atualizacaoPeriodica()
+            }
+
+            function atualizacaoPeriodica() {
+                ReceberDadosRegistroAlerta()
+        setTimeout(atualizacaoPeriodica, 5000);
+    }
+
+             function ReceberDadosRegistroAlerta(cnpj_empresa){
+                var cnpj_empresa = sessionStorage.getItem("EMPRESA_USUARIO")
+                fetch (`/medidas/DadosRegistroAlerta/${cnpj_empresa}`)
+                .then(response => response.json())
+                .then(data => {
+                    JSON.stringify(data)
+                    document.getElementById("RegistroAtencao").innerHTML = data[0].atencao
+                    document.getElementById("RegistroEmergencia").innerHTML = data[0].emergencia
+                    document.getElementById("RegistroCritico").innerHTML = data[0].critico
+                })
+
+             }
+</script>

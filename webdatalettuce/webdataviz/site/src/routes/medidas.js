@@ -20,4 +20,12 @@ router.get("/maximas-minimas/:placa", function (req, res) {
     medidaController.buscarMedidasMaximasMinimas(req, res);
 })
 
+router.get("/DadosRegistroAlerta/:cnpj_empresa", function (req, res) {
+    medidaController.buscarDadosRegistroAlerta(req, res);
+})
+
+router.post("/RegistrarAlerta", function (req, res) {
+    medidaController.RegistrarAlerta(req, res);
+})
+
 module.exports = router;
